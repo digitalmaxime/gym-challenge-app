@@ -1,0 +1,54 @@
+{
+  "name": "@gappris/web",
+  "version": "1.0.0",
+  "target": "esnext",
+  "module": "commonjs",
+  "contributors": [],
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build && next export",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@chakra-ui/icons": "^2.0.12",
+    "@chakra-ui/react": "^2.3.2",
+    "@choc-ui/chakra-autocomplete": "^5.1.3",
+    "@emotion/react": "^11.10.4",
+    "@emotion/styled": "^11.10.4",
+    "apexcharts": "^3.36.3",
+    "firebase": "^9.9.4",
+    "framer-motion": "^7.3.2",
+    "next": "12.3.0",
+    "react": "18.2.0",
+    "react-apexcharts": "^1.4.0",
+    "react-dom": "18.2.0",
+    "react-icons": "^4.6.0",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.11.0",
+    "@babel/eslint-parser": "^7.18.9",
+    "@types/node": "18.7.16",
+    "@types/react": "18.0.18",
+    "@types/react-dom": "18.0.6",
+    "@typescript-eslint/eslint-plugin": "^5.36.2",
+    "@typescript-eslint/parser": "^5.36.2",
+    "dotenv": "^16.0.2",
+    "eslint": "^8.23.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-next": "12.3.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsx-a11y": "^6.6.1",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.31.8",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "prettier": "^2.7.1",
+    "typescript": "4.8.3"
+  },
+  "browser": {
+    "crypto": false
+  }
+}
