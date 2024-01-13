@@ -2,7 +2,7 @@
   "name": "@gappris/gappris",
   "private": true,
   "engines": {
-    "node": "16"
+    "node": "21"
   },
   "workspaces": {
     "packages": [

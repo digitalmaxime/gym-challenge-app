@@ -3,6 +3,14 @@
 Welcome to gappris. This app aims to replicate Duolinguo, but with modifiable questions and analytics by the professors.
 The code starts from `/src` and the highest UI subdivision is `screens`. The data are persisted between screens and components using React Contexts
 
+# Upgrade expo
+
+check if expo-cli is installed, if not 
+`npm i -g expo-cli. expo-cli@latest` or something like that
+https://docs.expo.dev/more/expo-cli/#installation
+
+than do `expo upgrade`
+
 # Running the app for development
 
 ```

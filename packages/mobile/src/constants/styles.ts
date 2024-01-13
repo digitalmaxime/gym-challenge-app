@@ -36,7 +36,7 @@ const Colors = {
   coursesBackgroundColor: '#3d4758',
   coursesBackgroundColorAlt: '#545861',
   searchBackgroundColor: '#E2E8F0',
-  lessonBackgroundColor: '#A0AEC0',
+  lessonBackgroundColor: '#eef5ff',
   lessonBackgroundColorAlt: '#A3AFBF',
   loadingBackgroundColour: 'rgba(0,0,0,0.7)',
 
@@ -59,7 +59,7 @@ const Colors = {
   unitBackground: '#bbbbfb',
 
   // Text
-  textColor: '#EDF2F7',
+  textColor: '#92b5d8',
   textLessonColor: '#2D3750',
   darkTextColor: '#1A202C',
 };

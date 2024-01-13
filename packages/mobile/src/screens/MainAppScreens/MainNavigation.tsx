@@ -6,12 +6,13 @@ import { createMaterialBottomTabNavigator } from '@react-navigation/material-bot
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 // Screens
-import PracticeScreen from './Practice/PracticeScreen';
+import GripSelectionScreen from './Challenge/GripSelectionScreen';
 import ProfileScreen from './Profile/ProfileScreen';
-import CourseScreen from './Course/CourseNavigation';
 
 // Styles
 import Colors from '../../constants/styles';
+import { Test } from './test';
+import GripSelectionStack from './Challenge/GripSelectionStack';
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -24,20 +25,20 @@ export default function MainNavigation() {
         barStyle={styles.barStyle}
       >
         <Tab.Screen
-          name="Course"
-          component={CourseScreen}
+          name="Train"
+          component={Test}
           options={{
-            tabBarLabel: 'Cours',
+            tabBarLabel: 'Train',
             tabBarIcon: ({ color }) => (
               <MaterialCommunityIcons name="home" color={color} size={26} />
             ),
           }}
         />
         <Tab.Screen
-          name="Practice"
-          component={PracticeScreen}
+          name="Challenge"
+          component={GripSelectionStack}
           options={{
-            tabBarLabel: 'Pratique',
+            tabBarLabel: 'Challenge',
             tabBarIcon: ({ color }) => (
               <MaterialCommunityIcons name="arm-flex" color={color} size={26} />
             ),

@@ -8,11 +8,9 @@ import { useUserContext } from '../../../contexts/UserContext';
 import { auth } from '../../../utils/auth';
 import { deleteCache } from '../../../utils/caching';
 import * as Controller from '../../../controller/controller';
-import { useCoursesContext } from '../../../contexts/CoursesContext';
 
 function ProfileScreen() {
   const userContext = useUserContext();
-  const courseContext = useCoursesContext();
   const toast = useToast();
 
   const [showWarning, setShowWarning] = useState<boolean>(false);
@@ -21,7 +19,7 @@ function ProfileScreen() {
     <View style={styles.container}>
       <Text style={styles.title}>Profil..</Text>
       <View style={styles.row}>
-        <Text style={styles.text}>{userContext.userData?.email || 'non connecté \u{1F631}'}</Text>
+        <Text style={styles.text}>non connecté</Text>
       </View>
       <View style={styles.bottomBtnContainer}>
         <ButtonText
@@ -55,10 +53,7 @@ function ProfileScreen() {
           padding={8}
         />
         <ButtonText
-          onPress={async () => {
-            await auth.signOut();
-            userContext.reset();
-            courseContext.reset();
+          onPress={async () => { console.log('sign out');
           }}
           textContent="se déconnecter"
           btnHeight={50}
@@ -83,7 +78,7 @@ function ProfileScreen() {
       <WarningModal
         message="Voulez-vous vraiment supprimer votre compte?"
         confirm={async () => {
-          Controller.deleteUser(userContext.userData.id);
+          Controller.deleteUser(1);
           await auth.signOut();
           setShowWarning(!showWarning);
         }}

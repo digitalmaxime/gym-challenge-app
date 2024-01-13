@@ -3,6 +3,7 @@ type UserData = {
     email: string;
     userName?: string;
     authLevel: number;
+    memberships: string[]
 }
 
 export default UserData;
