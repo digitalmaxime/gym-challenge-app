@@ -1,18 +1,17 @@
-First, update dependencies:
-```
-yarn
-```
-You also need to install the firebase CLI:
-```
-yarn global add firebase-tools
-```
-Here are some of the used scripts in this project:
-```
-yarn build: Builds the project
+---
+Project initialization
 
-yarn serve: Builds the project and hosts a local firebase emulator suite instance on localhost:4000 (Uses content of exportDir to populate DBs)
+install firebase tools :
+`npm install -g firebase-tools`
 
-yarn export: Exports content of local firebase emulator to exportDir (May need to rename created folder to exportDir)
 
-yarn deploy: Exports firebase functions to the cloud (firebase console application)
-```
+ It's a good practice to frequently update both the Firebase CLI and the SDK with these commands inside the functions folder of your Firebase project
+
+ `npm install firebase-functions@latest firebase-admin@latest --save`
+
+ `npm install -g firebase-tools`
+
+ Run firebase login to log in via the browser and authenticate the Firebase CLI.
+
+ Go to your Firebase project directory.
+

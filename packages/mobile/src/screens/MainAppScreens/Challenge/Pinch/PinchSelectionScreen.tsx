@@ -7,9 +7,9 @@ import {
   StyleSheet,
 } from 'react-native';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
-import ChallengeResultSummaryModal from '../../../components/gripChallenges/ChallengeResultSummaryModal';
-import PinchChallengeObsolete from '../../../components/gripChallenges/pinchSelection/PinchChallengeObsolete';
-import Colors from '../../../constants/styles';
+import ChallengeResultSummaryModal from '../../../../components/gripChallenges/ChallengeResultSummaryModal';
+import PinchChallengeObsolete from '../../../../components/gripChallenges/pinchSelection/PinchChallengeObsolete';
+import Colors from '../../../../constants/styles';
 
 export interface PinchSelectionScreenProps {}
 
@@ -34,7 +34,7 @@ export function PinchSelectionScreen(props: PinchSelectionScreenProps) {
             <ImageBackground
               resizeMode="cover"
               style={styles.pinchBackgroundImage}
-              source={require('../../../../assets/images/pinch_wide_shallow.png')}
+              source={require('../../../../../assets/images/pinch_wide_shallow.png')}
             >
               <Text style={styles.pinchTitle}>Wide pinch</Text>
             </ImageBackground>

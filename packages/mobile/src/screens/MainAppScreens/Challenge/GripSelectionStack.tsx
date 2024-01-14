@@ -7,15 +7,15 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import { ButtonImg, ButtonText } from '../../../components/basics/Buttons';
-import PinchSelectionModal from '../../../components/gripChallenges/pinchSelection/PinchSelection';
+import PinchSelectionModal from '../../../components/gripChallenges/pinchSelection/PinchSelectionObsolete';
 import Colors from '../../../constants/styles';
 import { useUserContext } from '../../../contexts/UserContext';
 import { Test } from '../test';
 import GripSelectionScreen from './GripSelectionScreen';
-import { CrimpSelectionScreen } from './CrimpSelectionScreen';
-import { DeadhangSelectionScreen } from './DeadhangSelectionScreen';
-import { PinchSelectionScreen } from './PinchSelectionScreen';
-import PinchSelectionStack from './PinchSelectionStack';
+import { CrimpSelectionScreen } from './Crimp/CrimpSelectionScreen';
+import { DeadhangSelectionScreen } from './DeadHang/DeadhangSelectionScreen';
+import { PinchSelectionScreen } from './Pinch/PinchSelectionScreen';
+import PinchSelectionStack from './Pinch/PinchSelectionStack';
 
 function GripSelectionStack() {
   const Stack = createNativeStackNavigator();
@@ -49,18 +49,6 @@ function GripSelectionStack() {
         options={{ title: 'Awesome PinchSelectionStack' }}
       />
     </Stack.Navigator>
-    // <Stack.Navigator screenOptions={{ headerShown: true }}>
-    //   <Stack.Screen
-    //     name="SearchCoursesScreen"
-    //     component={Test}
-    //     options={{ title: 'Recherche', headerBackButtonMenuEnabled: true }}
-    //   />
-    //   <Stack.Screen
-    //     name="CourseLearning"
-    //     component={PinchScreen}
-    //     options={{ title: 'Apprentissage', header: () => null }}
-    //   />
-    // </Stack.Navigator>
   );
 }
 

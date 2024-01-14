@@ -18,19 +18,14 @@ import { ButtonIcon, ButtonImg } from '../../basics/Buttons';
 import Colors from '../../../constants/styles';
 import ChallengeResultSummaryModal from '../ChallengeResultSummaryModal';
 import { useUserContext } from '../../../contexts/UserContext';
-import Lesson from '../../../models/course/lesson/Lesson';
 import PinchChallengeObsolete from './PinchChallengeObsolete';
+import PinchChallenge from '../../../screens/MainAppScreens/Challenge/Pinch/PinchChallenge';
 
 interface PinchChallengeModalProps {
   toggleVisibility: Dispatch<React.SetStateAction<boolean>>;
-  lesson: Lesson;
 }
 
-function PinchSelectionModal({
-  toggleVisibility,
-  lesson,
-}: PinchChallengeModalProps) {
-  const userContext = useUserContext();
+function PinchSelectionModal({ toggleVisibility }: PinchChallengeModalProps) {
   const [showFinishChallengeSummary, setShowFinishChallengeSummary] =
     React.useState(false);
   const [hasChallengeStarted, setHasChallengeStarted] =
@@ -53,6 +48,8 @@ function PinchSelectionModal({
     setIsCurrentChallengeCompleted(false);
     setShowFinishChallengeSummary(false);
   }
+
+  const img = '../../../../../../assets/images/pinch_wide_shallow.png';
 
   return (
     <Modal
@@ -85,7 +82,7 @@ function PinchSelectionModal({
               >
                 <Text style={styles.pinchTitle}>Wide pinch</Text>
                 {hasChallengeStarted && !isCurrentChallengeCompleted && (
-                  <PinchChallengeObsolete finishChallenge={finishChallenge} />
+                  <PinchChallenge finishChallenge={finishChallenge} />
                 )}
               </ImageBackground>
             </View>

@@ -2,11 +2,11 @@ import * as React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import NumericInput from 'react-native-numeric-input';
 import { Dispatch } from 'react';
-import Colors from '../../../constants/styles';
-import { ButtonIcon } from '../../../components/basics/Buttons';
+import Colors from '../../../../constants/styles';
+import { ButtonIcon } from '../../../../components/basics/Buttons';
 
 export interface PinchChallengeProps {
-//   finishChallenge: Dispatch<React.SetStateAction<void>>;
+  finishChallenge: Dispatch<React.SetStateAction<void>>;
 }
 
 export function PinchChallenge() {
@@ -17,7 +17,7 @@ export function PinchChallenge() {
     if (!isTimerActive) return;
 
     setTimeout(() => {
-      setTimeInSeconds((prevTime) => prevTime + 1);
+      setTimeInSeconds(prevTime => prevTime + 1);
       timer();
     }, 1000);
   }
@@ -39,8 +39,17 @@ export function PinchChallenge() {
         {timeInSeconds}
       </Text>
       <ButtonIcon
+        iconName="circle-medium"
+        onPress={() => setIsTimerActive(true)}
+        iconSize={30}
+        btnSize={32}
+        color={Colors.cancel2}
+        btnBackgroundColor={Colors.btnUnitBackgroundColor}
+        disabled={false}
+      />
+      <ButtonIcon
         iconName="stop"
-        onPress={() => console.log('finished!')}
+        onPress={() => setIsTimerActive(false)}
         iconSize={30}
         btnSize={32}
         color={Colors.cancel2}
