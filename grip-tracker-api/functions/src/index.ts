@@ -13,11 +13,12 @@ initializeApp();
 // Firestore under the path /messages/:documentId/original
 exports.addmessage = onRequest(async (req: any, res: any) => {
   // Grab the text parameter.
-  const original = req.query.text;
+  debugger;
+  // const original = req.query.text;
   // Push the new message into Firestore using the Firebase Admin SDK.
   const writeResult = await getFirestore()
     .collection("messages")
-    .add({original: original});
+    .add({original: "original"});
   // Send back a message that we've successfully written the message
   res.json({result: `Message with ID: ${writeResult.id} added.`});
 });
