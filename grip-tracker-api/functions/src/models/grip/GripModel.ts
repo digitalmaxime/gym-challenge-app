@@ -1,5 +1,5 @@
 type GripModel = {
-    id: number;
+    id: string;
     name: string;
     type: string
 }

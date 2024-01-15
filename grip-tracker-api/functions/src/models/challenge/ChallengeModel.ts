@@ -1,7 +1,7 @@
 type ChallengeModel = {
-  id: number;
+  id: string;
   name: string;
-  gripId: number;
+  gripId: string;
 };
 
 export default ChallengeModel;

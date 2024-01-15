@@ -9,6 +9,10 @@ import {getFirestore} from "firebase-admin/firestore";
 
 initializeApp();
 
+export { default as setChallengeData } from './data/challenge/setChallengeData';
+export { default as setGripData } from './data/grip/setGripData';
+export { default as setMockUserData } from './data/mock/setMockUser';
+
 // Take the text parameter passed to this HTTP endpoint and insert it into
 // Firestore under the path /messages/:documentId/original
 exports.addmessage = onRequest(async (req: any, res: any) => {

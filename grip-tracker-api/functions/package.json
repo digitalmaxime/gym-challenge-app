@@ -10,14 +10,19 @@
     "start": "npm run shell",
     "deploy": "firebase deploy --only functions",
     "logs": "firebase functions:log",
-    "export": "firebase emulators:export exportDir"
-
+    "export": "firebase emulators:export exportDir",
+    "serve:test-data": "concurrently \"yarn serve\" \"yarn setChallengeData\" \"yarn setGripData\" \"yarn setMockUserData\"",
+    "setData": "npm run setChallengeData && npm run setGripData && npm run setMockUserData",
+    "setChallengeData": "sleep 1 && echo '\ncalling curl set challenge data cmd 😉 \n' && curl http://localhost:5001/grip-tracker/us-central1/setChallengeData && echo '\ncalled curl mock cmd! 😘 \n' ",
+    "setGripData": "sleep 1 && echo '\ncalling curl set grip data cmd 😉 \n' && curl http://localhost:5001/grip-tracker/us-central1/setGripData && echo '\ncalled curl mock cmd! 😘 \n' ",
+    "setMockUserData": "sleep 1 && echo '\ncalling curl set mock user data cmd 😉 \n' && curl http://localhost:5001/grip-tracker/us-central1/setMockUserData && echo '\ncalled curl mock cmd! 😘 \n' "
   },
   "engines": {
     "node": "20"
   },
   "main": "lib/index.js",
   "dependencies": {
+    "concurrently": "^8.2.2",
     "firebase-admin": "^11.8.0",
     "firebase-functions": "^4.3.1"
   },
