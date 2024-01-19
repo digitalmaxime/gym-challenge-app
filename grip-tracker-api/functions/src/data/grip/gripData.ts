@@ -1,7 +1,7 @@
 const grip: GripModel = {
-    id: 'pinchGrip1',
-    name: 'wideShallowPinch',
-    type: 'wideShallowPinchType'
+  id: crypto.randomUUID(),
+  name: 'wideShallowPinch',
+  type: GripTypeEnum.Pinch
 }
 
-export { grip };
+export { grip }

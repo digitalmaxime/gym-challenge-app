@@ -1,7 +1,7 @@
 // Dependencies for callable functions.
-const { onCall } = require("firebase-functions/v2/https");
 // const { logger } = require("firebase-functions/v2");
-import { firestore } from "firebase-admin";
+import { firestore } from 'firebase-admin'
+const { onCall } = require('firebase-functions/v2/https')
 
 // Dependencies for the addMessage function.
 // const { getDatabase } = require("firebase-admin/database");
@@ -10,9 +10,9 @@ import { firestore } from "firebase-admin";
 // Saves a message to the Firebase Realtime Database but sanitizes the
 // text by removing swearwords.
 const createChallenge = onCall(async (data: any) => {
-  debugger;
-  const ref = await firestore().collection("users").doc(data.id).get();
-  return { course: ref.data(), id: ref.id };
+  debugger
+  const ref = await firestore().collection('users').doc(data.id).get()
+  return { course: ref.data(), id: ref.id }
   // ...
   // Message text passed from the client.
   //   const text = request.data.text;
@@ -33,8 +33,8 @@ const createChallenge = onCall(async (data: any) => {
   //       // Returning the sanitized message to the client.
   //       return { text: "hello world message" };
   //     });
-});
+})
 
-export default createChallenge;
+export default createChallenge
 // TODO: Distance between the location of the callable function and the location of the calling client can create network latency. To optimize performance, consider specifying the function location where applicable, and make sure to align the callable's location with the location set when you initialize the SDK on the client side.
 // TODO: https://firebase.google.com/docs/functions/callable?gen=2nd#cors

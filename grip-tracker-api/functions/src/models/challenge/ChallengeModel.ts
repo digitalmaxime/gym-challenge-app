@@ -1,7 +1,7 @@
-type ChallengeModel = {
-  id: string;
-  name: string;
-  gripId: string;
-};
+interface ChallengeModel {
+  id: string
+  name: string
+  gripId: string
+}
 
-export default ChallengeModel;
+export default ChallengeModel

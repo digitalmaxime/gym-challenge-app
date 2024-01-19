@@ -1,5 +1,5 @@
-enum GripType {
-    Pinch,
-    Crimp,
-    DeadHang,
+enum GripTypeEnum {
+  Pinch,
+  Crimp,
+  DeadHang
 }

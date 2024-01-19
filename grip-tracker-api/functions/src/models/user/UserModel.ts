@@ -1,8 +1,8 @@
-type UserModel = {
-    id: string;
-    email: string;
-    userName?: string;
-    authLevel: number;
+interface UserModel {
+  id: string
+  email: string
+  userName?: string
+  authLevel: number
 }
 
-export default UserModel;
+export default UserModel

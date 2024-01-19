@@ -1,31 +1,31 @@
 /* eslint-disable max-len */
-import { Request, Response, https } from "firebase-functions";
-import * as firebaseAdmin from "firebase-admin";
-import { userMax, userMaude, userAntoine } from './mockUserData';
+import { type Request, type Response, https } from 'firebase-functions'
+import * as firebaseAdmin from 'firebase-admin'
+import { userMax, userMaude, userAntoine } from './mockUserData'
 
-const db = firebaseAdmin.firestore();
+const db = firebaseAdmin.firestore()
 
 const setMockUserData = https.onRequest(
   async (request: Request, response: Response) => {
     await db
-      .collection("Users")
+      .collection('Users')
       .doc(userMax.id)
-      .set(userMax);
+      .set(userMax)
     await db
-      .collection("Users")
+      .collection('Users')
       .doc(userMaude.id)
-      .set(userMaude);
+      .set(userMaude)
     await db
-      .collection("Users")
+      .collection('Users')
       .doc(userAntoine.id)
-      .set(userAntoine);
+      .set(userAntoine)
 
-    response.setHeader("Access-Control-Allow-Origin", "*");
-    response.sendStatus(200);
+    response.setHeader('Access-Control-Allow-Origin', '*')
+    response.sendStatus(200)
   }
-);
+)
 
-export default setMockUserData;
+export default setMockUserData
 
 /** Call the function */
 /** $ curl http://localhost:5001/gapris-6b7d5/us-central1/setMockData   */
