@@ -18,16 +18,24 @@ export function Test() {
     <View>
       <Text>Test</Text>
       <ButtonText
-        onPress={() => {
-          Controller.addMessageFunction()
-          .then(res => {
-            console.log(res);
-          })
-          .catch(error => {
-            const message = error instanceof Error ? error.message : String(error);
-            console.error({ message });
-            console.warn('failed at updateLessonProgress() :(');
-          });
+        onPress={async () => {
+          try {
+            let toto = await Controller.getAllGrips()
+            console.log(toto.data)
+          } catch(e) {
+            console.log(e)
+            console.log(':C');
+          }
+          console.log(':)');
+          // Controller.addMessageFunction()
+          // .then(res => {
+          //   console.log(res);
+          // })
+          // .catch(error => {
+          //   const message = error instanceof Error ? error.message : String(error);
+          //   console.error({ message });
+          //   console.warn('failed at updateLessonProgress() :(');
+          // });
         }}
         textContent="click me"
         btnHeight={60}

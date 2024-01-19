@@ -1,7 +1,17 @@
-const grip: GripModel = {
+import { GripModel } from '../../models/grip/GripModel';
+import { GripTypeEnum } from '../../models/grip/GripTypeEnum';
+import { SubGripTypeEnum } from '../../models/grip/SubGripTypeEnum';
+
+const wideShallowPinchData: GripModel = {
   id: crypto.randomUUID(),
-  name: 'wideShallowPinch',
-  type: GripTypeEnum.Pinch
+  gripType: GripTypeEnum.Pinch,
+  subGripType: SubGripTypeEnum.wideShallow
 }
 
-export { grip }
+const wideDeepPinchData: GripModel = {
+  id: crypto.randomUUID(),
+  gripType: GripTypeEnum.Pinch,
+  subGripType: SubGripTypeEnum.wideDeep
+}
+
+export { wideShallowPinchData, wideDeepPinchData }

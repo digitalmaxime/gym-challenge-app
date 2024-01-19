@@ -22,6 +22,7 @@ async function createChallenge(): Promise<HttpsCallableResult<unknown>> {
   const callCreateChallenge = httpsCallable(
     firebaseFunctions,
     'createChallenge',
+    {timeout: 2000}
   );
   return callCreateChallenge({});
 }
@@ -44,12 +45,12 @@ async function saveChallengeResult(
   });
 }
 
-async function getAllCoursesPreview(): Promise<HttpsCallableResult<unknown>> {
-  const callGetAllCoursesPreview = httpsCallable(
+async function getAllGrips(): Promise<HttpsCallableResult<unknown>> {
+  const getAllGrips = httpsCallable(
     firebaseFunctions,
-    'getAllCoursesPreview',
+    'getAllGrips',
   );
-  return callGetAllCoursesPreview({});
+  return getAllGrips();
 }
 
 async function getCourseById(
@@ -96,7 +97,8 @@ export {
   // addMessageFunction,
   createChallenge,
   saveChallengeResult,
-  getAllCoursesPreview,
+  getAllGrips,
+
   getCourseById,
   getUserCourseProgress,
   getUserFollowedCoursesIds,

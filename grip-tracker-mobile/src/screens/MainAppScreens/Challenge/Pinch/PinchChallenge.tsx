@@ -5,17 +5,30 @@ import { Dispatch } from 'react';
 import Colors from '../../../../constants/styles';
 import CheckBtnComponent from '../../../../components/basics/CheckBtnComponent';
 import * as Controller from '../../../../controller/controller';
+import { NavigationProp, RouteProp, useNavigation, useRoute } from '@react-navigation/native';
+import { GripModel } from '../../../../models/grip/GripModel';
 
-export interface PinchChallengeProps {
-  finishChallenge: Dispatch<React.SetStateAction<void>>;
-}
+type ParamList = {
+  pinch: GripModel
+};
+
+type RootStackParamList = Record<string, Record<string, never>>;
 
 export function PinchChallenge() {
+  
   const [durationInSeconds, setDurationInSeconds] = React.useState(0);
   const [weightInKilos, setWeightInKilos] = React.useState(0);
+  const navigation = useNavigation<NavigationProp<RootStackParamList>>();
+  const route = useRoute<RouteProp<ParamList>>();
+
+  const gripId = route.params.id;
+  const gripType = route.params.gripType;
+  const subGripType = route.params.subGripType;
 
   return (
-    <View>
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Text style={{ color: Colors.textColor, fontSize: 36, margin: 30 }}>{subGripType} {gripType} challenge</Text>
+
       <Text style={{ color: Colors.textColor, fontSize: 26 }}>Weight</Text>
       <NumericInput
         type="up-down"
@@ -45,7 +58,23 @@ export function PinchChallenge() {
 
       <CheckBtnComponent
         handleCheckPress={() => true}
-        saveData={() => Controller.saveChallengeResult('1', '2', weightInKilos, durationInSeconds)}
+        saveData={() => {
+          Controller.saveChallengeResult(
+            '1',
+            gripId,
+            weightInKilos,
+            durationInSeconds,
+          );
+          try {
+            navigation.goBack();
+            setTimeout(() => {
+              navigation.navigate('ChallengeResultSummary', {});
+            }, 400);
+          } catch (error) {
+            console.log(':(');
+            console.log(error);
+          }
+        }}
       />
     </View>
   );

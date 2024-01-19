@@ -11,10 +11,9 @@ const setChallengeData = https.onRequest(
       .collection('Challenges')
       .doc(pinchChallenge.id)
       .set(pinchChallenge)
-    // await db.collection('CoursChallengeses').doc(coursePHS1001.id).set(coursePHS1001);
 
     response.setHeader('Access-Control-Allow-Origin', '*')
-    response.sendStatus(200)
+    response.sendStatus(201)
   }
 )
 

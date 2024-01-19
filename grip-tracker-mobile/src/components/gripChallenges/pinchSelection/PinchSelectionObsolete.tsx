@@ -16,7 +16,7 @@ import NumericInput from 'react-native-numeric-input';
 
 import { ButtonIcon, ButtonImg } from '../../basics/Buttons';
 import Colors from '../../../constants/styles';
-import ChallengeResultSummaryModal from '../ChallengeResultSummaryModal';
+import ChallengeResultSummary from '../../../screens/MainAppScreens/Challenge/ChallengeResultSummary';
 import { useUserContext } from '../../../contexts/UserContext';
 import PinchChallengeObsolete from './PinchChallengeObsolete';
 import PinchChallenge from '../../../screens/MainAppScreens/Challenge/Pinch/PinchChallenge';
@@ -90,7 +90,7 @@ function PinchSelectionModal({ toggleVisibility }: PinchChallengeModalProps) {
         </View>
 
         {showFinishChallengeSummary && (
-          <ChallengeResultSummaryModal resetChallenge={resetChallenge} />
+          <ChallengeResultSummary resetChallenge={resetChallenge} />
         )}
       </View>
     </Modal>

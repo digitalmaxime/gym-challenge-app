@@ -20,7 +20,7 @@ const saveChallengeProgress = https.onRequest(
       .set(data)
 
     response.setHeader('Access-Control-Allow-Origin', '*')
-    response.sendStatus(200)
+    response.sendStatus(201)
   }
 )
 

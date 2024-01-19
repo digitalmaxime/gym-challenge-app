@@ -1,21 +1,14 @@
 /* eslint-disable global-require */
 /* eslint-disable max-len */
-import React, { useState } from 'react';
-import { Image, View, Text, Platform, StyleSheet } from 'react-native';
+import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 // import { createStackNavigator } from '@react-navigation/stack';
 
-import { NavigationContainer, useNavigation } from '@react-navigation/native';
-import { ButtonImg, ButtonText } from '../../../components/basics/Buttons';
-import PinchSelectionModal from '../../../components/gripChallenges/pinchSelection/PinchSelectionObsolete';
-import Colors from '../../../constants/styles';
-import { useUserContext } from '../../../contexts/UserContext';
-import { Test } from '../test';
 import GripSelectionScreen from './GripSelectionScreen';
 import { CrimpSelectionScreen } from './Crimp/CrimpSelectionScreen';
 import { DeadhangSelectionScreen } from './DeadHang/DeadhangSelectionScreen';
-import { PinchSelectionScreen } from './Pinch/PinchSelectionScreen';
 import PinchSelectionStack from './Pinch/PinchSelectionStack';
+import ChallengeResultSummary from './ChallengeResultSummary';
 
 function GripSelectionStack() {
   const Stack = createNativeStackNavigator();
@@ -31,7 +24,7 @@ function GripSelectionStack() {
       <Stack.Screen
         name="GripSelectionScreen"
         component={GripSelectionScreen}
-        options={{ title: 'My PinchSelectionScreen' }}
+        options={{ title: 'My GripSelectionScreen' }}
       />
       <Stack.Screen
         name="DeadhangSelectionScreen"
@@ -47,6 +40,13 @@ function GripSelectionStack() {
         name="PinchSelectionStack"
         component={PinchSelectionStack}
         options={{ title: 'Awesome PinchSelectionStack' }}
+      />
+      <Stack.Screen
+        name="ChallengeResultSummary"
+        component={ChallengeResultSummary}
+        options={{
+          title: 'Awesome ChallengeResultSummary'
+        }}
       />
     </Stack.Navigator>
   );

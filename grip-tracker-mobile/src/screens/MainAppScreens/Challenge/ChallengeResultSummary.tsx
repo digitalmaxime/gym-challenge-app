@@ -1,30 +1,26 @@
 import React, { Dispatch, useState } from 'react';
 import { StyleSheet, View, Modal, Text, Image, SafeAreaView } from 'react-native';
-import { ButtonText } from '../basics/Buttons';
-import Colors from '../../constants/styles';
-import AnimatedIcon from '../basics/IconAnimated';
-import { useUserContext } from '../../contexts/UserContext';
+import { ButtonText } from '../../../components/basics/Buttons';
+import Colors from '../../../constants/styles';
+import AnimatedIcon from '../../../components/basics/IconAnimated';
+import { useUserContext } from '../../../contexts/UserContext';
 
-const utTensoSicVis = require('../../../assets/images/ut-tenso-sic-vis.png');
+const utTensoSicVis = require('../../../../assets/images/ut-tenso-sic-vis.png');
 
 interface FinishedLessonModalProps {
   resetChallenge: Dispatch<React.SetStateAction<void>>;
 }
 
-function ChallengeResultSummaryModal({ resetChallenge }: FinishedLessonModalProps) {
-  const userContext = useUserContext();
-  const [isClosingLesson, setIsClosingLesson] = useState(false);
+function ChallengeResultSummary() {
+  // const userContext = useUserContext();
+  // const [isClosingLesson, setIsClosingLesson] = useState(false);
 
   function closeChallenge() {
-    resetChallenge();
-    setIsClosingLesson(true);
-    setTimeout(() => {
-      setIsClosingLesson(false);
-    }, 1000);
+    console.log("Close challenge")
   }
 
   return (
-    <Modal visible animationType="fade">
+    <View>
       <View style={styles.mainContainer}>
         <Text style={styles.congratsText}>
           Bravo!
@@ -55,11 +51,11 @@ function ChallengeResultSummaryModal({ resetChallenge }: FinishedLessonModalProp
           />
         </View>
       </View>
-    </Modal>
+    </View>
   );
 }
 
-export default ChallengeResultSummaryModal;
+export default ChallengeResultSummary;
 
 const styles = StyleSheet.create({
   mainContainer: {

@@ -8,26 +8,35 @@ import {
   StyleSheet,
 } from 'react-native';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
-import ChallengeResultSummaryModal from '../../../../components/gripChallenges/ChallengeResultSummaryModal';
+import ChallengeResultSummary from '../ChallengeResultSummary';
 import PinchChallengeObsolete from '../../../../components/gripChallenges/pinchSelection/PinchChallengeObsolete';
 import Colors from '../../../../constants/styles';
+import * as Controller from "../../../../controller/controller";
+import { GripModel } from '../../../../models/grip/GripModel';
 
 export interface PinchSelectionScreenProps {}
 
-type RootStackParamList = Record<string, Record<string, never>>;
-
-const PinchOptions = [
-  {id: '1', name: 'pinch_wide_shallow'},
-  {id: '2', name: 'pinch_wide_deep'},
-  {id: '3', name: 'pinch_wide_deep'},
-  {id: '4', name: 'pinch_wide_deep'},
-  {id: '5', name: 'pinch_wide_deep'},
-];
+type RootStackParamList = {
+  PinchChallenge: GripModel;
+};
 
 export function PinchSelectionScreen(props: PinchSelectionScreenProps) {
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
+  const [allGrips, setAllGrips] = React.useState<any[]>([]);
 
-  function renderPinchOption() {
+  React.useEffect(() => {
+    const getAllGrips = async () => {
+      let allGrips = (await Controller.getAllGrips()).data as any[];
+      console.log(allGrips);
+      setAllGrips((_) =>[ allGrips[0]]);
+    }
+    getAllGrips();
+  }, [])
+
+  function renderPinchOption(itemData: any) {
+    const pinch = itemData.item as GripModel;
+    const imgName2 = `${itemData?.item?.gripType}_${itemData?.item?.subGripType}.png`;
+    const imgName = 'pinch_wideDeep.png';
     return (
       <View style={styles.buttonOuterContainer}>
         <Pressable
@@ -35,17 +44,19 @@ export function PinchSelectionScreen(props: PinchSelectionScreenProps) {
           style={({ pressed }) =>
             pressed ? [styles.btnPressed, styles.btn] : styles.btn
           }
-          onPress={() => navigation.navigate('PinchChallenge', {})}
-        >
+          onPress={() => {
+            // navigation.navigate('PinchChallenge', {pinch : {id: pinch.id, gripType: pinch.gripType, subGripType: pinch.subGripType)}}
+            navigation.navigate('PinchChallenge', {id: pinch.id, gripType: pinch.gripType, subGripType: pinch.subGripType})}}
+            >
           <View
             style={[styles.imageContainer, { width: '100%', height: 'auto' }]}
           >
             <ImageBackground
               resizeMode="cover"
               style={styles.pinchBackgroundImage}
-              source={require('../../../../../assets/images/pinch_wide_shallow.png')}
+              source={require(`../../../../../assets/images/${imgName}`)}
             >
-              <Text style={styles.pinchTitle}>Wide pinch</Text>
+              <Text style={styles.pinchTitle}>{pinch.subGripType}</Text>
             </ImageBackground>
           </View>
         </Pressable>
@@ -56,12 +67,12 @@ export function PinchSelectionScreen(props: PinchSelectionScreenProps) {
   return (
     <View style={styles.mainContainer}>
       <FlatList
-        data={PinchOptions}
+        data={allGrips}
         keyExtractor={item => item.id}
         numColumns={1}
         bounces={false}
         renderItem={renderPinchOption}
-      ></FlatList>
+      />
     </View>
   );
 }

@@ -7,7 +7,6 @@ import {
 import { useUserContext } from '../../../contexts/UserContext';
 import { ButtonText } from '../../../components/basics/Buttons';
 import Colors from '../../../constants/styles';
-import PinchSelectionModal from '../../../components/gripChallenges/pinchSelection/PinchSelectionObsolete';
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface PinchScreenProps {}
 type RootStackParamList = Record<string, Record<string, never>>;
