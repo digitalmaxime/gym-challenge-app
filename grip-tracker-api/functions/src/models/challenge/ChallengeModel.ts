@@ -1,7 +1,7 @@
 interface ChallengeModel {
-  id: string
-  name: string
-  gripId: string
+  id: string;
+  name: string;
+  gripId: string;
 }
 
 export default ChallengeModel

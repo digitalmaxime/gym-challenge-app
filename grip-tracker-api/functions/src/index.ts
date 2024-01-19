@@ -18,7 +18,6 @@ export { default as setMockUserData } from './data/mock/setMockUser'
 // Firestore under the path /messages/:documentId/original
 exports.addmessage = onRequest(async (req: any, res: any) => {
   // Grab the text parameter.
-  debugger
   // const original = req.query.text;
   // Push the new message into Firestore using the Firebase Admin SDK.
   const writeResult = await getFirestore()

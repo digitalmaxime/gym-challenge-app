@@ -1,5 +1,5 @@
-interface GripModel<T extends GripTypeBase> {
-  id: string
-  name: string
-  type: T
+interface GripModel {
+  id: string;
+  name: string;
+  type: GripTypeEnum;
 }

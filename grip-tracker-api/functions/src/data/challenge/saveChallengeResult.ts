@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import { type Request, type Response, https } from 'firebase-functions'
+import { Request, Response, https } from 'firebase-functions'
 import * as firebaseAdmin from 'firebase-admin'
 
 const db = firebaseAdmin.firestore()

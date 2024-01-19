@@ -1,4 +1,4 @@
-import type ChallengeModel from '../../models/challenge/ChallengeModel'
+import ChallengeModel from '../../models/challenge/ChallengeModel'
 
 const pinchChallenge: ChallengeModel = {
   id: 'pinchChallenge1',
