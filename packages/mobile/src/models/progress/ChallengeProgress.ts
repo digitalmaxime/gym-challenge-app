@@ -3,7 +3,7 @@ type ChallengeProgress = {
   challengeId: string;
   duration: number;
   weight: number;
-  timestamp: Date
+  timestamp: number
 };
 
 export default ChallengeProgress;

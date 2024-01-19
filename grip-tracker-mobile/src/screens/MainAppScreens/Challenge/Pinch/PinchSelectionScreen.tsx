@@ -4,6 +4,7 @@ import {
   Text,
   ImageBackground,
   Pressable,
+  FlatList,
   StyleSheet,
 } from 'react-native';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
@@ -15,11 +16,19 @@ export interface PinchSelectionScreenProps {}
 
 type RootStackParamList = Record<string, Record<string, never>>;
 
+const PinchOptions = [
+  {id: '1', name: 'pinch_wide_shallow'},
+  {id: '2', name: 'pinch_wide_deep'},
+  {id: '3', name: 'pinch_wide_deep'},
+  {id: '4', name: 'pinch_wide_deep'},
+  {id: '5', name: 'pinch_wide_deep'},
+];
+
 export function PinchSelectionScreen(props: PinchSelectionScreenProps) {
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
 
-  return (
-    <View style={styles.mainContainer}>
+  function renderPinchOption() {
+    return (
       <View style={styles.buttonOuterContainer}>
         <Pressable
           android_ripple={{ color: '#ccc', borderless: true }}
@@ -41,6 +50,18 @@ export function PinchSelectionScreen(props: PinchSelectionScreenProps) {
           </View>
         </Pressable>
       </View>
+    );
+  }
+
+  return (
+    <View style={styles.mainContainer}>
+      <FlatList
+        data={PinchOptions}
+        keyExtractor={item => item.id}
+        numColumns={1}
+        bounces={false}
+        renderItem={renderPinchOption}
+      ></FlatList>
     </View>
   );
 }

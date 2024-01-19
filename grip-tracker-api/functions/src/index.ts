@@ -10,6 +10,7 @@ import {getFirestore} from "firebase-admin/firestore";
 initializeApp();
 
 export { default as setChallengeData } from './data/challenge/setChallengeData';
+export { default as saveChallengeProgress } from './data/challenge/saveChallengeResult';
 export { default as setGripData } from './data/grip/setGripData';
 export { default as setMockUserData } from './data/mock/setMockUser';
 

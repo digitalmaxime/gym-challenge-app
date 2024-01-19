@@ -3,58 +3,49 @@ import { View, Text, StyleSheet } from 'react-native';
 import NumericInput from 'react-native-numeric-input';
 import { Dispatch } from 'react';
 import Colors from '../../../../constants/styles';
-import { ButtonIcon } from '../../../../components/basics/Buttons';
+import CheckBtnComponent from '../../../../components/basics/CheckBtnComponent';
+import * as Controller from '../../../../controller/controller';
 
 export interface PinchChallengeProps {
   finishChallenge: Dispatch<React.SetStateAction<void>>;
 }
 
 export function PinchChallenge() {
-  const [timeInSeconds, setTimeInSeconds] = React.useState(0);
-  const [isTimerActive, setIsTimerActive] = React.useState(false);
-
-  function timer() {
-    if (!isTimerActive) return;
-
-    setTimeout(() => {
-      setTimeInSeconds(prevTime => prevTime + 1);
-      timer();
-    }, 1000);
-  }
-
-  React.useEffect(() => {
-    setIsTimerActive(true);
-    timer();
-  }, [isTimerActive]);
+  const [durationInSeconds, setDurationInSeconds] = React.useState(0);
+  const [weightInKilos, setWeightInKilos] = React.useState(0);
 
   return (
     <View>
-      <Text style={{ color: Colors.textColor, fontSize: 26 }}>my text</Text>
+      <Text style={{ color: Colors.textColor, fontSize: 26 }}>Weight</Text>
       <NumericInput
         type="up-down"
-        onChange={value => setTimeInSeconds(value)}
+        value={weightInKilos}
+        totalWidth={240}
+        totalHeight={50}
+        iconSize={25}
+        textColor="#B0228C"
+        onChange={value => setWeightInKilos(value)}
+        rightButtonBackgroundColor="#EA3788"
+        leftButtonBackgroundColor="#E56B70"
       />
-      <Text style={{ color: Colors.textColor, fontSize: 26 }}>my text</Text>
-      <Text style={{ color: Colors.textColor, fontSize: 26 }}>
-        {timeInSeconds}
-      </Text>
-      <ButtonIcon
-        iconName="circle-medium"
-        onPress={() => setIsTimerActive(true)}
-        iconSize={30}
-        btnSize={32}
-        color={Colors.cancel2}
-        btnBackgroundColor={Colors.btnUnitBackgroundColor}
-        disabled={false}
+
+      <Text style={{ color: Colors.textColor, fontSize: 26 }}>Seconds</Text>
+
+      <NumericInput
+        type="up-down"
+        value={durationInSeconds}
+        totalWidth={240}
+        totalHeight={50}
+        iconSize={25}
+        textColor="#B0228C"
+        onChange={value => setDurationInSeconds(value)}
+        rightButtonBackgroundColor="#EA3788"
+        leftButtonBackgroundColor="#E56B70"
       />
-      <ButtonIcon
-        iconName="stop"
-        onPress={() => setIsTimerActive(false)}
-        iconSize={30}
-        btnSize={32}
-        color={Colors.cancel2}
-        btnBackgroundColor={Colors.btnUnitBackgroundColor}
-        disabled={false}
+
+      <CheckBtnComponent
+        handleCheckPress={() => true}
+        saveData={() => Controller.saveChallengeResult('1', '2', weightInKilos, durationInSeconds)}
       />
     </View>
   );
