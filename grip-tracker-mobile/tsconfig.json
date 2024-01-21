@@ -4,5 +4,9 @@
     "jsx": "react",
     "strict": true
   },
-  "typeRoots": ["./types"]
+  // "typeRoots": ["./types"],
+  "include": [
+    "src",
+    ".eslintrc.json"
+  ]
 }

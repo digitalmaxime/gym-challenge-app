@@ -1,15 +1,10 @@
 {
-  "root": true,
+  // "root": true,
   "extends": [
-    "airbnb",
-    "airbnb/hooks",
     "eslint:recommended",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:import/errors",
-    "plugin:import/warnings",
-    "plugin:jsx-a11y/recommended",
-    "plugin:react/recommended",
-    "plugin:react-hooks/recommended"
+    "plugin:import/recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended"
   ],
   "plugins": ["@typescript-eslint", "react", "jsx-a11y"],
   "parser": "@typescript-eslint/parser",
@@ -19,7 +14,7 @@
     },
     "ecmaVersion": 2022,
     "sourceType": "module",
-    "project": "./tsconfig.json"
+    "project": "grip-tracker-mobile/tsconfig.json"
   },
   "settings": {
     "react": {
@@ -56,11 +51,11 @@
     "react/jsx-curly-newline": [
       0,
       { "multiline": "require", "singleline": "consistent" }
-    ],
-    "react/jsx-no-bind": [0],
-    "operator-linebreak": [0],
-    "react/jsx-one-expression-per-line": [0],
-    "no-extra-semi": "off",
-    "function-paren-newline": 0
+    ]
+    // "react/jsx-no-bind": [0],
+    // "operator-linebreak": [0],
+    // "react/jsx-one-expression-per-line": [0],
+    // "no-extra-semi": "off",
+    // "function-paren-newline": 0
   }
 }
