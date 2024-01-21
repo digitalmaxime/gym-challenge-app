@@ -22,7 +22,7 @@ async function createChallenge(): Promise<HttpsCallableResult<unknown>> {
   const callCreateChallenge = httpsCallable(
     firebaseFunctions,
     'createChallenge',
-    {timeout: 2000}
+    { timeout: 2000 },
   );
   return callCreateChallenge({});
 }
@@ -38,10 +38,10 @@ async function saveChallengeResult(
     'saveChallengeProgress',
   );
   return callCreateChallenge({
-    userId: userId,
-    challengeId: challengeId,
-    weight: weight,
-    duration: duration
+    userId,
+    challengeId,
+    weight,
+    duration,
   });
 }
 
@@ -51,6 +51,14 @@ async function getAllGrips(): Promise<HttpsCallableResult<unknown>> {
     'getAllGrips',
   );
   return getAllGrips();
+}
+
+async function getFilteredGrips(gripType: string): Promise<HttpsCallableResult<unknown>> {
+  const getFilteredGrips = httpsCallable(
+    firebaseFunctions,
+    'getFilteredGrips',
+  );
+  return getFilteredGrips({gripType});
 }
 
 async function getCourseById(
@@ -98,6 +106,7 @@ export {
   createChallenge,
   saveChallengeResult,
   getAllGrips,
+  getFilteredGrips,
 
   getCourseById,
   getUserCourseProgress,

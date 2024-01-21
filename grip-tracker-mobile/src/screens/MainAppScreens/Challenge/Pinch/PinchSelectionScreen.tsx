@@ -8,10 +8,8 @@ import {
   StyleSheet,
 } from 'react-native';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
-import ChallengeResultSummary from '../ChallengeResultSummary';
-import PinchChallengeObsolete from '../../../../components/gripChallenges/pinchSelection/PinchChallengeObsolete';
 import Colors from '../../../../constants/styles';
-import * as Controller from "../../../../controller/controller";
+import * as Controller from '../../../../controller/controller';
 import { GripModel } from '../../../../models/grip/GripModel';
 
 export interface PinchSelectionScreenProps {}
@@ -25,15 +23,16 @@ export function PinchSelectionScreen(props: PinchSelectionScreenProps) {
   const [allGrips, setAllGrips] = React.useState<any[]>([]);
 
   React.useEffect(() => {
-    const getAllGrips = async () => {
-      let allGrips = (await Controller.getAllGrips()).data as any[];
+    const getPinchGrips = async () => {
+      const allGrips = (await Controller.getFilteredGrips("pinch")).data as any[];
       console.log(allGrips);
-      setAllGrips((_) =>[ allGrips[0]]);
-    }
-    getAllGrips();
-  }, [])
+      setAllGrips((_) => allGrips);
+    };
 
-  function renderPinchOption(itemData: any) {
+    getPinchGrips();
+  }, []);
+
+  function renderPinchOptions(itemData: any) {
     const pinch = itemData.item as GripModel;
     const imgName2 = `${itemData?.item?.gripType}_${itemData?.item?.subGripType}.png`;
     const imgName = 'pinch_wideDeep.png';
@@ -46,8 +45,11 @@ export function PinchSelectionScreen(props: PinchSelectionScreenProps) {
           }
           onPress={() => {
             // navigation.navigate('PinchChallenge', {pinch : {id: pinch.id, gripType: pinch.gripType, subGripType: pinch.subGripType)}}
-            navigation.navigate('PinchChallenge', {id: pinch.id, gripType: pinch.gripType, subGripType: pinch.subGripType})}}
-            >
+            navigation.navigate('PinchChallenge', {
+              id: pinch.id, gripType: pinch.gripType, subGripType: pinch.subGripType,
+            });
+          }}
+        >
           <View
             style={[styles.imageContainer, { width: '100%', height: 'auto' }]}
           >
@@ -71,7 +73,7 @@ export function PinchSelectionScreen(props: PinchSelectionScreenProps) {
         keyExtractor={item => item.id}
         numColumns={1}
         bounces={false}
-        renderItem={renderPinchOption}
+        renderItem={renderPinchOptions}
       />
     </View>
   );

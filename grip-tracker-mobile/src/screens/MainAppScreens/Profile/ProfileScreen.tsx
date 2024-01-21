@@ -53,7 +53,8 @@ function ProfileScreen() {
           padding={8}
         />
         <ButtonText
-          onPress={async () => { console.log('sign out');
+          onPress={async () => {
+            console.log('sign out');
           }}
           textContent="se déconnecter"
           btnHeight={50}

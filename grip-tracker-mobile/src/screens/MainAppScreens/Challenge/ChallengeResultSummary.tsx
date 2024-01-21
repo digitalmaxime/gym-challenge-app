@@ -16,7 +16,7 @@ function ChallengeResultSummary() {
   // const [isClosingLesson, setIsClosingLesson] = useState(false);
 
   function closeChallenge() {
-    console.log("Close challenge")
+    console.log('Close challenge');
   }
 
   return (

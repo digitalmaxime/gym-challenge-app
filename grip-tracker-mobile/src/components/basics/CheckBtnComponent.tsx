@@ -18,7 +18,7 @@ function CheckBtnComponent({
       <View style={styles.goToNextQuestionContainer}>
         <ButtonText
           onPress={saveData}
-          textContent={'Terminer'}
+          textContent="Terminer"
           btnHeight={60}
           btnWidth={200}
           btnImgBackgroundColor={Colors.success}

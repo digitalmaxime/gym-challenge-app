@@ -2,10 +2,10 @@ import * as React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import NumericInput from 'react-native-numeric-input';
 import { Dispatch } from 'react';
+import { NavigationProp, RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import Colors from '../../../../constants/styles';
 import CheckBtnComponent from '../../../../components/basics/CheckBtnComponent';
 import * as Controller from '../../../../controller/controller';
-import { NavigationProp, RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { GripModel } from '../../../../models/grip/GripModel';
 
 type ParamList = {
@@ -15,19 +15,25 @@ type ParamList = {
 type RootStackParamList = Record<string, Record<string, never>>;
 
 export function PinchChallenge() {
-  
   const [durationInSeconds, setDurationInSeconds] = React.useState(0);
   const [weightInKilos, setWeightInKilos] = React.useState(0);
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
   const route = useRoute<RouteProp<ParamList>>();
 
   const gripId = route.params.id;
-  const gripType = route.params.gripType;
-  const subGripType = route.params.subGripType;
+  const { gripType } = route.params;
+  const { subGripType } = route.params;
 
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text style={{ color: Colors.textColor, fontSize: 36, margin: 30 }}>{subGripType} {gripType} challenge</Text>
+    <View style={{
+      flex: 1, alignItems: 'center', justifyContent: 'center',
+    }}
+    >
+      <Text style={{
+        color: Colors.textColor, fontSize: 36, margin: 30,
+      }}
+      >{subGripType} {gripType} challenge
+      </Text>
 
       <Text style={{ color: Colors.textColor, fontSize: 26 }}>Weight</Text>
       <NumericInput

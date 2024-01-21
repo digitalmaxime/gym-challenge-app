@@ -1,11 +1,13 @@
-/* eslint-disable max-len */
-import { Request, Response, https } from 'firebase-functions'
 import * as firebaseAdmin from 'firebase-admin'
 import { GripModel } from '../models/grip/GripModel';
+import { CallableRequest, HttpsOptions, onCall } from 'firebase-functions/v2/https';
 const db = firebaseAdmin.firestore()
 
-const getAllGrips = https.onCall(
-  async (data, ctx): Promise<any> => {
+const getAllGrips = onCall(
+  async (request: CallableRequest) => {
+    console.log(request.auth)
+    console.log(request.data)
+    console.log(request.app)
     const grips = (await db.collection('Grips').get()).docs; //where('email', '==', data.email).get();
     const arr: GripModel[] = [];
     grips.forEach(grip => {console.log(grip.data(), "\n----------\n"); arr.push(grip.data() as GripModel)});

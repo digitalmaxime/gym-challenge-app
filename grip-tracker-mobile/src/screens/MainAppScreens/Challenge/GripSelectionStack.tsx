@@ -44,9 +44,7 @@ function GripSelectionStack() {
       <Stack.Screen
         name="ChallengeResultSummary"
         component={ChallengeResultSummary}
-        options={{
-          title: 'Awesome ChallengeResultSummary'
-        }}
+        options={{ title: 'Awesome ChallengeResultSummary' }}
       />
     </Stack.Navigator>
   );

@@ -1,5 +1,5 @@
-import { GripTypeEnum } from "./GripTypeEnum";
-import { SubGripTypeEnum } from "./SubGripTypeEnum";
+import { GripTypeEnum } from './GripTypeEnum';
+import { SubGripTypeEnum } from './SubGripTypeEnum';
 
 export interface GripModel {
     id: string;
