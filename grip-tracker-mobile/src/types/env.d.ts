@@ -1,4 +1,3 @@
-/* eslint-disable import/prefer-default-export */
 declare module '@env' {
     export const API_KEY: string;
     export const AUTH_DOMAIN: string;

@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import NumericInput from 'react-native-numeric-input';
-import { Dispatch } from 'react';
 import { NavigationProp, RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import Colors from '../../../../constants/styles';
 import CheckBtnComponent from '../../../../components/basics/CheckBtnComponent';

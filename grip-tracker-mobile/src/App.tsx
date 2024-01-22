@@ -13,6 +13,8 @@ import MainNavigation from './screens/MainAppScreens/MainNavigation';
 import { auth } from './utils/auth';
 import GripSelectionStack from './screens/MainAppScreens/Challenge/GripSelectionStack';
 import { Test } from './screens/MainAppScreens/test';
+import Login from './screens/AuthScreens/Login';
+import SignUp from './screens/AuthScreens/SignUp';
 
 // const mountSplashScreen = async () => {
 //   try {
@@ -28,44 +30,59 @@ import { Test } from './screens/MainAppScreens/test';
 // const Stack = createNativeStackNavigator();
 
 function Navigation() {
+  const Stack = createNativeStackNavigator();
+
   const userContext = useUserContext();
+  const [isLoggedIn, setIsLoggedIn] = useState(auth.currentUser !== null);
+  const [appContentReady, setAppContentReady] = useState(false);
 
   /** * Listen to firebase auth to set isLoggedIn conditional variable ** */
-  // useEffect(() => {
-  //   const listener = onIdTokenChanged(auth, async (user) => {
-  //     setIsLoggedIn(!!user && user.emailVerified);
-  //   });
+  useEffect(() => {
+    const listener = onIdTokenChanged(auth, async user => {
+      setIsLoggedIn(!!user && user.emailVerified);
+    });
 
-  //   return () => {
-  //     listener();
-  //   };
-  // }, []);
+    return () => {
+      listener();
+    };
+  }, []);
+
+  /** * Listen to userContext to check if init is completed ** */
+  useEffect(() => {
+    if (userContext?.userData?.id === auth.currentUser?.uid) {
+      setAppContentReady(true);
+    } else {
+      setAppContentReady(false);
+    }
+  }, [userContext?.userData]);
 
   return (
     <>
-      <GripSelectionStack />
-      {/* {(!isLoggedIn || !appContentReady) && ( */}
-      {/* {(!appContentReady) && (
-      <NavigationContainer>
-        <Stack.Navigator screenOptions={{ headerShown: false }}>
-          <Stack.Screen
-            name="Login"
-            component={Login}
-          />
-          <Stack.Screen name="SignUp" component={SignUp} />
-        </Stack.Navigator>
-      </NavigationContainer>
-      )} */}
-      {/* {(appContentReady) && <MainNavigation />} */}
-      {/* {(isLoggedIn && appContentReady) && <MainNavigation />} */}
+      {(!isLoggedIn || !appContentReady) && (
+        <NavigationContainer>
+          <Stack.Navigator screenOptions={{ headerShown: false }}>
+            <Stack.Screen name="Login" component={Login} />
+            <Stack.Screen name="SignUp" component={SignUp} />
+          </Stack.Navigator>
+        </NavigationContainer>
+      )}
+      {isLoggedIn && appContentReady && <MainNavigation />}
     </>
   );
 }
 
 function Root() {
+  const Stack = createNativeStackNavigator();
+
   return (
     <View style={{ flex: 1 }}>
-      <MainNavigation />
+      <NavigationContainer>
+        <Stack.Navigator screenOptions={{ headerShown: false }}>
+          <Stack.Screen name="Login" component={Login} />
+          <Stack.Screen name="SignUp" component={SignUp} />
+          <Stack.Screen name="MainNavigation" component={MainNavigation} />
+        </Stack.Navigator>
+      </NavigationContainer>
     </View>
   );
 }

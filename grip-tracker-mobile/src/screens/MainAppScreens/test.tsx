@@ -8,6 +8,7 @@ import { ButtonText } from '../../components/basics/Buttons';
 import Colors from '../../constants/styles';
 import * as Controller from '../../controller/controller';
 import { firebaseFunctions } from '../../utils/firebase';
+import { handleSignUp } from '../../utils/auth';
 
 type RootStackParamList = Record<string, Record<string, never>>;
 
@@ -38,7 +39,7 @@ export function Test() {
       <ButtonText
         onPress={async () => {
           try {
-            const toto = await Controller.getFilteredGrips("crimp");
+            const toto = await Controller.getFilteredGrips('crimp');
             console.log(toto.data);
           } catch (e) {
             console.log(e);
@@ -56,15 +57,15 @@ export function Test() {
       <ButtonText
         onPress={async () => {
           try {
-            const toto = await Controller.getFilteredGrips("pinch");
-            console.log(toto.data);
+            const toto = await handleSignUp('max@email.com', '12345678');
+            console.log(toto);
           } catch (e) {
             console.log(e);
             console.log(':C');
           }
           console.log(':)');
         }}
-        textContent="get pinch grips"
+        textContent="signup"
         btnHeight={60}
         btnWidth={300}
         padding={8}

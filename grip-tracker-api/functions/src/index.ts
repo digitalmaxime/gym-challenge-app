@@ -9,12 +9,22 @@ import { SubGripTypeEnum } from "./models/grip/SubGripTypeEnum";
 
 initializeApp();
 
-export { default as setChallengeData } from "./data/challenge/setChallengeData";
+/*** Mock Data ***/
 export { default as setGripData } from "./data/grip/setGripData";
 export { default as setMockUserData } from "./data/mock/setMockUser";
+
+/*** Challenges ***/
+export { default as setChallengeData } from "./data/challenge/setChallengeData";
 export { default as saveChallengeProgress } from "./challenge/saveChallengeResult";
+
+/*** Grips ***/
 export { default as getAllGrips } from "./grip/getAllGrips";
 export { default as getFilteredGrips } from "./grip/getFilteredGrips";
+
+/*** Users ***/
+export { default as getUserByIdMobile } from "./users/getUser";
+export { default as createUserOnFirestore } from "./users/createUserOnFirestore";
+
 
 /*** Initialize Data ***/
 

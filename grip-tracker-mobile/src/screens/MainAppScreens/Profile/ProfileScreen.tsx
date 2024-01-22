@@ -54,6 +54,8 @@ function ProfileScreen() {
         />
         <ButtonText
           onPress={async () => {
+            await auth.signOut();
+            userContext.reset();
             console.log('sign out');
           }}
           textContent="se déconnecter"

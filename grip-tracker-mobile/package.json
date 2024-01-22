@@ -7,8 +7,10 @@
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
     "start": "expo start",
-    "start:emulator": "cross-env MODE=emulator expo start -c",
-    "start:cloud": "cross-env MODE=cloud expo start -c",
+    "start:emulator": "cross-env EXPO_PUBLIC_MODE=emulator expo start -c",
+    "start:cloud": "EXPO_PUBLIC_MODE=cloud expo start -c",
+    "start:development": "NODE_ENV=development expo start -c",
+    "start:production": "NODE_ENV=production expo start -c",
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",

@@ -3,19 +3,20 @@ import {
   sendEmailVerification,
   signOut,
   sendPasswordResetEmail,
-  signInWithEmailAndPassword,
+  signInWithEmailAndPassword
 } from 'firebase/auth';
 
 import { auth } from './firebase';
-
 const handleSignUp = async (email: string, password: string) => {
   const userCredential = await createUserWithEmailAndPassword(auth, email, password);
   const { user } = userCredential;
-  sendEmailVerification(user);
+  sendEmailVerification(user);    
 };
 
 const handleLogin = async (email: string, password: string) => {
   const userCredential = await signInWithEmailAndPassword(auth, email, password);
+  console.log("----------->")
+  console.log(userCredential)
   // Signed in
   const { user } = userCredential;
   if (user.emailVerified) {
@@ -24,6 +25,10 @@ const handleLogin = async (email: string, password: string) => {
 
   signOut(auth);
   return undefined;
+};
+
+const handleLoginDummy = async (email: string, password: string) => {
+  return '123';
 };
 
 const handleResetPassword = (email: string) => {
@@ -41,5 +46,5 @@ const handleResetPassword = (email: string) => {
 };
 
 export {
-  handleSignUp, handleLogin, auth,
+  handleSignUp, handleLogin, auth, handleLoginDummy
 };

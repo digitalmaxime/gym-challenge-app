@@ -1,6 +1,6 @@
 import * as firebaseAdmin from 'firebase-admin'
 import { GripModel } from '../models/grip/GripModel';
-import { CallableRequest, HttpsOptions, onCall } from 'firebase-functions/v2/https';
+import { CallableRequest, onCall } from 'firebase-functions/v2/https';
 const db = firebaseAdmin.firestore()
 
 const getAllGrips = onCall(
