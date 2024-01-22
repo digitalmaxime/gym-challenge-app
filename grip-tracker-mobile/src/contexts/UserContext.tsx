@@ -24,21 +24,28 @@ export function UserProvider({ children }: AuthProps) {
 
   async function initUser(userId: string) {
     try {
-      console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&")
-      console.log(userId)
+      console.log('&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&');
+      console.log(userId);
       const res = await Controller.getUserById(userId);
       const fetchedUserData = res.data;
 
-      console.log(fetchedUserData)
-      console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&")
-      // if (fetchedUserData !== null && fetchedUserData !== undefined && 'id' in fetchedUserData && 'email' in fetchedUserData) {
-      //   setUserData(fetchedUserData as UserData);
-      // }
+      console.log(fetchedUserData);
+      console.log('&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&');
+      if (
+        fetchedUserData !== null &&
+        fetchedUserData !== undefined &&
+        Object.hasOwn(fetchedUserData, 'id') &&
+        Object.hasOwn(fetchedUserData, 'email')
+      ) {
+        setUserData(fetchedUserData as UserData);
+      } else {
+        // TODO: set error
+      }
     } catch (error) {
-      const message = (error instanceof Error) ? error.message : String(error);
+      const message = error instanceof Error ? error.message : String(error);
       console.error({ message });
       console.warn('initUser failed .. :(');
-      throw new Error('l\'initialisation des donnees a échoué');
+      throw new Error("l'initialisation des donnees a échoué");
     }
   }
 
@@ -48,6 +55,7 @@ export function UserProvider({ children }: AuthProps) {
 
   const value = useMemo(
     () => ({
+      userData,
       initUser,
       reset,
     }),

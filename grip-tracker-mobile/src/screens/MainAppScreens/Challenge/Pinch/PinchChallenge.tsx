@@ -6,14 +6,16 @@ import Colors from '../../../../constants/styles';
 import CheckBtnComponent from '../../../../components/basics/CheckBtnComponent';
 import * as Controller from '../../../../controller/controller';
 import { GripModel } from '../../../../models/grip/GripModel';
+import { useUserContext } from '../../../../contexts/UserContext';
 
 type ParamList = {
-  pinch: GripModel
+  pinch: GripModel;
 };
 
 type RootStackParamList = Record<string, Record<string, never>>;
 
 export function PinchChallenge() {
+  const user = useUserContext();
   const [durationInSeconds, setDurationInSeconds] = React.useState(0);
   const [weightInKilos, setWeightInKilos] = React.useState(0);
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
@@ -65,7 +67,7 @@ export function PinchChallenge() {
         handleCheckPress={() => true}
         saveData={() => {
           Controller.saveChallengeResult(
-            '1',
+            user.userData.id,
             gripId,
             weightInKilos,
             durationInSeconds,

@@ -42,47 +42,47 @@ function Login() {
   });
 
   const onLogin = async (data: FormData) => {
-    navigation.navigate('MainNavigation', {});
+    // navigation.navigate('MainNavigation', {});
     /** * For loading overlay purposes ** */
-    // setIsAuthenticationInProgress(true);
-    // try {
-    //   const userId = await handleLogin(data.email, data.password);
-    //   if (userId) {
-    //     console.log("ASDLKSJDLASKJDL !!!!!!!!!")
-    //     console.log("ASDLKSJDLASKJDL !!!!!!!!!")
-    //     console.log("ASDLKSJDLASKJDL !!!!!!!!!")
-    //     console.log("ASDLKSJDLASKJDL !!!!!!!!!")
-    //     console.log("ASDLKSJDLASKJDL !!!!!!!!!")
-    //     await userContext.initUser(userId);
-    //     navigation.navigate('MainNavigation', {});
-    //   } else if (auth.currentUser?.email && !auth.currentUser?.emailVerified) {
-    //     toast.show(
-    //       "L'authentification a échoué..\nVeillez valider votre courriel",
-    //       {
-    //         type: 'warning',
-    //         placement: 'top',
-    //         duration: 8000,
-    //         animationType: 'zoom-in',
-    //         swipeEnabled: true,
-    //       },
-    //     );
-    //   }
-    //   setTimeout(() => {
-    //     setIsAuthenticationInProgress(false);
-    //   }, 10000);
-    // } catch (error) {
-    //   auth.signOut();
-    //   const message = error instanceof Error ? error.message : String(error);
-    //   console.error({ message });
-    //   toast.show("L'authentification a échoué..", {
-    //     type: 'danger',
-    //     placement: 'top',
-    //     duration: 8000,
-    //     animationType: 'zoom-in',
-    //     swipeEnabled: true,
-    //   });
-    //   setIsAuthenticationInProgress(false);
-    // }
+    setIsAuthenticationInProgress(true);
+    try {
+      const userId = await handleLogin(data.email, data.password);
+      if (userId) {
+        console.log("ASDLKSJDLASKJDL !!!!!!!!!")
+        console.log("ASDLKSJDLASKJDL !!!!!!!!!")
+        console.log("ASDLKSJDLASKJDL !!!!!!!!!")
+        console.log("ASDLKSJDLASKJDL !!!!!!!!!")
+        console.log(userId)
+        await userContext.initUser(userId);
+        navigation.navigate('MainNavigation', {});
+      } else if (auth.currentUser?.email && !auth.currentUser?.emailVerified) {
+        toast.show(
+          "L'authentification a échoué..\nVeillez valider votre courriel",
+          {
+            type: 'warning',
+            placement: 'top',
+            duration: 8000,
+            animationType: 'zoom-in',
+            swipeEnabled: true,
+          },
+        );
+      }
+      setTimeout(() => {
+        setIsAuthenticationInProgress(false);
+      }, 10000);
+    } catch (error) {
+      auth.signOut();
+      const message = error instanceof Error ? error.message : String(error);
+      console.error({ message });
+      toast.show("L'authentification a échoué..", {
+        type: 'danger',
+        placement: 'top',
+        duration: 8000,
+        animationType: 'zoom-in',
+        swipeEnabled: true,
+      });
+      setIsAuthenticationInProgress(false);
+    }
   };
 
   //   if (isAuthenticationInProgress) {
