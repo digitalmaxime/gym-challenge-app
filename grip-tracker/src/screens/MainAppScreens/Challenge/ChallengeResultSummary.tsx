@@ -1,9 +1,8 @@
-import React, { Dispatch, useState } from 'react';
-import { StyleSheet, View, Modal, Text, Image, SafeAreaView } from 'react-native';
+import React, { Dispatch } from 'react';
+import { StyleSheet, View, Text, Image } from 'react-native';
 import { ButtonText } from '../../../components/basics/Buttons';
-import Colors from '../../../constants/styles';
 import AnimatedIcon from '../../../components/basics/IconAnimated';
-import { useUserContext } from '../../../contexts/UserContext';
+import Colors from '../../../constants/styles';
 
 const utTensoSicVis = require('../../../../assets/images/ut-tenso-sic-vis.png');
 

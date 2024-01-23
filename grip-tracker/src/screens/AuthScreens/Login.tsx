@@ -1,15 +1,15 @@
-import React, { Dispatch, SetStateAction, useState } from 'react';
+import React, { useState } from 'react';
 import { Text, View, StyleSheet, TextInput } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { useForm, Controller } from 'react-hook-form';
 import Constants from 'expo-constants';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { useToast } from 'react-native-toast-notifications';
-import Colors from '../../../../grip-tracker-mobile/src/constants/styles';
-import { auth, handleLogin, handleLoginDummy } from '../../../../grip-tracker-mobile/src/utils/auth';
-import { useUserContext } from '../../../../grip-tracker-mobile/src/contexts/UserContext';
-import { ButtonText } from '../../../../grip-tracker-mobile/src/components/basics/Buttons';
-
+import { useUserContext } from '../../contexts/UserContext';
+import { handleLogin } from '../../utils/auth';
+import { auth } from '../../utils/firebase';
+import { ButtonText } from '../../components/basics/Buttons';
+import Colors from '../../constants/styles';
 type FormData = {
   email: string;
   password: string;

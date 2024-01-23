@@ -2,11 +2,11 @@ import * as React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import NumericInput from 'react-native-numeric-input';
 import { NavigationProp, RouteProp, useNavigation, useRoute } from '@react-navigation/native';
-import Colors from '../../../../constants/styles';
 import CheckBtnComponent from '../../../../components/basics/CheckBtnComponent';
-import * as Controller from '../../../../controller/controller';
+import * as Controller from '../../../../api/controller';
 import { GripModel } from '../../../../models/grip/GripModel';
 import { useUserContext } from '../../../../contexts/UserContext';
+import Colors from '../../../../constants/styles';
 
 type ParamList = {
   pinch: GripModel;

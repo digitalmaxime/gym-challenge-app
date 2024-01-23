@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 import { useToast } from 'react-native-toast-notifications';
+import Colors from '../../../constants/styles'
+import { useUserContext } from '../../../contexts/UserContext';
+import * as Controller from '../../../api/controller';
 import { ButtonText } from '../../../components/basics/Buttons';
 import WarningModal from '../../../components/basics/WarningModal';
-import Colors from '../../../constants/styles';
-import { useUserContext } from '../../../contexts/UserContext';
-import { auth } from '../../../utils/auth';
-import { deleteCache } from '../../../utils/caching';
-import * as Controller from '../../../controller/controller';
+import { auth } from '../../../utils/firebase';
 
 function ProfileScreen() {
   const userContext = useUserContext();
@@ -25,7 +24,7 @@ function ProfileScreen() {
         <ButtonText
           onPress={async () => {
             try {
-              await deleteCache();
+              // await deleteCache();
               toast.show('La cache a été vidé', {
                 type: 'success',
                 placement: 'top',

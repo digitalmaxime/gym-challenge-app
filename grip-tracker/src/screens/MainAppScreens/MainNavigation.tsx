@@ -6,7 +6,6 @@ import { createMaterialBottomTabNavigator } from '@react-navigation/material-bot
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 // Screens
-import GripSelectionScreen from './Challenge/GripSelectionScreen';
 import ProfileScreen from './Profile/ProfileScreen';
 
 // Styles

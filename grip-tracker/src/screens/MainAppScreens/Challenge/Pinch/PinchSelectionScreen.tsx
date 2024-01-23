@@ -8,9 +8,9 @@ import {
   StyleSheet,
 } from 'react-native';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
-import Colors from '../../../../constants/styles';
-import * as Controller from '../../../../controller/controller';
+import * as Controller from '../../../../api/controller';
 import { GripModel } from '../../../../models/grip/GripModel';
+import Colors from '../../../../constants/styles';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface PinchSelectionScreenProps {}

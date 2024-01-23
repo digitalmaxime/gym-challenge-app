@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { View, Text, FlatList, Pressable, ImageBackground, StyleSheet } from 'react-native';
-import * as Controller from '../../../../controller/controller';
+import * as Controller from '../../../../api/controller';
 import { GripModel } from '../../../../models/grip/GripModel';
-import Colors from '../../../../constants/styles';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
+import Colors from '../../../../constants/styles';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface DeadhangSelectionProps {}

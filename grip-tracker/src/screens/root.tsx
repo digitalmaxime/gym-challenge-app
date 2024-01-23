@@ -5,9 +5,9 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { onIdTokenChanged } from 'firebase/auth';
 import MainNavigation from './MainAppScreens/MainNavigation';
-import { auth } from '../utils/auth'
 import Login from './AuthScreens/Login';
 import SignUp from './AuthScreens/SignUp'
+import { auth } from '../utils/firebase';
 
 // const mountSplashScreen = async () => {
 //   try {

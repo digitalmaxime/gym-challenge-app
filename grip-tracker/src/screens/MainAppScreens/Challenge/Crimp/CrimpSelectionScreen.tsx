@@ -2,17 +2,13 @@ import * as React from 'react';
 import {
   View,
   Text,
-  ImageBackground,
-  Pressable,
   FlatList,
-  StyleSheet,
 } from 'react-native';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
-import Colors from '../../../../constants/styles';
-import * as Controller from '../../../../controller/controller';
+import * as Controller from '../../../../api/controller';
 import { GripModel } from '../../../../models/grip/GripModel';
-import styles from '../../../../constants/styles';
 import { ButtonText } from '../../../../components/basics/Buttons';
+import Colors from '../../../../constants/styles';
 
 
 export interface CrimpSelectionProps {}

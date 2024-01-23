@@ -3,10 +3,10 @@ import { Text, View, StyleSheet } from 'react-native';
 import { GripModel } from '../../../../models/grip/GripModel';
 import { NavigationProp, RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { useUserContext } from '../../../../contexts/UserContext';
-import * as Controller from '../../../../controller/controller';
+import * as Controller from '../../../../api/controller';
 import NumericInput from 'react-native-numeric-input';
-import Colors from '../../../../constants/styles';
 import CheckBtnComponent from '../../../../components/basics/CheckBtnComponent';
+import Colors from '../../../../constants/styles';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface DeadhangChallengeProps {}

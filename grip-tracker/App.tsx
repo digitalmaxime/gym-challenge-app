@@ -3,8 +3,8 @@ import React, {  } from 'react';
 
 import { SafeAreaView, StatusBar } from 'react-native';
 import { ToastProvider } from 'react-native-toast-notifications';
-import Colors from './constants/styles';
-import { UserProvider } from './contexts/UserContext';
+import Colors from './src/constants/styles';
+import { UserProvider } from './src/contexts/UserContext';
 import Root from './src/screens/root';
 
 // const mountSplashScreen = async () => {

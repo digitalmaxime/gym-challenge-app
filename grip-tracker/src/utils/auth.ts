@@ -42,5 +42,5 @@ const handleResetPassword = (email: string) => {
 };
 
 export {
-  handleSignUp, handleLogin, auth
+  handleSignUp, handleLogin
 };

@@ -1,8 +1,5 @@
-/* eslint-disable global-require */
-/* eslint-disable max-len */
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-// import { createStackNavigator } from '@react-navigation/stack';
 
 import GripSelectionScreen from './GripSelectionScreen';
 import { CrimpSelectionScreen } from './Crimp/CrimpSelectionScreen';
