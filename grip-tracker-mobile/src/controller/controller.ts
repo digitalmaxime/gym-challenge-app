@@ -46,19 +46,19 @@ async function saveChallengeResult(
 }
 
 async function getAllGrips(): Promise<HttpsCallableResult<unknown>> {
-  const getAllGrips = httpsCallable(
+  const callGetAllGrips = httpsCallable(
     firebaseFunctions,
     'getAllGrips',
   );
-  return getAllGrips();
+  return callGetAllGrips();
 }
 
 async function getFilteredGrips(gripType: string): Promise<HttpsCallableResult<unknown>> {
-  const getFilteredGrips = httpsCallable(
+  const callGetFilteredGrips = httpsCallable(
     firebaseFunctions,
     'getFilteredGrips',
   );
-  return getFilteredGrips({gripType});
+  return callGetFilteredGrips({gripType});
 }
 
 async function getCourseById(

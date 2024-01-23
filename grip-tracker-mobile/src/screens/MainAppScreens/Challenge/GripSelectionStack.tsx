@@ -6,9 +6,9 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import GripSelectionScreen from './GripSelectionScreen';
 import { CrimpSelectionScreen } from './Crimp/CrimpSelectionScreen';
-import { DeadhangSelectionScreen } from './DeadHang/DeadhangSelectionScreen';
 import PinchSelectionStack from './Pinch/PinchSelectionStack';
 import ChallengeResultSummary from './ChallengeResultSummary';
+import DeadhangSelectionStack from './DeadHang/DeadhangSelectionStack';
 
 function GripSelectionStack() {
   const Stack = createNativeStackNavigator();
@@ -27,8 +27,8 @@ function GripSelectionStack() {
         options={{ title: 'My GripSelectionScreen' }}
       />
       <Stack.Screen
-        name="DeadhangSelectionScreen"
-        component={DeadhangSelectionScreen}
+        name="DeadhangSelectionStack"
+        component={DeadhangSelectionStack}
         options={{ title: 'Awesome DeadhangSelectionScreen' }}
       />
       <Stack.Screen

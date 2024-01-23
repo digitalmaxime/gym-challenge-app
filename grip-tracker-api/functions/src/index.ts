@@ -25,7 +25,6 @@ export { default as getFilteredGrips } from "./grip/getFilteredGrips";
 export { default as getUserByIdMobile } from "./users/getUser";
 export { default as createUserOnFirestore } from "./users/createUserOnFirestore";
 
-
 /*** Initialize Data ***/
 
 const db = firebaseAdmin.firestore();
@@ -47,10 +46,17 @@ const CrimpData1: GripModel = {
   gripType: GripTypeEnum.Crimp,
   subGripType: SubGripTypeEnum.sixMillimeter,
 };
+
 const CrimpData2: GripModel = {
   id: GripTypeEnum.Crimp + "_" + SubGripTypeEnum.tenMillimeter,
   gripType: GripTypeEnum.Crimp,
   subGripType: SubGripTypeEnum.tenMillimeter,
+};
+
+const Deadhang: GripModel = {
+  id: GripTypeEnum.Deadhang + "_" + SubGripTypeEnum.basic,
+  gripType: GripTypeEnum.Deadhang,
+  subGripType: SubGripTypeEnum.basic,
 };
 
 db.collection("Grips").doc(wideDeepPinchData.id).set(wideDeepPinchData);
@@ -58,3 +64,5 @@ db.collection("Grips").doc(wideShallowPinchData.id).set(wideShallowPinchData);
 
 db.collection("Grips").doc(CrimpData1.id).set(CrimpData1);
 db.collection("Grips").doc(CrimpData2.id).set(CrimpData2);
+
+db.collection("Grips").doc(Deadhang.id).set(Deadhang);

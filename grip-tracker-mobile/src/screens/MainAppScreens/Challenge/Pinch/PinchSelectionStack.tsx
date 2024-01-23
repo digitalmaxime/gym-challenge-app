@@ -2,7 +2,6 @@ import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { PinchSelectionScreen } from './PinchSelectionScreen';
 import PinchChallenge from './PinchChallenge';
-import ChallengeResultSummary from '../ChallengeResultSummary';
 
 function PinchSelectionStack() {
   const Stack = createNativeStackNavigator();
@@ -19,7 +18,7 @@ function PinchSelectionStack() {
       <Stack.Screen
         name="PinchSelectionScreen"
         component={PinchSelectionScreen}
-        options={{ title: 'My PinchSelectionScreen' }} // pinchId: pinch.id, gripType: pinch.gripType, subGripType: pinch.subGripType
+        options={{ title: 'My PinchSelectionScreen' }}
       />
       <Stack.Screen
         name="PinchChallenge"

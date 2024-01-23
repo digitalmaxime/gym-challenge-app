@@ -17,9 +17,9 @@ function ProfileScreen() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Profil..</Text>
+      <Text style={styles.title}>Profile</Text>
       <View style={styles.row}>
-        <Text style={styles.text}>non connecté</Text>
+        <Text style={styles.text}>{userContext.userData.email}</Text>
       </View>
       <View style={styles.bottomBtnContainer}>
         <ButtonText

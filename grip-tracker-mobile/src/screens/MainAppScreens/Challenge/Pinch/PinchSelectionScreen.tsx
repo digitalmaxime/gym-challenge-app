@@ -12,21 +12,22 @@ import Colors from '../../../../constants/styles';
 import * as Controller from '../../../../controller/controller';
 import { GripModel } from '../../../../models/grip/GripModel';
 
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface PinchSelectionScreenProps {}
 
 type RootStackParamList = {
   PinchChallenge: GripModel;
 };
 
-export function PinchSelectionScreen(props: PinchSelectionScreenProps) {
+export function PinchSelectionScreen() {
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
-  const [allGrips, setAllGrips] = React.useState<any[]>([]);
+  const [allPinches, setAllPinches] = React.useState<any[]>([]);
 
   React.useEffect(() => {
     const getPinchGrips = async () => {
       const allGrips = (await Controller.getFilteredGrips("pinch")).data as any[];
       console.log(allGrips);
-      setAllGrips((_) => allGrips);
+      setAllPinches((_) => allGrips);
     };
 
     getPinchGrips();
@@ -44,7 +45,6 @@ export function PinchSelectionScreen(props: PinchSelectionScreenProps) {
             pressed ? [styles.btnPressed, styles.btn] : styles.btn
           }
           onPress={() => {
-            // navigation.navigate('PinchChallenge', {pinch : {id: pinch.id, gripType: pinch.gripType, subGripType: pinch.subGripType)}}
             navigation.navigate('PinchChallenge', {
               id: pinch.id, gripType: pinch.gripType, subGripType: pinch.subGripType,
             });
@@ -58,7 +58,7 @@ export function PinchSelectionScreen(props: PinchSelectionScreenProps) {
               style={styles.pinchBackgroundImage}
               source={require(`../../../../../assets/images/${imgName}`)}
             >
-              <Text style={styles.pinchTitle}>{pinch.subGripType}</Text>
+              <Text style={styles.title}>{pinch.subGripType}</Text>
             </ImageBackground>
           </View>
         </Pressable>
@@ -69,7 +69,7 @@ export function PinchSelectionScreen(props: PinchSelectionScreenProps) {
   return (
     <View style={styles.mainContainer}>
       <FlatList
-        data={allGrips}
+        data={allPinches}
         keyExtractor={item => item.id}
         numColumns={1}
         bounces={false}
@@ -124,7 +124,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     margin: 0,
   },
-  pinchTitle: {
+  title: {
     color: 'pink',
     fontSize: 46,
   },

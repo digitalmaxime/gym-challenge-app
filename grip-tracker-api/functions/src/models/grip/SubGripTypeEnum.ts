@@ -4,5 +4,6 @@ export enum SubGripTypeEnum {
     narrowDeep = 'narrowDeep',
     narrowShallow = 'narrowShallow',
     sixMillimeter = "sixMillimeter",
-    tenMillimeter = "tenMillimeter"
+    tenMillimeter = "tenMillimeter",
+    basic = "basic"
 }

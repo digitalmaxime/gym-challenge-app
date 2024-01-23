@@ -4,7 +4,6 @@ import {
   NavigationProp,
   useNavigation,
 } from '@react-navigation/native';
-import { useUserContext } from '../../../contexts/UserContext';
 import { ButtonText } from '../../../components/basics/Buttons';
 import Colors from '../../../constants/styles';
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
@@ -38,10 +37,9 @@ export function GripSelectionScreen(props: PinchScreenProps) {
         >
           <ButtonText
             onPress={() => {
-              // navigation.goBack();
-              navigation.navigate('DeadhangSelectionScreen', {});
+              navigation.navigate('DeadhangSelectionStack', {});
             }}
-            textContent="DeadhangSelectionScreen"
+            textContent="DeadhangSelectionStack"
             btnImgBackgroundColor={Colors.bottomNavBarColor}
             btnHeight={undefined}
             btnWidth={150}
