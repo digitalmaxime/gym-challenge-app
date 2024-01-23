@@ -5,10 +5,10 @@ import { useForm, Controller } from 'react-hook-form';
 import Constants from 'expo-constants';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { useToast } from 'react-native-toast-notifications';
-import Colors from '../../constants/styles';
-import { auth, handleLogin, handleLoginDummy } from '../../utils/auth';
-import { useUserContext } from '../../contexts/UserContext';
-import { ButtonText } from '../../components/basics/Buttons';
+import Colors from '../../../../grip-tracker-mobile/src/constants/styles';
+import { auth, handleLogin, handleLoginDummy } from '../../../../grip-tracker-mobile/src/utils/auth';
+import { useUserContext } from '../../../../grip-tracker-mobile/src/contexts/UserContext';
+import { ButtonText } from '../../../../grip-tracker-mobile/src/components/basics/Buttons';
 
 type FormData = {
   email: string;

@@ -5,9 +5,9 @@ import Constants from 'expo-constants';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { useNavigation } from '@react-navigation/native';
 import { useToast } from 'react-native-toast-notifications';
-import Colors from '../../constants/styles';
-import { auth, handleSignUp } from '../../utils/auth';
-import { ButtonText } from '../../components/basics/Buttons';
+import Colors from '../../../../grip-tracker-mobile/src/constants/styles';
+import { auth, handleSignUp } from '../../../../grip-tracker-mobile/src/utils/auth';
+import { ButtonText } from '../../../../grip-tracker-mobile/src/components/basics/Buttons';
 
 type FormData = {
   confirmedPassword: string;

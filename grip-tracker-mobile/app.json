@@ -1,15 +1,15 @@
 {
   "expo": {
-    "owner": "log8970-5",
+    "owner": "digitalmaxime",
     "slug": "gapris",
-    "name": "gappris",
-    "version": "6.0.0",
+    "name": "grip-tracker",
+    "version": "1.0.0",
     "platforms": ["ios", "android"],
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/anoint-jutras.jpg",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/gappris-logo.png",
+      "image": "./assets/anoint-jutras.png",
       "resizeMode": "contain",
       "backgroundColor": "#f2a2ef"
     },
@@ -20,11 +20,11 @@
     "ios": {
       "supportsTablet": false,
       "bundleIdentifier": "edu.baip.gappris",
-      "buildNumber": "6"
+      "buildNumber": "1"
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/anoint-jutras.jpg",
         "backgroundColor": "#FFFFFF"
       },
       "package": "edu.baip.gappris",
