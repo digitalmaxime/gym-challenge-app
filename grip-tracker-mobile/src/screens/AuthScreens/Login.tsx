@@ -48,13 +48,9 @@ function Login() {
     try {
       const userId = await handleLogin(data.email, data.password);
       if (userId) {
-        console.log("ASDLKSJDLASKJDL !!!!!!!!!")
-        console.log("ASDLKSJDLASKJDL !!!!!!!!!")
-        console.log("ASDLKSJDLASKJDL !!!!!!!!!")
-        console.log("ASDLKSJDLASKJDL !!!!!!!!!")
-        console.log(userId)
+        console.log("--> LOGIN : after handleLogin()")
         await userContext.initUser(userId);
-        navigation.navigate('MainNavigation', {});
+        // navigation.navigate('MainNavigation', {});
       } else if (auth.currentUser?.email && !auth.currentUser?.emailVerified) {
         toast.show(
           "L'authentification a échoué..\nVeillez valider votre courriel",

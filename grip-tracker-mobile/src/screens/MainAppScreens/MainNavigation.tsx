@@ -18,7 +18,7 @@ const Tab = createMaterialBottomTabNavigator();
 
 export default function MainNavigation() {
   return (
-    // <NavigationContainer>
+    <NavigationContainer>
       <Tab.Navigator
         initialRouteName="login"
         activeColor={Colors.activeIcon}
@@ -55,7 +55,7 @@ export default function MainNavigation() {
           }}
         />
       </Tab.Navigator>
-    // </NavigationContainer>
+    </NavigationContainer>
   );
 }
 

@@ -15,7 +15,7 @@ const handleSignUp = async (email: string, password: string) => {
 
 const handleLogin = async (email: string, password: string) => {
   const userCredential = await signInWithEmailAndPassword(auth, email, password);
-  console.log("----------->")
+  console.log("-----------> userCredential")
   console.log(userCredential)
   // Signed in
   const { user } = userCredential;

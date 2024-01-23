@@ -27,16 +27,11 @@ import SignUp from './screens/AuthScreens/SignUp';
 // // Keep the splash screen visible while we fetch resources
 // mountSplashScreen();
 
-// const Stack = createNativeStackNavigator();
-
-function Navigation() {
-  const Stack = createNativeStackNavigator();
-
-  const userContext = useUserContext();
-  const [isLoggedIn, setIsLoggedIn] = useState(auth.currentUser !== null);
-  const [appContentReady, setAppContentReady] = useState(false);
-
+function Root() {
   /** * Listen to firebase auth to set isLoggedIn conditional variable ** */
+  const [isLoggedIn, setIsLoggedIn] = useState(auth.currentUser !== null);
+  console.log("--> ROOT : after setIsLoggedIn()")
+
   useEffect(() => {
     const listener = onIdTokenChanged(auth, async user => {
       setIsLoggedIn(!!user && user.emailVerified);
@@ -47,18 +42,11 @@ function Navigation() {
     };
   }, []);
 
-  /** * Listen to userContext to check if init is completed ** */
-  useEffect(() => {
-    if (userContext?.userData?.id === auth.currentUser?.uid) {
-      setAppContentReady(true);
-    } else {
-      setAppContentReady(false);
-    }
-  }, [userContext?.userData]);
+  const Stack = createNativeStackNavigator();
 
   return (
     <>
-      {(!isLoggedIn || !appContentReady) && (
+      {(!isLoggedIn) && (
         <NavigationContainer>
           <Stack.Navigator screenOptions={{ headerShown: false }}>
             <Stack.Screen name="Login" component={Login} />
@@ -66,24 +54,17 @@ function Navigation() {
           </Stack.Navigator>
         </NavigationContainer>
       )}
-      {isLoggedIn && appContentReady && <MainNavigation />}
+      {isLoggedIn && <MainNavigation />}
     </>
-  );
-}
-
-function Root() {
-  const Stack = createNativeStackNavigator();
-
-  return (
-    <View style={{ flex: 1 }}>
-      <NavigationContainer>
-        <Stack.Navigator screenOptions={{ headerShown: false }}>
-          <Stack.Screen name="Login" component={Login} />
-          <Stack.Screen name="SignUp" component={SignUp} />
-          <Stack.Screen name="MainNavigation" component={MainNavigation} />
-        </Stack.Navigator>
-      </NavigationContainer>
-    </View>
+    // <View style={{ flex: 1 }}>
+    //   <NavigationContainer>
+    //     <Stack.Navigator screenOptions={{ headerShown: false }}>
+    //       <Stack.Screen name="Login" component={Login} />
+    //       <Stack.Screen name="SignUp" component={SignUp} />
+    //       <Stack.Screen name="MainNavigation" component={MainNavigation} />
+    //     </Stack.Navigator>
+    //   </NavigationContainer>
+    // </View>
   );
 }
 

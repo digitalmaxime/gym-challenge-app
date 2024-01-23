@@ -10,15 +10,10 @@ import {
   Alert,
   ImageBackground,
   Pressable,
-  Image,
 } from 'react-native';
-import NumericInput from 'react-native-numeric-input';
 
-import { ButtonIcon, ButtonImg } from '../../basics/Buttons';
 import Colors from '../../../constants/styles';
 import ChallengeResultSummary from '../../../screens/MainAppScreens/Challenge/ChallengeResultSummary';
-import { useUserContext } from '../../../contexts/UserContext';
-import PinchChallengeObsolete from './PinchChallengeObsolete';
 import PinchChallenge from '../../../screens/MainAppScreens/Challenge/Pinch/PinchChallenge';
 
 interface PinchChallengeModalProps {
