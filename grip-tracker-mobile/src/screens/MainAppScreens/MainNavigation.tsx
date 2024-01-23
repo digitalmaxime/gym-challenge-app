@@ -11,7 +11,7 @@ import ProfileScreen from './Profile/ProfileScreen';
 
 // Styles
 import Colors from '../../constants/styles';
-import { Test } from './test';
+import { Test } from './Training/test';
 import GripSelectionStack from './Challenge/GripSelectionStack';
 
 const Tab = createMaterialBottomTabNavigator();

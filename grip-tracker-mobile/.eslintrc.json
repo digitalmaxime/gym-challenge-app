@@ -2,19 +2,12 @@
   // "root": true,
   "extends": [
     "eslint:recommended",
-    "plugin:import/recommended",
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended"
   ],
-  "plugins": ["@typescript-eslint", "react", "jsx-a11y"],
-  "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "ecmaFeatures": {
-      "jsx": true
-    },
-    "ecmaVersion": 2022,
-    "sourceType": "module",
-    "project": "grip-tracker-mobile/tsconfig.json"
+    "ecmaVersion": "latest",
+    "sourceType": "module"
   },
   "settings": {
     "import/ignore": ["react-navigation"],
@@ -24,42 +17,7 @@
   },
   "rules": {
     "no-confusing-arrow": 0,
-    "arrow-parens": [0, "always"],
-    "object-curly-newline": [
-      "error",
-      {
-        "ObjectExpression": { "multiline": true, "minProperties": 3 },
-        "ObjectPattern": { "multiline": true },
-        "ImportDeclaration": { "multiline": true },
-        "ExportDeclaration": { "multiline": true, "minProperties": 3 }
-      }
-    ],
-    "implicit-arrow-linebreak": [0, "beside"],
-    "import/no-unresolved": 0,
     "@typescript-eslint/no-unused-vars": "warn",
-    "@typescript-eslint/member-delimiter-style": "warn",
-
-    "react/jsx-filename-extension": [
-      1,
-      {
-        "extensions": [".ts", ".tsx"]
-      }
-    ],
-    "no-console": "off",
-    "no-use-before-define": "off",
-    "import/extensions": ["error", "never"],
-    "react/prop-types": 0,
-    "no-shadow": "off",
-    "@typescript-eslint/no-shadow": ["error"],
-    "allowBind": 0,
-    "react/jsx-curly-newline": [
-      0,
-      { "multiline": "require", "singleline": "consistent" }
-    ]
-    // "react/jsx-no-bind": [0],
-    // "operator-linebreak": [0],
-    // "react/jsx-one-expression-per-line": [0],
-    // "no-extra-semi": "off",
-    // "function-paren-newline": 0
+    "@typescript-eslint/member-delimiter-style": "warn"
   }
 }

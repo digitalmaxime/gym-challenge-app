@@ -27,10 +27,6 @@ const handleLogin = async (email: string, password: string) => {
   return undefined;
 };
 
-const handleLoginDummy = async (email: string, password: string) => {
-  return '123';
-};
-
 const handleResetPassword = (email: string) => {
   sendPasswordResetEmail(auth, email)
     .then(() => {
@@ -46,5 +42,5 @@ const handleResetPassword = (email: string) => {
 };
 
 export {
-  handleSignUp, handleLogin, auth, handleLoginDummy
+  handleSignUp, handleLogin, auth
 };

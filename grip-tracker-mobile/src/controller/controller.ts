@@ -1,5 +1,4 @@
 import {
-  getFunctions,
   httpsCallable,
   HttpsCallableResult,
 } from 'firebase/functions';

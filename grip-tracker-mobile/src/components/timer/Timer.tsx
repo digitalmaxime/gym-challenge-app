@@ -4,6 +4,7 @@ import NumericInput from 'react-native-numeric-input';
 import Colors from '../../constants/styles';
 import { ButtonIcon } from '../basics/Buttons';
 
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface TimerProps {
 }
 

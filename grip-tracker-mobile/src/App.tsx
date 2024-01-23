@@ -12,7 +12,7 @@ import { UserProvider, useUserContext } from './contexts/UserContext';
 import MainNavigation from './screens/MainAppScreens/MainNavigation';
 import { auth } from './utils/auth';
 import GripSelectionStack from './screens/MainAppScreens/Challenge/GripSelectionStack';
-import { Test } from './screens/MainAppScreens/test';
+import { Test } from './screens/MainAppScreens/Training/test';
 import Login from './screens/AuthScreens/Login';
 import SignUp from './screens/AuthScreens/SignUp';
 

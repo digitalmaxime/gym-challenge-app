@@ -6,6 +6,8 @@
   "license": "MIT",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
+    "lint": "eslint --ext .js,.ts .",
+    "lint:fix": "eslint --fix --ext .js,.ts .",
     "start": "expo start",
     "start:emulator": "cross-env EXPO_PUBLIC_MODE=emulator expo start -c",
     "start:cloud": "EXPO_PUBLIC_MODE=cloud expo start -c",
@@ -14,8 +16,7 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "prettier-format": "npx prettier --config .prettierrc.json --write ./src/**/*.tsx",
-    "lint": "node_modules/.bin/eslint src/ --fix src/ --fix"
+    "prettier-format": "npx prettier --config .prettierrc.json --write ./src/**/*.tsx"
   },
   "resolutions": {
     "@types/react": "~18.0.0"
