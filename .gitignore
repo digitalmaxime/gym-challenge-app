@@ -1,5 +1,6 @@
 node_modules/
 dist/
+IPA_builds/
 npm-debug.*
 *.jks
 *.p8

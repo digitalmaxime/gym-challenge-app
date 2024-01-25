@@ -48,7 +48,7 @@ to build an aab for Play Store bundle version
 ## Build IAP
 
 To build for iap, make sure you are on macOS.
-run `eas build -p ios --profile production`
+run `eas build -platform ios --profile production`
 to build and iap signed for App Store
 \*\* make sure `buildNumber` is incremented in app.json
 
