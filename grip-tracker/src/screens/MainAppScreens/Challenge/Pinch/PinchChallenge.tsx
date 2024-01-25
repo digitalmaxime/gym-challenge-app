@@ -1,12 +1,14 @@
 import * as React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import NumericInput from 'react-native-numeric-input';
 import { NavigationProp, RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import CheckBtnComponent from '../../../../components/basics/CheckBtnComponent';
 import * as Controller from '../../../../api/controller';
 import { GripModel } from '../../../../models/grip/GripModel';
 import { useUserContext } from '../../../../contexts/UserContext';
 import Colors from '../../../../constants/styles';
+import NumericInput from 'react-native-numeric-input'
+import NumericInputWeight from '../../../../components/basics/NumericInputWeight';
+import NumericInputDuration from '../../../../components/basics/NumericInputDuration';
 
 type ParamList = {
   pinch: GripModel;
@@ -36,29 +38,12 @@ export function PinchChallenge() {
       >{subGripType} {gripType} challenge
       </Text>
 
-      <Text style={{ color: Colors.textColor, fontSize: 26 }}>Weight</Text>
-      <NumericInput
-        value={weightInKilos}
-        totalWidth={240}
-        totalHeight={50}
-        iconSize={25}
-        textColor="#B0228C"
-        onChange={value => setWeightInKilos(value)}
-        rightButtonBackgroundColor="#EA3788"
-        leftButtonBackgroundColor="#E56B70"
+      <NumericInputDuration
+        onChange={setDurationInSeconds}
       />
 
-      <Text style={{ color: Colors.textColor, fontSize: 26 }}>Seconds</Text>
-
-      <NumericInput
-        value={durationInSeconds}
-        totalWidth={240}
-        totalHeight={50}
-        iconSize={25}
-        textColor="#B0228C"
-        onChange={value => setDurationInSeconds(value)}
-        rightButtonBackgroundColor="#EA3788"
-        leftButtonBackgroundColor="#E56B70"
+      <NumericInputWeight 
+        onChange={setWeightInKilos}
       />
 
       <CheckBtnComponent
