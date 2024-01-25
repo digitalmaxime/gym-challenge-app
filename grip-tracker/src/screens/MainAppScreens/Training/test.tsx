@@ -4,6 +4,7 @@ import { View, Text } from 'react-native';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { ButtonText } from '../../../components/basics/Buttons';
 import Colors from '../../../constants/styles';
+import { MODE } from '@env';
 
 type RootStackParamList = Record<string, Record<string, never>>;
 
@@ -12,7 +13,7 @@ export function Test() {
 
   return (
     <View>
-      <Text>Test</Text>
+      <Text>{MODE}</Text>
       <ButtonText
         onPress={async () => {
           try {
@@ -24,7 +25,7 @@ export function Test() {
           }
           console.log(':)');
         }}
-        textContent="test"
+        textContent={MODE}
         btnHeight={60}
         btnWidth={300}
         padding={8}

@@ -6,7 +6,7 @@ import {
   MESSAGING_SENDER_ID,
   PROJECT_ID,
   STORAGE_BUCKET,
-  MODE,
+  MODE
 } from '@env';
 import { initializeApp } from 'firebase/app';
 import { getAuth, connectAuthEmulator } from 'firebase/auth';

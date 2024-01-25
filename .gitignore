@@ -18,3 +18,5 @@ yarn.lock
 grip-tracker-mobile/.env.development
 
 grip-tracker-mobile/.env.production
+
+grip-tracker/.env

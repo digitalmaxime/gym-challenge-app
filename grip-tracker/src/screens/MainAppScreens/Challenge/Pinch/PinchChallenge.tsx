@@ -38,7 +38,6 @@ export function PinchChallenge() {
 
       <Text style={{ color: Colors.textColor, fontSize: 26 }}>Weight</Text>
       <NumericInput
-        type="up-down"
         value={weightInKilos}
         totalWidth={240}
         totalHeight={50}
@@ -52,7 +51,6 @@ export function PinchChallenge() {
       <Text style={{ color: Colors.textColor, fontSize: 26 }}>Seconds</Text>
 
       <NumericInput
-        type="up-down"
         value={durationInSeconds}
         totalWidth={240}
         totalHeight={50}
