@@ -9,6 +9,7 @@ import Colors from '../../../../constants/styles';
 import NumericInput from 'react-native-numeric-input'
 import NumericInputWeight from '../../../../components/basics/NumericInputWeight';
 import NumericInputDuration from '../../../../components/basics/NumericInputDuration';
+import Icon from 'react-native-ionicons';
 
 type ParamList = {
   pinch: GripModel;
@@ -37,7 +38,6 @@ export function PinchChallenge() {
       }}
       >{subGripType} {gripType} challenge
       </Text>
-
       <NumericInputDuration
         onChange={setDurationInSeconds}
       />
@@ -78,7 +78,6 @@ const styles = StyleSheet.create({
     padding: 30,
     flexDirection: 'column',
     alignItems: 'center',
-    backgroundColor: Colors.lessonBackgroundColor,
   },
   pinch_container: {
     margin: 30,
@@ -95,7 +94,6 @@ const styles = StyleSheet.create({
     padding: 15,
     margin: 15,
     flexDirection: 'row',
-    color: Colors.textLessonColor,
     borderColor: 'red',
     borderWidth: 2,
     width: '100%',

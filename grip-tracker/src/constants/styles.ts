@@ -29,32 +29,12 @@ const Colors = {
   btnImgBorderWidth: 0,
   btnCheckBorderColor: 'rgba(100, 213, 200, 0.5)',
 
-  // Background colors
-  coursesOverviewBackgroundColor: 'rgba(0, 0, 0, 0.8)',
-  coursesBackgroundColor: '#3d4758',
-  coursesBackgroundColorAlt: '#545861',
-  searchBackgroundColor: '#E2E8F0',
-  lessonBackgroundColor: '#eef5ff',
-  lessonBackgroundColorAlt: '#A3AFBF',
-  loadingBackgroundColour: 'rgba(0,0,0,0.7)',
-
-  // Card
-  cardBackgroundColor: '#4A5568',
-
   // Linear progress
   progressBackgroundColour: 'rgba(123, 255, 240, 0.859)',
   trackBackgroundColour: '#1A202C',
 
-  // Section
-  sectionTitleBackgroundColor: '#ccc',
-  sectionContainerBackgroundColor: '#A0AEC0',
-  sectionIconColor3: '#08dbbbff',
-  sectionIconColor: '#fbd13bff',
-  sectionTitleColor: '#957b1fff',
-
-  // Unit
-  unitTitleBackgroundColor: '#cfc',
-  unitBackground: '#bbbbfb',
+  // headerStyle top navigation
+  headerStyleBackgroundColor: 'rgba(93, 138, 134, 0.329)',
 
   // Text
   textColor: '#353e47',

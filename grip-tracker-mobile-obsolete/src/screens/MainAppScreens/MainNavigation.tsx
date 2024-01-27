@@ -23,6 +23,7 @@ export default function MainNavigation() {
         initialRouteName="login"
         activeColor={Colors.activeIcon}
         barStyle={styles.barStyle}
+        
       >
         <Tab.Screen
           name="Train"

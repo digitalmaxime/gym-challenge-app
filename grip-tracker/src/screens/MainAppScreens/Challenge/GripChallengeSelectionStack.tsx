@@ -6,6 +6,7 @@ import PinchSelectionStack from './Pinch/PinchSelectionStack';
 import ChallengeResultSummary from './ChallengeResultSummary';
 import DeadhangSelectionStack from './DeadHang/DeadhangSelectionStack';
 import CrimpSelectionStack from './Crimp/CrimpSelectionStack';
+import Colors from '../../../constants/styles';
 
 function GripChallengeSelectionStack() {
   const Stack = createNativeStackNavigator();
@@ -15,7 +16,7 @@ function GripChallengeSelectionStack() {
       initialRouteName="Home"
       screenOptions={{
         headerTintColor: 'white',
-        headerStyle: { backgroundColor: 'tomato' },
+        headerStyle: { backgroundColor: Colors.headerStyleBackgroundColor },
       }}
     >
       <Stack.Screen
