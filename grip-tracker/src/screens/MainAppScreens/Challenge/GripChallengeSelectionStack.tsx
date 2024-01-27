@@ -1,13 +1,13 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import GripSelectionScreen from './GripSelectionScreen';
+import GripChallengeSelectionScreen from './GripChallengeSelectionScreen';
 import PinchSelectionStack from './Pinch/PinchSelectionStack';
 import ChallengeResultSummary from './ChallengeResultSummary';
 import DeadhangSelectionStack from './DeadHang/DeadhangSelectionStack';
 import CrimpSelectionStack from './Crimp/CrimpSelectionStack';
 
-function GripSelectionStack() {
+function GripChallengeSelectionStack() {
   const Stack = createNativeStackNavigator();
 
   return (
@@ -20,7 +20,7 @@ function GripSelectionStack() {
     >
       <Stack.Screen
         name="GripSelectionScreen"
-        component={GripSelectionScreen}
+        component={GripChallengeSelectionScreen}
         options={{ title: 'My GripSelectionScreen' }}
       />
       <Stack.Screen
@@ -47,4 +47,4 @@ function GripSelectionStack() {
   );
 }
 
-export default GripSelectionStack;
+export default GripChallengeSelectionStack;

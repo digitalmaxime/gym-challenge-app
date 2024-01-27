@@ -1,15 +1,12 @@
 import * as React from "react";
 import {
   View,
-  Text,
   Image,
   StyleSheet,
-  Platform,
   FlatList,
 } from "react-native";
 import { NavigationProp, useNavigation } from "@react-navigation/native";
 import { ButtonText } from "../../../components/basics/Buttons";
-import Colors from "../../../constants/styles";
 import { GripTypeEnum } from "../../../models/grip/GripTypeEnum";
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface PinchScreenProps {}
@@ -25,7 +22,7 @@ class GripTypeModel {
   name: string;
 }
 
-export function GripSelectionScreen(props: PinchScreenProps) {
+export function GripChallengeSelectionScreen(props: PinchScreenProps) {
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
   const allGripTypes = Object.keys(GripTypeEnum).map(
     (x, index) => new GripTypeModel(x, index)
@@ -35,26 +32,13 @@ export function GripSelectionScreen(props: PinchScreenProps) {
     const gripType = itemData.item as GripTypeModel;
     return (
       <View style={styles.practiceButton}>
-        <View
-          style={{
-            width: "100%",
-            justifyContent: "center",
-            alignItems: "center",
-            margin: 0,
-          }}
-        >
           <ButtonText
-            onPress={() => {
-              navigation.navigate(`${gripType.name}SelectionStack`, {});
-            }}
-            textContent={gripType.name}
-            btnImgBackgroundColor={Colors.bottomNavBarColor}
-            btnHeight={undefined}
-            btnWidth={150}
-            padding={14}
-            disabled={false}
+          onPress={() => {
+            navigation.navigate(`${gripType.name}SelectionStack`, {});
+          } }
+          textContent={gripType.name}
+          disabled={false}    
           />
-        </View>
       </View>
     );
   };
@@ -69,46 +53,39 @@ export function GripSelectionScreen(props: PinchScreenProps) {
       </View>
 
       {/* grip types */}
-      <View style={styles.flatlistContainer}>
+      <View style={styles.flatListContainer}>
         <FlatList
           data={allGripTypes}
           keyExtractor={(item) => item.id.toString()}
           numColumns={1}
           bounces={false}
           renderItem={renderGripTypes}
+          showsVerticalScrollIndicator={true}
         />
       </View>
     </View>
   );
 }
 
-export default GripSelectionScreen;
+export default GripChallengeSelectionScreen;
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: "column",
     alignItems: "center",
-    backgroundColor: "blue", //Colors.coursesBackgroundColor,
+    // backgroundColor: "blue",
   },
   header: {
     width: "100%",
     justifyContent: "center",
     alignItems: "center",
-    padding: 20
+    padding: 10,
   },
-  sectionTitle: {
-    position: "absolute",
-    width: 300,
-    top: 175,
-    fontSize: 20,
-    color: "rgba(0,0,0,0.7)",
-    fontFamily: Platform.OS === "android" ? "Roboto" : "Papyrus",
-    textAlign: "center",
-  },
-  flatlistContainer: {
-    width: '90%',
-    backgroundColor: 'green'
+  flatListContainer: {
+    justifyContent: "center",
+    alignItems: "center",
+    // backgroundColor: 'green'
   },
   bannerImage: {
     width: 100,
@@ -117,13 +94,7 @@ const styles = StyleSheet.create({
     margin: 0,
   },
   practiceButton: {
-    margin: 30,
-    width: "80%",
+    margin: 10,
     height: 100,
-    borderWidth: 4,
-    borderColor: "pink", // Colors.bottomBorderSeparator,
-    borderRadius: 10,
-    justifyContent: "center",
-    alignItems: "center",
   },
 });

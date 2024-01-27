@@ -177,7 +177,7 @@ function SignUp() {
       <View style={styles.buttonsContainer}>
         <ButtonText
           onPress={handleSubmit(onSubmit)}
-          textContent="créer le compte"
+          textContent="create account"
           btnHeight={60}
           btnWidth={300}
           padding={8}
@@ -190,7 +190,7 @@ function SignUp() {
             reset({ email: 'courriel', password: 'mot de passe' });
             navigation.navigate('Login', {});
           }}
-          textContent="page de connexion"
+          textContent="back to login"
           btnHeight={60}
           btnWidth={300}
           padding={8}

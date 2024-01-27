@@ -7,6 +7,8 @@ import * as Controller from '../../../../api/controller';
 import NumericInput from 'react-native-numeric-input';
 import CheckBtnComponent from '../../../../components/basics/CheckBtnComponent';
 import Colors from '../../../../constants/styles';
+import NumericInputDuration from '../../../../components/basics/NumericInputDuration';
+import NumericInputWeight from '../../../../components/basics/NumericInputWeight';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface DeadhangChallengeProps {}
@@ -38,34 +40,14 @@ const DeadhangChallenge = () => {
       }}
       >{subGripType} {gripType} challenge
       </Text>
-
-      <Text style={{ color: Colors.textColor, fontSize: 26 }}>Weight</Text>
-      <NumericInput
-        type="up-down"
-        value={weightInKilos}
-        totalWidth={240}
-        totalHeight={50}
-        iconSize={25}
-        textColor="#B0228C"
-        onChange={value => setWeightInKilos(value)}
-        rightButtonBackgroundColor="#EA3788"
-        leftButtonBackgroundColor="#E56B70"
+      
+      <NumericInputDuration
+        onChange={setDurationInSeconds}
       />
 
-      <Text style={{ color: Colors.textColor, fontSize: 26 }}>Seconds</Text>
-
-      <NumericInput
-        type="up-down"
-        value={durationInSeconds}
-        totalWidth={240}
-        totalHeight={50}
-        iconSize={25}
-        textColor="#B0228C"
-        onChange={value => setDurationInSeconds(value)}
-        rightButtonBackgroundColor="#EA3788"
-        leftButtonBackgroundColor="#E56B70"
+      <NumericInputWeight 
+        onChange={setWeightInKilos}
       />
-
       <CheckBtnComponent
         handleCheckPress={() => true}
         saveData={() => {

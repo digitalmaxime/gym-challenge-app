@@ -4,10 +4,10 @@
     "slug": "grip-tracker",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/Nikita-icon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/anoint-jutras.jpg",
+      "image": "./assets/antoine-jutras.jpg",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },

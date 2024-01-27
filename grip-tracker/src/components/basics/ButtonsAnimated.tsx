@@ -133,7 +133,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     alignItem: 'center',
     justifyContent: 'center',
-    backgroundColor: Colors.btnTextBackgroundColor,
+    backgroundColor: Colors.btnBackgroundColor,
     borderColor: Colors.btnImgBorderColor,
     padding: 10,
     overflow: 'hidden',

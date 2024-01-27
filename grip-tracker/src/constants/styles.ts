@@ -25,10 +25,8 @@ const Colors = {
   lockIconColor: '#2f4468af',
 
   // Buttons
-  btnTextBackgroundColor: '#718096',
-  btnImgBorderColor: 'pink',
+  btnBackgroundColor: '#718096',
   btnImgBorderWidth: 0,
-  btnUnitBackgroundColor: '#4A5568',
   btnCheckBorderColor: 'rgba(100, 213, 200, 0.5)',
 
   // Background colors
@@ -59,9 +57,9 @@ const Colors = {
   unitBackground: '#bbbbfb',
 
   // Text
-  textColor: '#92b5d8',
-  textLessonColor: '#2D3750',
+  textColor: '#353e47',
   darkTextColor: '#1A202C',
+  textBackGroundColor: '#ccc',
 };
 
 export default Colors;

@@ -11,7 +11,7 @@ import ProfileScreen from './Profile/ProfileScreen';
 // Styles
 import Colors from '../../constants/styles';
 import { Test } from './Training/test';
-import GripSelectionStack from './Challenge/GripSelectionStack';
+import GripChallengeSelectionStack from './Challenge/GripChallengeSelectionStack';
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -19,7 +19,7 @@ export default function MainNavigation() {
   return (
     <NavigationContainer>
       <Tab.Navigator
-        initialRouteName="login"
+        initialRouteName="Train"
         activeColor={Colors.activeIcon}
         barStyle={styles.barStyle}
       >
@@ -28,6 +28,7 @@ export default function MainNavigation() {
           component={Test}
           options={{
             tabBarLabel: 'Train',
+            
             tabBarIcon: ({ color }) => (
               <MaterialCommunityIcons name="home" color={color} size={26} />
             ),
@@ -35,7 +36,7 @@ export default function MainNavigation() {
         />
         <Tab.Screen
           name="Challenge"
-          component={GripSelectionStack}
+          component={GripChallengeSelectionStack}
           options={{
             tabBarLabel: 'Challenge',
             tabBarIcon: ({ color }) => (
@@ -62,8 +63,7 @@ const styles = StyleSheet.create({
   container: { flex: 1 },
   barStyle: {
     backgroundColor: Colors.bottomNavBarColor,
-    height: 60,
-    borderTopWidth: 2,
-    borderColor: Colors.bottomBorderSeparator,
+    height: 80,
+    padding: 5,
   },
 });

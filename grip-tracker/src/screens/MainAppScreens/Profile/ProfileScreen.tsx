@@ -47,7 +47,7 @@ function ProfileScreen() {
           textContent="effacer la cache"
           btnHeight={50}
           btnWidth={200}
-          btnImgBackgroundColor={Colors.btnTextBackgroundColor}
+          btnImgBackgroundColor={Colors.btnBackgroundColor}
           disabled={false}
           padding={8}
         />
@@ -60,7 +60,7 @@ function ProfileScreen() {
           textContent="se déconnecter"
           btnHeight={50}
           btnWidth={200}
-          btnImgBackgroundColor={Colors.btnTextBackgroundColor}
+          btnImgBackgroundColor={Colors.btnBackgroundColor}
           disabled={false}
           padding={8}
         />
