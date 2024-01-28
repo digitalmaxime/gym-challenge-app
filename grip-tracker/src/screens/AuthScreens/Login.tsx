@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import { Text, View, StyleSheet, TextInput, Image } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import { useForm, Controller } from "react-hook-form";
+import {
+  useForm,
+  Controller,
+  FieldValues,
+} from "react-hook-form";
 import Constants from "expo-constants";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { useToast } from "react-native-toast-notifications";
@@ -10,10 +14,6 @@ import { handleLogin } from "../../utils/auth";
 import { auth } from "../../utils/firebase";
 import { ButtonText } from "../../components/basics/Buttons";
 import Colors from "../../constants/styles";
-type FormData = {
-  email: string;
-  password: string;
-};
 
 type RootStackParamList = Record<string, Record<string, never>>;
 
@@ -21,12 +21,11 @@ function Login() {
   const toast = useToast();
   const userContext = useUserContext();
 
-  // TODO: placeholder when empty
-  // TODO: add proper error msg on failure
+  // TODO: add proper error msg on failure 
+  // TODO: min length etc : https://react-hook-form.com/ts#UseControllerProps
   // TODO: forgot password?
 
-  const [isAuthenticationInProgress, setIsAuthenticationInProgress] =
-    useState(false);
+  const [isAuthenticationInProgress, setIsAuthenticationInProgress] = useState(false);
   const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
 
   const {
@@ -34,15 +33,16 @@ function Login() {
     control,
     reset,
     formState: { errors },
-  } = useForm<FormData>({
+  } = useForm<FieldValues>({
     defaultValues: {
       email: "",
       password: "",
     },
   });
 
-  const onLogin = async (data: FormData) => {
+  const onLogin = async (data: FieldValues) => {
     // navigation.navigate('MainNavigation', {});
+
     /** * For loading overlay purposes ** */
     setIsAuthenticationInProgress(true);
     try {
@@ -53,7 +53,7 @@ function Login() {
         // navigation.navigate('MainNavigation', {});
       } else if (auth.currentUser?.email && !auth.currentUser?.emailVerified) {
         toast.show(
-          "L'authentification a échoué..\nVeillez valider votre courriel",
+          "Authentication failed..\nVerify your email",
           {
             type: "warning",
             placement: "top",
@@ -70,7 +70,7 @@ function Login() {
       auth.signOut();
       const message = error instanceof Error ? error.message : String(error);
       console.error({ message });
-      toast.show("L'authentification a échoué..", {
+      toast.show("Authentication failed..", {
         type: "danger",
         placement: "top",
         duration: 8000,
@@ -87,53 +87,55 @@ function Login() {
 
   return (
     <View style={styles.container}>
-      {/*** Header ***/}
+
+      {/********* Header *********/}
       <View style={styles.header}>
         <Image
-          style={styles.bannerImage}
+          style={styles.logo}
           source={require("../../../assets/Nikita-icon.png")}
         />
       </View>
 
-      <View>
-        {/** ******* EMAIL ********* */}
-        <Text style={styles.label}>courriel</Text>
+      <View style={styles.InputFields}>
+        {/********* EMAIL *********/}
         <Controller
+          name="email"
           control={control}
+          rules={{
+            required: true,
+          }}
           render={({ field: { onChange, onBlur, value } }) => (
             <TextInput
-              style={styles.input}
-              onBlur={onBlur}
-              onChangeText={(textValue) => onChange(textValue)}
-              value={value}
+            placeholder="email"
+            onBlur={onBlur}
+            onChangeText={onChange}
+            value={value}
+            style={styles.input}
             />
           )}
-          name="email"
-          rules={{ required: true }}
         />
-        {errors.email && <Text style={styles.errorText}>Courriel requis</Text>}
+        {errors.email && <Text style={styles.errorText}>email is required.</Text>}
 
         {/** ******* PASSWORD ********* */}
-        <Text style={styles.label}>mot de passe</Text>
         <Controller
+          name="password"
           control={control}
+          rules={{ required: true }}
           render={({ field: { onChange, onBlur, value } }) => (
             <TextInput
-              style={styles.input}
-              onBlur={onBlur}
-              onChangeText={(textValue) => onChange(textValue)}
-              value={value}
-              secureTextEntry
+            placeholder="password"
+            onBlur={onBlur}
+            onChangeText={onChange}
+            value={value}
+            secureTextEntry
+            style={styles.input}
             />
           )}
-          name="password"
-          rules={{ required: true }}
         />
         {errors.password && (
-          <Text style={styles.errorText}>Mot de passe requis</Text>
+          <Text style={styles.errorText}>password is required</Text>
         )}
       </View>
-
 
       <View style={styles.buttonsContainer}>
         <ButtonText
@@ -183,7 +185,6 @@ const styles = StyleSheet.create({
     justifyContent: "space-evenly",
     paddingTop: Constants.statusBarHeight,
     padding: 10,
-    backgroundColor: "#1B365D",
   },
   header: {
     width: "100%",
@@ -191,29 +192,28 @@ const styles = StyleSheet.create({
     alignItems: "center",
     padding: 10,
   },
-  bannerImage: {
-    borderRadius: 30,
-    overflow: 'hidden',
+  logo: {
+    borderRadius: 20,
+    overflow: "hidden",
     backgroundColor: "yellow",
     width: 100,
     height: 80,
     padding: 0,
     margin: 0,
   },
-  label: {
-    color: "white",
-    margin: 20,
-    marginLeft: 0,
+  InputFields: {
+    flex: 1,
+    justifyContent: "space-evenly",
+    alignItems: "stretch"
   },
   buttonsContainer: {
-    padding: 20,
     margin: 10,
-    justifyContent: "center",
+    flex: 1,
+    justifyContent: "space-evenly",
     alignItems: "center",
   },
   input: {
     backgroundColor: "white",
-    borderColor: "none",
     height: 40,
     padding: 10,
     borderRadius: 4,
