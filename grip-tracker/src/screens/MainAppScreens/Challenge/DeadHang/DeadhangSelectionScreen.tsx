@@ -80,7 +80,6 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: Colors.lessonBackgroundColor,
   },
   backgroundImage: {
     // opacity: 0.1,

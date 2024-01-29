@@ -22,8 +22,8 @@ import { auth } from '../utils/firebase';
 
 function Root() {
   /** * Listen to firebase auth to set isLoggedIn conditional variable ** */
-  const [isLoggedIn, setIsLoggedIn] = useState(auth.currentUser !== null);
   console.log("--> ROOT : after setIsLoggedIn()")
+  const [isLoggedIn, setIsLoggedIn] = useState(auth.currentUser !== null);
 
   useEffect(() => {
     const listener = onIdTokenChanged(auth, async user => {

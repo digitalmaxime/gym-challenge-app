@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Text, View, StyleSheet } from "react-native";
+import { Text } from "react-native";
 import NumericInput from "react-native-numeric-input";
 import Colors from "../../constants/styles";
 
@@ -27,7 +27,3 @@ const NumericInputWeight = ({onChange}: NumericInputWeightProps) => {
 };
 
 export default NumericInputWeight;
-
-const styles = StyleSheet.create({
-  container: {},
-});

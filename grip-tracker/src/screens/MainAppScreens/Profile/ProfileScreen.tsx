@@ -45,9 +45,6 @@ function ProfileScreen() {
             }
           }}
           textContent="effacer la cache"
-          btnHeight={50}
-          btnWidth={200}
-          btnImgBackgroundColor={Colors.btnBackgroundColor}
           disabled={false}
           padding={8}
         />
@@ -58,9 +55,6 @@ function ProfileScreen() {
             console.log('sign out');
           }}
           textContent="se déconnecter"
-          btnHeight={50}
-          btnWidth={200}
-          btnImgBackgroundColor={Colors.btnBackgroundColor}
           disabled={false}
           padding={8}
         />
@@ -69,9 +63,7 @@ function ProfileScreen() {
             setShowWarning(true);
           }}
           textContent="supprimer le compte"
-          btnHeight={50}
-          btnWidth={200}
-          btnImgBackgroundColor={Colors.cancel2}
+          btnBackgroundColor={Colors.cancel2}
           disabled={false}
           padding={8}
         />
@@ -102,7 +94,6 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
     alignItems: 'center',
-    backgroundColor: Colors.coursesBackgroundColor,
   },
   title: {
     fontSize: 32,

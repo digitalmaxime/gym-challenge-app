@@ -1,6 +1,5 @@
 import React, {  } from 'react';
 
-
 import { SafeAreaView, StatusBar } from 'react-native';
 import { ToastProvider } from 'react-native-toast-notifications';
 import Colors from './src/constants/styles';

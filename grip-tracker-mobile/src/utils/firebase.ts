@@ -47,7 +47,7 @@ export type FunctionsErrorCode =
     | 'unauthenticated';
 
 
-  console.log("ENV ))))>>>>>")
+console.log("ENV ))))>>>>>")
 console.log(MODE)
 if (MODE === 'EMULATOR') {
   console.log('°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°');

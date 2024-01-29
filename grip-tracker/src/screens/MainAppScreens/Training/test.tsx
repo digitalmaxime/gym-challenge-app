@@ -26,10 +26,8 @@ export function Test() {
           console.log(':)');
         }}
         textContent={MODE}
-        btnHeight={60}
-        btnWidth={300}
         padding={8}
-        btnImgBackgroundColor={Colors.transparent}
+        btnBackgroundColor={Colors.transparent}
         disabled={false}
       />
     </View>

@@ -12,107 +12,107 @@ interface ButtonImagProps {
   size: number;
 }
 
-export function ButtonImg({ onPress, imageUri, size }: ButtonImagProps) {
-  return (
-    <>
-      {imageUri && (
-        <View style={styles.btnContainer}>
-          <Pressable
-            android_ripple={{ color: "#ccc", borderless: true }}
-            style={({ pressed }) =>
-              pressed
-                ? [styles.btnPressed, styles.btn]
-                : [styles.btn, styles.shadow1]
-            }
-            onPress={onPress}
-          >
-            <View
-              style={[styles.imageContainer, { width: size, height: size }]}
-            >
-              <Image style={styles.image} source={{ uri: imageUri }} />
-            </View>
-          </Pressable>
-        </View>
-      )}
-      {!imageUri && (
-        <View style={styles.btnContainer}>
-          <Pressable
-            android_ripple={{ color: "#ccc", borderless: true }}
-            style={({ pressed }) =>
-              pressed ? [styles.btnPressed, styles.btn] : styles.btn
-            }
-            onPress={onPress}
-          >
-            <View
-              style={[styles.imageContainer, { width: size, height: size }]}
-            >
-              <Image
-                style={[
-                  styles.image,
-                  { backgroundColor: "rgba(250, 222, 100, 0.5)" },
-                ]}
-                source={require("../../../assets/images/blurry4.jpeg")}
-              />
-            </View>
-          </Pressable>
-        </View>
-      )}
-    </>
-  );
-}
+// export function ButtonImg({ onPress, imageUri, size }: ButtonImagProps) {
+//   return (
+//     <>
+//       {imageUri && (
+//         <View style={styles.btnContainer}>
+//           <Pressable
+//             android_ripple={{ color: "#ccc", borderless: true }}
+//             style={({ pressed }) =>
+//               pressed
+//                 ? styles.btnPressed
+//                 : styles.shadow1
+//             }
+//             onPress={onPress}
+//           >
+//             <View
+//               style={[styles.imageContainer, { width: size, height: size }]}
+//             >
+//               <Image style={styles.image} source={{ uri: imageUri }} />
+//             </View>
+//           </Pressable>
+//         </View>
+//       )}
+//       {!imageUri && (
+//         <View style={styles.btnContainer}>
+//           <Pressable
+//             android_ripple={{ color: "#ccc", borderless: true }}
+//             style={({ pressed }) =>
+//               pressed ? [styles.btnPressed, styles.btn] : styles.btn
+//             }
+//             onPress={onPress}
+//           >
+//             <View
+//               style={[styles.imageContainer, { width: size, height: size }]}
+//             >
+//               <Image
+//                 style={[
+//                   styles.image,
+//                   { backgroundColor: "rgba(250, 222, 100, 0.5)" },
+//                 ]}
+//                 source={require("../../../assets/images/blurry4.jpeg")}
+//               />
+//             </View>
+//           </Pressable>
+//         </View>
+//       )}
+//     </>
+//   );
+// }
 
-interface ButtonIconProps {
-  onPress: () => void;
-  iconName: React.ComponentProps<typeof MaterialCommunityIcons>["name"];
-  iconSize: number;
-  btnSize: number;
-  color: string;
-  btnBackgroundColor: string;
-  disabled: boolean;
-}
+// interface ButtonIconProps {
+//   onPress: () => void;
+//   iconName: React.ComponentProps<typeof MaterialCommunityIcons>["name"];
+//   iconSize: number;
+//   btnSize: number;
+//   color: string;
+//   btnBackgroundColor: string;
+//   disabled: boolean;
+// }
 
-export function ButtonIcon({
-  onPress,
-  iconName,
-  iconSize,
-  btnSize,
-  color,
-  btnBackgroundColor,
-  disabled,
-}: ButtonIconProps) {
-  return (
-    <View style={[styles.btnContainer]}>
-      <Pressable
-        disabled={disabled}
-        android_ripple={{ color: "#ccc" }}
-        style={({ pressed }) =>
-          pressed
-            ? [styles.btnPressed, styles.btn]
-            : [styles.btn, styles.shadow2]
-        }
-        onPress={onPress}
-      >
-        <View
-          style={[
-            styles.iconContainer,
-            {
-              width: btnSize,
-              height: btnSize,
-              backgroundColor: btnBackgroundColor,
-            },
-          ]}
-        >
-          <MaterialCommunityIcons
-            style={{ alignSelf: "center" }}
-            name={iconName}
-            size={iconSize}
-            color={color}
-          />
-        </View>
-      </Pressable>
-    </View>
-  );
-}
+// export function ButtonIcon({
+//   onPress,
+//   iconName,
+//   iconSize,
+//   btnSize,
+//   color,
+//   btnBackgroundColor,
+//   disabled,
+// }: ButtonIconProps) {
+//   return (
+//     <View style={[styles.btnContainer]}>
+//       <Pressable
+//         disabled={disabled}
+//         android_ripple={{ color: "#ccc" }}
+//         style={({ pressed }) =>
+//           pressed
+//             ? [styles.btnPressed, styles.btn]
+//             : [styles.btn, styles.shadow2]
+//         }
+//         onPress={onPress}
+//       >
+//         <View
+//           style={[
+//             styles.iconContainer,
+//             {
+//               width: btnSize,
+//               height: btnSize,
+//               backgroundColor: btnBackgroundColor,
+//             },
+//           ]}
+//         >
+//           <MaterialCommunityIcons
+//             style={{ alignSelf: "center" }}
+//             name={iconName}
+//             size={iconSize}
+//             color={color}
+//           />
+//         </View>
+//       </Pressable>
+//     </View>
+//   );
+// }
 
 interface ButtonTextProps {
   onPress: () => void;
@@ -143,13 +143,13 @@ export function ButtonText({
     <Pressable
       disabled={disabled}
       android_ripple={{ color: "#ccc" }}
-      style={({ pressed }) => [
-        pressed
-          ? styles.btnPressed
-          : styles.shadow1,
-        styles.btnContainer,
-        { backgroundColor: btnBackgroundColor, width: width, height: height, margin: margin, padding: padding },
-      ]}
+      // style={({ pressed }) => [
+      //   pressed
+      //     ? styles.btnPressed
+      //     : styles.shadow1,
+      //   styles.btnContainer,
+      //   { backgroundColor: btnBackgroundColor, width: width, height: height, margin: margin, padding: padding },
+      // ]}
       onPress={onPress}
     >
       <Text style={[styles.text, { fontSize: textFontSize, color: textColor }]}>

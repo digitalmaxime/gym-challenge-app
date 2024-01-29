@@ -36,9 +36,7 @@ export default function WarningModal({ message, confirm, cancel }: WarningModalP
                 confirm();
               }}
               textContent="confirmer"
-              btnImgBackgroundColor={Colors.bottomNavBarColor}
-              btnHeight={undefined}
-              btnWidth={150}
+              btnBackgroundColor={Colors.bottomNavBarColor}
               padding={14}
               disabled={false}
             />
@@ -47,9 +45,7 @@ export default function WarningModal({ message, confirm, cancel }: WarningModalP
                 cancel();
               }}
               textContent="annuler"
-              btnImgBackgroundColor={Colors.cancel}
-              btnHeight={undefined}
-              btnWidth={150}
+              btnBackgroundColor={Colors.cancel}
               padding={14}
               disabled={false}
             />

@@ -1,4 +1,4 @@
-module.exports = function(api) {
+export default function(api) {
   api.cache(true);
   return {
     plugins: [
@@ -9,7 +9,8 @@ module.exports = function(api) {
           moduleName: "@env",
           path: ".env"
         }
-      ]
+      ],
+      'react-native-reanimated/plugin',
     ],
     presets: ['babel-preset-expo'],
   };

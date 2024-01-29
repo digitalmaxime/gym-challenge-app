@@ -42,9 +42,9 @@ function ChallengeResultSummary() {
           <ButtonText
             onPress={closeChallenge}
             textContent="Terminer"
-            btnHeight={60}
-            btnWidth={200}
-            btnImgBackgroundColor={Colors.success}
+            height={60}
+            width={200}
+            btnBackgroundColor={Colors.success}
             padding={0}
             disabled={false}
           />
@@ -61,7 +61,6 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
     alignItems: 'center',
-    backgroundColor: Colors.lessonBackgroundColor,
   },
   congratsText: {
     color: Colors.darkTextColor,

@@ -39,9 +39,7 @@ export function CrimpSelectionScreen() {
         onPress={() => console.log("pressed")} 
         
         textContent={crimp.subGripType} 
-        btnHeight={100} 
-        btnWidth={300} 
-        btnImgBackgroundColor={Colors.activeIcon} 
+        btnBackgroundColor={Colors.activeIcon} 
         padding={0} 
         disabled={false}        
         />
