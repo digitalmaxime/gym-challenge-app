@@ -7,8 +7,9 @@ import { useNavigation } from "@react-navigation/native";
 import { useToast } from "react-native-toast-notifications";
 import Colors from "../../constants/styles";
 import { auth } from "../../utils/firebase";
-import { handleSignUp } from "../../utils/auth";
+import { handleSignUp, resendEmailVerification } from "../../utils/authHandler";
 import { ButtonText } from "../../components/basics/btn/Buttons";
+import { User } from "firebase/auth";
 
 // eslint-disable-next-line no-useless-escape
 const EMAIL_REGEX = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
@@ -24,6 +25,7 @@ function SignUp() {
   // TODO: forgot password?
 
   const [isEmailSent, setIsEmailSent] = useState(false);
+  const [potentialUser, setPotentialUser] = useState<User>();
 
   useEffect(() => {
     if (!isEmailSent) return;
@@ -53,7 +55,8 @@ function SignUp() {
 
   const onSubmit = async (data: FieldValues) => {
     try {
-      await handleSignUp(data.email, data.password);
+      let user = await handleSignUp(data.email, data.password);
+      setPotentialUser(user);
       setIsEmailSent(true);
     } catch (error) {
       const message = error instanceof Error ? error.message : String(error);
@@ -163,7 +166,7 @@ function SignUp() {
           }) => (
             <>
               <TextInput
-                placeholder="Confirm password"
+                placeholder="confirm password"
                 onBlur={onBlur}
                 onChangeText={(val) => onChange(val)}
                 value={value}
@@ -193,16 +196,17 @@ function SignUp() {
 
         <ButtonText
           onPress={() => {
-            reset({ email: "courriel", password: "mot de passe" });
+            reset();
             navigation.navigate("Login", {});
           }}
           textContent="back to login"
           height={60}
           width={300}
           padding={8}
-          btnBackgroundColor={Colors.transparent}
+          btnBackgroundColor={Colors.btnBackgroundColor}
           disabled={false}
         />
+
         <ButtonText
           onPress={() => {
             reset({
@@ -210,6 +214,7 @@ function SignUp() {
               password: "12345678",
               confirmedPassword: "12345678",
             });
+
           }}
           textContent="reset ** DEV ONLY **"
           height={60}

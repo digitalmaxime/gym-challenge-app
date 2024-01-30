@@ -10,7 +10,7 @@ import Constants from "expo-constants";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { useToast } from "react-native-toast-notifications";
 import { useUserContext } from "../../contexts/UserContext";
-import { handleLogin } from "../../utils/auth";
+import { handleLogin } from "../../utils/authHandler";
 import { auth } from "../../utils/firebase";
 import { ButtonText } from "../../components/basics/btn/Buttons";
 import Colors from "../../constants/styles";

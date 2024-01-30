@@ -3,10 +3,10 @@ import { Text, View, StyleSheet } from 'react-native';
 import { useToast } from 'react-native-toast-notifications';
 import Colors from '../../../constants/styles'
 import { useUserContext } from '../../../contexts/UserContext';
-import * as Controller from '../../../api/controller';
 import { auth } from '../../../utils/firebase';
 import { ButtonText } from '../../../components/basics/btn/Buttons';
 import WarningModal from '../../../components/basics/warnings/WarningModal';
+import { handlerCurrentDeleteUser } from '../../../utils/authHandler';
 
 function ProfileScreen() {
   const userContext = useUserContext();
@@ -52,7 +52,6 @@ function ProfileScreen() {
           onPress={async () => {
             await auth.signOut();
             userContext.reset();
-            console.log('sign out');
           }}
           textContent="logout"
           disabled={false}
@@ -65,22 +64,23 @@ function ProfileScreen() {
           textContent="delete account"
           btnBackgroundColor={Colors.cancel}
           disabled={false}
-          padding={8}
+          padding={8} 
         />
       </View>
+
       {showWarning && (
       <WarningModal
         message="Do you really want to delete your account?"
         confirm={async () => {
-          Controller.deleteUser(1);
-          await auth.signOut();
           setShowWarning(!showWarning);
+          await handlerCurrentDeleteUser();
         }}
         cancel={() => {
           setShowWarning(!showWarning);
         }}
       />
       )}
+
     </View>
 
   );

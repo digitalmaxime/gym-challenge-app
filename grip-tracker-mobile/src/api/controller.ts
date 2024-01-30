@@ -53,11 +53,6 @@ async function getUserById(
   return callGetUserById({ userId });
 }
 
-function deleteUser(userId: any) {
-  const callDeleteUser = httpsCallable(firebaseFunctions, 'deleteUser');
-  callDeleteUser({ userId });
-}
-
 export {
   createChallenge,
   saveChallengeResult,
@@ -65,5 +60,4 @@ export {
   getFilteredGrips,
 
   getUserById,
-  deleteUser,
 };

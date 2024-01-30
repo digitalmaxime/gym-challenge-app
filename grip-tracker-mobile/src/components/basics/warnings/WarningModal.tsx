@@ -1,44 +1,44 @@
 /* eslint-disable max-len */
-import React from 'react';
-import {
-  View,
-  Modal,
-  Text,
-  StyleSheet,
-} from 'react-native';
-import { ButtonText } from '../btn/Buttons';
-import Colors from '../../../constants/styles';
-
+import React from "react";
+import { View, Modal, Text, StyleSheet } from "react-native";
+import { ButtonText } from "../btn/Buttons";
+import Colors from "../../../constants/styles";
 
 type WarningModalProps = {
-    message: string;
-    confirm: () => void;
-    cancel: () => void;
-}
-export default function WarningModal({ message, confirm, cancel }: WarningModalProps) {
+  message: string;
+  confirm: () => void;
+  cancel: () => void;
+};
+export default function WarningModal({
+  message,
+  confirm,
+  cancel,
+}: WarningModalProps) {
   return (
-    <Modal
-      transparent
-      animationType="fade"
-    >
+    <Modal transparent animationType="fade">
       <View style={styles.warningContainer}>
         <View style={styles.warningContent}>
-          <Text style={{
-            fontSize: 18, marginBottom: 8, textAlign: 'center',
-          }}
+          <Text
+            style={{
+              fontSize: 20,
+              marginBottom: 8,
+              textAlign: "center",
+              color: "white",
+            }}
           >
             {message}
           </Text>
 
-          <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
+          <View style={{ flexDirection: "row", justifyContent: "center" }}>
             <ButtonText
               onPress={() => {
                 confirm();
               }}
               textContent="confirm"
-              btnBackgroundColor={Colors.bottomNavBarColor}
-              padding={14}
+              btnBackgroundColor={Colors.btnBackgroundColor}
               disabled={false}
+              width={"50%"}
+                textFontSize={22}
             />
             <ButtonText
               onPress={() => {
@@ -46,10 +46,10 @@ export default function WarningModal({ message, confirm, cancel }: WarningModalP
               }}
               textContent="cancel"
               btnBackgroundColor={Colors.cancel}
-              padding={14}
               disabled={false}
+              textFontSize={22}
+              width={"50%"}
             />
-
           </View>
         </View>
       </View>
@@ -58,18 +58,16 @@ export default function WarningModal({ message, confirm, cancel }: WarningModalP
 }
 
 const styles = StyleSheet.create({
-
   warningContainer: {
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     flex: 1,
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    backgroundColor: "rgba(0, 0, 0, 0.8)",
   },
   warningContent: {
-    margin: 40,
-    borderRadius: 20,
-    padding: 35,
-    shadowColor: '#000',
+    justifyContent: "center",
+    width: '90%',
+    shadowColor: "#000",
     shadowOffset: {
       width: 0,
       height: 2,
