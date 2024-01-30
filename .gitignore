@@ -24,3 +24,9 @@ grip-tracker/.env
 grip-tracker/.env.development
 
 grip-tracker/.env.production
+
+grip-tracker-mobile/ios/griptrackermobile.xcodeproj/
+
+grip-tracker-mobile/ios/griptrackermobile/
+
+grip-tracker-mobile/ios/
