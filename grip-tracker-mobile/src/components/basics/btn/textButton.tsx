@@ -1,15 +1,9 @@
-/* eslint-disable max-len */
 import React from "react";
-import { StyleSheet, Image, Pressable, Text } from "react-native";
+import { StyleSheet, Pressable, Text } from "react-native";
 
 // Styles
 import Colors from "../../../constants/styles";
 
-interface ButtonImagProps {
-  onPress: () => void;
-  imageUri: string | undefined;
-  size: number;
-}
 
 interface ButtonTextProps {
   onPress: () => void;
@@ -80,17 +74,6 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 1, height: 1 },
     shadowOpacity: 0.8,
     shadowRadius: 1,
-  },
-  imageContainer: {
-    textAlign: "center",
-    justifyContent: "center",
-    backgroundColor: Colors.mediumOpacity,
-    borderRadius: 22,
-    overflow: "hidden",
-  },
-  image: {
-    width: "100%",
-    height: "100%",
   },
   text: {
     alignSelf: "center",

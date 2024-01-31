@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 import React from "react";
 import { View, Modal, Text, StyleSheet } from "react-native";
-import { ButtonText } from "../btn/Buttons";
+import { ButtonText } from "../btn/textButton";
 import Colors from "../../../constants/styles";
 
 type WarningModalProps = {

@@ -4,7 +4,7 @@ import { useToast } from 'react-native-toast-notifications';
 import Colors from '../../../constants/styles'
 import { useUserContext } from '../../../contexts/UserContext';
 import { auth } from '../../../utils/firebase';
-import { ButtonText } from '../../../components/basics/btn/Buttons';
+import { ButtonText } from '../../../components/basics/btn/textButton';
 import WarningModal from '../../../components/basics/warnings/WarningModal';
 import { handlerCurrentDeleteUser } from '../../../utils/authHandler';
 
@@ -18,7 +18,7 @@ function ProfileScreen() {
     <View style={styles.container}>
       <Text style={styles.title}>Profile</Text>
       <View style={styles.row}>
-        <Text style={styles.text}>{userContext.userData.email}</Text>
+        <Text style={styles.text}>{userContext.userData?.email || 'userData.email not found..'}</Text>
       </View>
       <View style={styles.bottomBtnContainer}>
         <ButtonText

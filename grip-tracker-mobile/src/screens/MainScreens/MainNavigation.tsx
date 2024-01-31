@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
@@ -9,6 +9,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import Colors from '../../constants/styles';
 import ProfileScreen from './Profile/ProfileScreen';
 import { Test } from './Training/test';
+import GripChallengeSelectionStack from './Challenge/GripChallengeSelectionStack';
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -33,7 +34,7 @@ export default function MainNavigation() {
         />
         <Tab.Screen
           name="Challenge"
-          component={Test}
+          component={GripChallengeSelectionStack}
           options={{
             tabBarLabel: 'Challenge',
             tabBarIcon: ({ color }) => (

@@ -2,7 +2,14 @@ const Colors = {
   cancel: '#8f444f',
   success: '#68D391',
   fail: '#ac2237',
+  mediumOpacity: 'rgba(0, 0, 0, 0.5)',
   transparent: 'rgba(0, 0, 0, 0)',
+
+  // Kilos / Pounds
+  Kilos: '#304263',
+  Pounds: '#305448',
+  KiloTracker: '#7298da',
+  PoundTracker: '#79bea7',
 
   // Navs
   bottomNavBarColor: '#2D3748',

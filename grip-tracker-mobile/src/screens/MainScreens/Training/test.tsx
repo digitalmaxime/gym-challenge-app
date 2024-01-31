@@ -4,7 +4,7 @@ import { View, Text } from 'react-native';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import Colors from '../../../constants/styles';
 import { MODE } from '@env';
-import { ButtonText } from '../../../components/basics/btn/Buttons';
+import { ButtonText } from '../../../components/basics/btn/textButton';
 
 type RootStackParamList = Record<string, Record<string, never>>;
 
