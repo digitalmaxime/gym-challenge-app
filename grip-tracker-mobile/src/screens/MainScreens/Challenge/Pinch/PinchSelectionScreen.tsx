@@ -5,7 +5,6 @@ import * as Controller from "../../../../api/controller";
 import { GripModel } from "../../../../models/grip/GripModel";
 import { ButtonText } from "../../../../components/basics/btn/textButton";
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface PinchSelectionScreenProps {}
 
 type RootStackParamList = {
@@ -74,16 +73,12 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
-    // backgroundColor: 'green',
   },
   btnContainer: {
     justifyContent: "center",
     textAlign: "center",
     alignItems: "center",
     overflow: "hidden",
-    // borderRadius: 5,
-    // borderWidth: 3,
-    // borderColor: "turquoise",
     margin: 15,
   },
 });

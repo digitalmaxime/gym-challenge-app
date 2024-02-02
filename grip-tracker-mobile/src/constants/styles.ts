@@ -6,8 +6,8 @@ const Colors = {
   transparent: 'rgba(0, 0, 0, 0)',
 
   // Kilos / Pounds
-  Kilos: '#304263',
-  Pounds: '#305448',
+  Kilos: '#3a5079',
+  Pounds: '#386154',
   KiloTracker: '#7298da',
   PoundTracker: '#79bea7',
 

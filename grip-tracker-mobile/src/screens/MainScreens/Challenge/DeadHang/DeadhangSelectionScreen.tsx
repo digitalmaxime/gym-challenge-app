@@ -49,7 +49,8 @@ export function DeadhangSelectionScreen() {
             <ImageBackground
               resizeMode="cover"
               style={styles.backgroundImage}
-              source={require(`../../../../../assets/images/${imgName}`)}
+              source={{uri: 'https://firebasestorage.googleapis.com/v0/b/grip-tracker.appspot.com/o/deadhang.png?alt=media&token=0f2f01cf-56bd-4273-b958-7e476d8a0762'}}
+              // source={require(`../../../../../assets/images/${imgName}`)}
             >
               <Text style={styles.title}>{deadhang.subGripType}</Text>
             </ImageBackground>

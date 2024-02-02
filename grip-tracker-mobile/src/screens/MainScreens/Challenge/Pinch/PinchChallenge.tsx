@@ -8,12 +8,15 @@ import { useUserContext } from '../../../../contexts/UserContext';
 import NumericInputWeight from '../../../../components/basics/numericInputs/NumericInputWeight';
 import NumericInputDuration from '../../../../components/basics/numericInputs/NumericInputDuration';
 import { useToast } from 'react-native-toast-notifications';
+import { ChallengeSummaryPathParam } from '../ChallengeResultSummary';
 
-type ParamList = {
+type pathParam = {
   pinch: GripModel;
 };
 
-type RootStackParamList = Record<string, Record<string, never>>;
+type RootStackParamList = {
+  ChallengeResultSummary: ChallengeSummaryPathParam;
+};
 
 export function PinchChallenge() {
   const user = useUserContext();
@@ -22,7 +25,7 @@ export function PinchChallenge() {
   const [durationInSeconds, setDurationInSeconds] = React.useState(0);
   const [weightInKilos, setWeightInKilos] = React.useState(0);
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
-  const route = useRoute<RouteProp<ParamList>>();
+  const route = useRoute<RouteProp<pathParam>>();
 
   const gripId = route.params.id;
   const { gripType } = route.params;
@@ -66,7 +69,11 @@ export function PinchChallenge() {
               );
               navigation.goBack();
               setTimeout(() => {
-                navigation.navigate('ChallengeResultSummary', {});
+                navigation.navigate('ChallengeResultSummary', {
+                  gripType,
+                  subGripType,
+                  weight: weightInKilos,
+                  duration: durationInSeconds});
               }, 400);
             } catch (error) {
             

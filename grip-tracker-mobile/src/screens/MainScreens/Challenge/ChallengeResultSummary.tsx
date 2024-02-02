@@ -3,15 +3,35 @@ import { StyleSheet, View, Text, Image } from "react-native";
 import { ButtonText } from "../../../components/basics/btn/textButton";
 import Colors from "../../../constants/styles";
 import AnimatedIcon from "../../../components/basics/btn/animatedIcon";
-import { NavigationProp, useNavigation } from "@react-navigation/native";
+import { NavigationProp, RouteProp, useNavigation, useRoute } from "@react-navigation/native";
+import { GripModel } from "../../../models/grip/GripModel";
+import { useUserContext } from "../../../contexts/UserContext";
 
 const utTensoSicVis = require("../../../../assets/images/ut-tenso-sic-vis.png");
 
 type RootStackParamList = Record<string, Record<string, never>>;
 
+type pathParam = {
+  param: ChallengeSummaryPathParam
+};
+
+export type ChallengeSummaryPathParam = {
+  gripType: string;
+  subGripType: string;
+  weight: number;
+  duration: number;
+}
+
 function ChallengeResultSummary() {
-  // const userContext = useUserContext();
+  const userContext = useUserContext();
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
+  const route = useRoute<RouteProp<pathParam>>();
+  console.log(route.params)
+  console.log(route.name)
+  const { gripType } = route.params;
+  const { subGripType } = route.params;
+  const { weight } = route.params;
+  const { duration } = route.params;
 
   function closeChallenge() {
     navigation.goBack();
@@ -19,9 +39,10 @@ function ChallengeResultSummary() {
 
   return (
     <View style={styles.mainContainer}>
-      <Text style={styles.congratsText}>Bravo!</Text>
+      <Text style={styles.congratsText}>Bravo {userContext.userData?.userName || userContext.userData?.email}!</Text>
 
-      <Text style={styles.congratsText}>You did it!</Text>
+      <Text style={styles.congratsText}>Weight : {weight} kilos</Text>
+      <Text style={styles.congratsText}>Duration : {duration} seconds</Text>
 
       <View style={styles.animationContainer}>
         <View style={styles.trophyContainer}>
@@ -59,11 +80,11 @@ const styles = StyleSheet.create({
   },
   congratsText: {
     color: Colors.darkTextColor,
-    fontSize: 18,
-    margin: 30,
+    fontSize: 22,
+    margin: 10,
   },
   animationContainer: {
-    margin: 10,
+    margin: 30,
     flexDirection: "row",
     justifyContent: "center",
   },

@@ -1,15 +1,14 @@
-import React from 'react';
-import { StyleSheet } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
-
+import React from "react";
+import { StyleSheet } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 // Styles
-import Colors from '../../constants/styles';
-import ProfileScreen from './Profile/ProfileScreen';
-import { Test } from './Training/test';
-import GripChallengeSelectionStack from './Challenge/GripChallengeSelectionStack';
+import Colors from "../../constants/styles";
+import ProfileScreen from "./Profile/ProfileScreen";
+import { Test } from "./Training/test";
+import GripChallengeSelectionStack from "./Challenge/GripChallengeSelectionStack";
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -25,8 +24,7 @@ export default function MainNavigation() {
           name="Train"
           component={Test}
           options={{
-            tabBarLabel: 'Train',
-            
+            tabBarLabel: "Train",
             tabBarIcon: ({ color }) => (
               <MaterialCommunityIcons name="home" color={color} size={26} />
             ),
@@ -36,7 +34,7 @@ export default function MainNavigation() {
           name="Challenge"
           component={GripChallengeSelectionStack}
           options={{
-            tabBarLabel: 'Challenge',
+            tabBarLabel: "Challenge",
             tabBarIcon: ({ color }) => (
               <MaterialCommunityIcons name="arm-flex" color={color} size={26} />
             ),
@@ -46,7 +44,7 @@ export default function MainNavigation() {
           name="ProfileScreen"
           component={ProfileScreen}
           options={{
-            tabBarLabel: 'Profil',
+            tabBarLabel: "Profile",
             tabBarIcon: ({ color }) => (
               <MaterialCommunityIcons name="account" color={color} size={26} />
             ),
