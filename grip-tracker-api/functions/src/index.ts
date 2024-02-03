@@ -3,19 +3,34 @@
 // The Firebase Admin SDK to access Firestore.
 import { initializeApp } from "firebase-admin/app";
 import * as firebaseAdmin from "firebase-admin";
-import { GripModel } from "./models/grip/GripModel";
-import { GripTypeEnum } from "./models/grip/GripTypeEnum";
-import { SubGripTypeEnum } from "./models/grip/SubGripTypeEnum";
+import {
+  deadhangBodyWeightGripData,
+  deadhangFourPlateGripData,
+  deadhangOnePlateGripData,
+  deadhangThreePlateGripData,
+  deadhangTwoPlateGripData,
+  wideDeepPinchGripData,
+  wideShallowPinchGripData,
+} from "./data/grip/gripData";
+import {
+  deadhangBodyWeightChallenge,
+  deadhangFourPlateChallenge,
+  deadhangOnePlateChallenge,
+  deadhangThreePlateChallenge,
+  deadhangTwoPlateChallenge,
+  pinchWideDeepTenSecondsChallenge,
+  pinchWideShallowTenSecondsChallenge,
+} from "./data/challenge/challengeData";
 
 initializeApp();
 
 /*** Mock Data ***/
-export { default as setGripData } from "./data/grip/setGripData";
 export { default as setMockUserData } from "./data/mock/setMockUser";
 
 /*** Challenges ***/
-export { default as setChallengeData } from "./data/challenge/setChallengeData";
 export { default as saveChallengeProgress } from "./challenge/saveChallengeResult";
+export { default as getAllChallenges } from "./challenge/getAllChallenges";
+export { default as getFilteredChallenges } from "./challenge/getFilteredChallenges";
 
 /*** Grips ***/
 export { default as getAllGrips } from "./grip/getAllGrips";
@@ -30,40 +45,30 @@ export { default as deleteUserOnFirestore } from "./users/deleteUserOnFirestore"
 
 const db = firebaseAdmin.firestore();
 
-const wideShallowPinchData: GripModel = {
-  id: GripTypeEnum.Pinch + "_" + SubGripTypeEnum.wideShallow,
-  gripType: GripTypeEnum.Pinch,
-  subGripType: SubGripTypeEnum.wideShallow,
-};
+const gripData = [
+  wideShallowPinchGripData,
+  wideDeepPinchGripData,
+  deadhangBodyWeightGripData,
+  deadhangOnePlateGripData,
+  deadhangTwoPlateGripData,
+  deadhangThreePlateGripData,
+  deadhangFourPlateGripData,
+];
 
-const wideDeepPinchData: GripModel = {
-  id: GripTypeEnum.Pinch + "_" + SubGripTypeEnum.wideDeep,
-  gripType: GripTypeEnum.Pinch,
-  subGripType: SubGripTypeEnum.wideDeep,
-};
+for (const data of gripData) {
+  db.collection("Grips").doc(data.id).set(data);
+}
 
-const CrimpData1: GripModel = {
-  id: GripTypeEnum.Crimp + "_" + SubGripTypeEnum.sixMillimeter,
-  gripType: GripTypeEnum.Crimp,
-  subGripType: SubGripTypeEnum.sixMillimeter,
-};
+const challengeData = [
+  deadhangBodyWeightChallenge,
+  deadhangOnePlateChallenge,
+  deadhangTwoPlateChallenge,
+  deadhangThreePlateChallenge,
+  deadhangFourPlateChallenge,
+  pinchWideShallowTenSecondsChallenge,
+  pinchWideDeepTenSecondsChallenge
+];
 
-const CrimpData2: GripModel = {
-  id: GripTypeEnum.Crimp + "_" + SubGripTypeEnum.tenMillimeter,
-  gripType: GripTypeEnum.Crimp,
-  subGripType: SubGripTypeEnum.tenMillimeter,
-};
-
-const Deadhang: GripModel = {
-  id: GripTypeEnum.Deadhang + "_" + SubGripTypeEnum.basic,
-  gripType: GripTypeEnum.Deadhang,
-  subGripType: SubGripTypeEnum.basic,
-};
-
-db.collection("Grips").doc(wideDeepPinchData.id).set(wideDeepPinchData);
-db.collection("Grips").doc(wideShallowPinchData.id).set(wideShallowPinchData);
-
-db.collection("Grips").doc(CrimpData1.id).set(CrimpData1);
-db.collection("Grips").doc(CrimpData2.id).set(CrimpData2);
-
-db.collection("Grips").doc(Deadhang.id).set(Deadhang);
+for (const data of challengeData) {
+  db.collection("Challenges").doc(data.id).set(data);
+}

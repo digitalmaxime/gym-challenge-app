@@ -18,7 +18,7 @@ interface ButtonTextProps {
   padding?: number;
 }
 
-export function ButtonText({
+export function TextButton({
   onPress,
   textContent,
   disabled,

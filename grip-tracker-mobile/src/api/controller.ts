@@ -31,6 +31,22 @@ async function saveChallengeResult(
   });
 }
 
+async function getAllChallenges(): Promise<HttpsCallableResult<unknown>> {
+  const callGetAllChallenges = httpsCallable(
+    firebaseFunctions,
+    'getAllChallenges',
+  );
+  return callGetAllChallenges();
+}
+
+async function getFilteredChallenges(gripType: string): Promise<HttpsCallableResult<unknown>> {
+  const callGetFilteredChallenges = httpsCallable(
+    firebaseFunctions,
+    'getFilteredChallenges',
+  );
+  return callGetFilteredChallenges({gripType});
+}
+
 async function getAllGrips(): Promise<HttpsCallableResult<unknown>> {
   const callGetAllGrips = httpsCallable(
     firebaseFunctions,
@@ -46,6 +62,7 @@ async function getFilteredGrips(gripType: string): Promise<HttpsCallableResult<u
   );
   return callGetFilteredGrips({gripType});
 }
+
 async function getUserById(
   userId: string,
 ): Promise<HttpsCallableResult<unknown>> {
@@ -55,6 +72,9 @@ async function getUserById(
 
 export {
   createChallenge,
+  getAllChallenges,
+  getFilteredChallenges,
+
   saveChallengeResult,
   getAllGrips,
   getFilteredGrips,

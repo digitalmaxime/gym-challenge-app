@@ -12,7 +12,7 @@ import { useToast } from "react-native-toast-notifications";
 import { useUserContext } from "../../contexts/UserContext";
 import { handleLogin } from "../../utils/authHandler";
 import { auth } from "../../utils/firebase";
-import { ButtonText } from "../../components/basics/btn/textButton";
+import { TextButton } from "../../components/basics/btn/textButton";
 import Colors from "../../constants/styles";
 
 type RootStackParamList = Record<string, Record<string, never>>;
@@ -137,7 +137,7 @@ export default function Login() {
       </View>
 
       <View style={styles.buttonsContainer}>
-        <ButtonText
+        <TextButton
           onPress={handleSubmit(onLogin)}
           textContent="login"
           height={60}
@@ -146,7 +146,7 @@ export default function Login() {
           disabled={false}
         />
 
-        <ButtonText
+        <TextButton
           onPress={() => {
             navigation.navigate("SignUp", {});
           }}
@@ -157,7 +157,7 @@ export default function Login() {
           btnBackgroundColor={Colors.textBackGroundColor}
           disabled={false}
         />
-        <ButtonText
+        <TextButton
           onPress={() => {
             reset({
               email: "maxime.rheault@gmail.com",

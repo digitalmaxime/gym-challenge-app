@@ -1,37 +1,28 @@
-import React, { Dispatch } from "react";
+import React from "react";
 import { StyleSheet, View, Text, Image } from "react-native";
-import { ButtonText } from "../../../components/basics/btn/textButton";
+import { TextButton } from "../../../components/basics/btn/textButton";
 import Colors from "../../../constants/styles";
 import AnimatedIcon from "../../../components/basics/btn/animatedIcon";
 import { NavigationProp, RouteProp, useNavigation, useRoute } from "@react-navigation/native";
-import { GripModel } from "../../../models/grip/GripModel";
 import { useUserContext } from "../../../contexts/UserContext";
+import { ChallengeModel } from "../../../models/challenge/ChallengeModel";
 
 const utTensoSicVis = require("../../../../assets/images/ut-tenso-sic-vis.png");
 
-type RootStackParamList = Record<string, Record<string, never>>;
-
 type pathParam = {
-  param: ChallengeSummaryPathParam
+  challenge: ChallengeModel
 };
-
-export type ChallengeSummaryPathParam = {
-  gripType: string;
-  subGripType: string;
-  weight: number;
-  duration: number;
-}
 
 function ChallengeResultSummary() {
   const userContext = useUserContext();
-  const navigation = useNavigation<NavigationProp<RootStackParamList>>();
+  const navigation = useNavigation();
   const route = useRoute<RouteProp<pathParam>>();
-  console.log(route.params)
-  console.log(route.name)
-  const { gripType } = route.params;
-  const { subGripType } = route.params;
-  const { weight } = route.params;
-  const { duration } = route.params;
+  const challenge = route.params;
+console.log(challenge.duration)
+console.log(challenge.duration)
+console.log(challenge.duration)
+console.log(challenge.weight)
+console.log(challenge.weight)
 
   function closeChallenge() {
     navigation.goBack();
@@ -41,8 +32,9 @@ function ChallengeResultSummary() {
     <View style={styles.mainContainer}>
       <Text style={styles.congratsText}>Bravo {userContext.userData?.userName || userContext.userData?.email}!</Text>
 
-      <Text style={styles.congratsText}>Weight : {weight} kilos</Text>
-      <Text style={styles.congratsText}>Duration : {duration} seconds</Text>
+      <Text style={styles.congratsText}>Challenge : {challenge.name} kilos</Text>
+      <Text style={styles.congratsText}>Weight : {challenge.weight} kilos</Text>
+      <Text style={styles.congratsText}>Duration : {challenge.duration} seconds</Text>
 
       <View style={styles.animationContainer}>
         <View style={styles.trophyContainer}>
@@ -56,7 +48,7 @@ function ChallengeResultSummary() {
       </View>
 
       <View style={styles.btnTextContainer}>
-        <ButtonText
+        <TextButton
           onPress={closeChallenge}
           textContent="Done"
           height={60}

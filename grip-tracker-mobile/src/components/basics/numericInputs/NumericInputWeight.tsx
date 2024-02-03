@@ -9,7 +9,7 @@ interface NumericInputWeightProps {
   onChange: (value: number) => void;
 }
 
-const POUNDS_KILOS_RATIO = 2.205;
+export const POUNDS_KILOS_RATIO = 2.205;
 
 const NumericInputWeight = ({ onChange }: NumericInputWeightProps) => {
   const [useKilograms, setUseKilograms] = useState(true);

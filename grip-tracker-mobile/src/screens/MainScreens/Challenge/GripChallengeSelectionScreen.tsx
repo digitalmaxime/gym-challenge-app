@@ -6,10 +6,11 @@ import {
   FlatList,
 } from "react-native";
 import { NavigationProp, useNavigation } from "@react-navigation/native";
-import { ButtonText } from "../../../components/basics/btn/textButton";
+import { TextButton } from "../../../components/basics/btn/textButton";
 import { GripTypeEnum } from "../../../models/grip/GripTypeEnum";
 
 export interface PinchScreenProps {}
+
 type RootStackParamList = Record<string, Record<string, never>>;
 
 class GripTypeModel {
@@ -32,7 +33,7 @@ export function GripChallengeSelectionScreen(props: PinchScreenProps) {
     const gripType = itemData.item as GripTypeModel;
     return (
       <View style={styles.practiceButton}>
-          <ButtonText
+          <TextButton
           onPress={() => {
             navigation.navigate(`${gripType.name}SelectionStack`, {});
           } }
@@ -45,12 +46,12 @@ export function GripChallengeSelectionScreen(props: PinchScreenProps) {
 
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
+      {/* <View style={styles.header}>
         <Image
           style={styles.bannerImage}
-          source={require("../../../../assets/images/forge.png")}
+          source={require("../../../../assets/images/artsy-hand.png")}
         />
-      </View>
+      </View> */}
 
       {/* grip types */}
       <View style={styles.flatListContainer}>
@@ -89,7 +90,7 @@ const styles = StyleSheet.create({
   },
   bannerImage: {
     width: 100,
-    height: 80,
+    height: 100,
     padding: 0,
     margin: 0,
   },

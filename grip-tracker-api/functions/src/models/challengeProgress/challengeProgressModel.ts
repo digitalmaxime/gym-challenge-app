@@ -1,7 +1,7 @@
 interface ChallengeProgressModel {
-  challengeProgressId: number;
-  userId: number;
-  challengeId: number;
+  challengeProgressId: string;
+  userId: string;
+  challengeId: string;
   duration: number;
   weight: number;
   timestamp: Date;

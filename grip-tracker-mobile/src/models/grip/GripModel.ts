@@ -5,4 +5,5 @@ export interface GripModel {
     id: string;
     gripType: GripTypeEnum;
     subGripType: SubGripTypeEnum;
+    imgUri: string;
 }

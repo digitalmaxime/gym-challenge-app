@@ -4,10 +4,10 @@
     "slug": "grip-tracker-mobile",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/Nikita-icon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/antoine-jutras.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },

@@ -7,7 +7,7 @@ import {
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import * as Controller from '../../../../api/controller';
 import { GripModel } from '../../../../models/grip/GripModel';
-import { ButtonText } from '../../../../components/basics/btn/textButton';
+import { TextButton } from '../../../../components/basics/btn/textButton';
 import Colors from '../../../../constants/styles';
 
 
@@ -35,7 +35,7 @@ export function CrimpSelectionScreen() {
     const crimp = itemData.item as GripModel;
     return (
       <View>
-        <ButtonText 
+        <TextButton 
         onPress={() => console.log("pressed")} 
         
         textContent={crimp.subGripType} 

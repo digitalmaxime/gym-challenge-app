@@ -3,60 +3,56 @@ import { View, FlatList, StyleSheet, ImageBackground } from "react-native";
 import { NavigationProp, useNavigation } from "@react-navigation/native";
 import * as Controller from "../../../../api/controller";
 import { GripModel } from "../../../../models/grip/GripModel";
-import { ButtonText } from "../../../../components/basics/btn/textButton";
+import { TextButton } from "../../../../components/basics/btn/textButton";
+import { GripTypeEnum } from "../../../../models/grip/GripTypeEnum";
+import { ChallengeModel } from "../../../../models/challenge/ChallengeModel";
+import { useState } from "react";
+import ChallengeSelectionCard from "../../../../components/challenge/challengeSelectionCard";
 
 export interface PinchSelectionScreenProps {}
 
 type RootStackParamList = {
-  PinchChallenge: GripModel;
+  PinchChallenge: ChallengeModel;
 };
 
 export function PinchSelectionScreen() {
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
-  const [allPinches, setAllPinches] = React.useState<GripModel[]>([]);
+  const [allPinchChallenges, setAllPinchChallenges] = useState<ChallengeModel[]>([]);
 
   React.useEffect(() => {
-    const getPinchGrips = async () => {
-      const allGrips = (await Controller.getFilteredGrips("pinch"))
-        .data as GripModel[];
-      console.log(allGrips);
-      setAllPinches((_) => allGrips);
+    const getPinchChallenges = async () => {
+      const filteredChallenges = (
+        await Controller.getFilteredChallenges(GripTypeEnum.Pinch)
+      ).data as ChallengeModel[];
+
+      filteredChallenges.sort((a, b) => a.duration! - b.duration!);
+
+      setAllPinchChallenges((_) => filteredChallenges);
     };
 
-    getPinchGrips();
+    getPinchChallenges();
   }, []);
 
+
+  const navigateToChallenge = (pinchChallenge: ChallengeModel) => {
+    navigation.navigate("PinchChallenge", pinchChallenge);
+  };
+
   function renderPinchOptions(itemData: any) {
-    const pinch = itemData.item as GripModel;
+    const pinchChallenge = itemData.item as ChallengeModel;
     return (
-      <ImageBackground
-      source={{ uri: 'https://loremflickr.com/640/360' }} 
-        style={styles.btnContainer}
-      >
-        <ButtonText
-          onPress={() => {
-            navigation.navigate("PinchChallenge", {
-              id: pinch.id,
-              gripType: pinch.gripType,
-              subGripType: pinch.subGripType,
-            });
-          }}
-          textContent={pinch.subGripType}
-          disabled={false}
-          btnBackgroundColor="rgba(44, 44, 44, 0.4)"
-          height="100%"
-          width='100%'
-          padding={10}
-          textColor="#fff"
-        />
-      </ImageBackground>
+      <ChallengeSelectionCard
+        challenge={pinchChallenge}
+        onPress={() => navigateToChallenge(pinchChallenge)}
+      />
+      
     );
   }
 
   return (
     <View style={styles.mainContainer}>
       <FlatList
-        data={allPinches}
+        data={allPinchChallenges}
         keyExtractor={(item) => item.id}
         numColumns={1}
         bounces={false}
@@ -69,16 +65,18 @@ export function PinchSelectionScreen() {
 const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
-    padding: 35,
-    flexDirection: "column",
+    padding: 10,
     alignItems: "center",
-    justifyContent: "center",
+    // justifyContent: "space-evenly",
+
+        // backgroundColor: 'yellow',
+
   },
-  btnContainer: {
-    justifyContent: "center",
-    textAlign: "center",
-    alignItems: "center",
-    overflow: "hidden",
-    margin: 15,
-  },
+  // btnContainer: {
+  //   justifyContent: "center",
+  //   textAlign: "center",
+  //   alignItems: "center",
+  //   overflow: "hidden",
+  //   margin: 15,
+  // },
 });

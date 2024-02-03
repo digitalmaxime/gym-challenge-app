@@ -1,4 +1,4 @@
-interface ChallengeModel {
+export interface ChallengeModel {
   id: string;
   name: string;
   gripId: string;
@@ -6,5 +6,3 @@ interface ChallengeModel {
   duration?: number;
   imgUri: string;
 }
-
-export default ChallengeModel;

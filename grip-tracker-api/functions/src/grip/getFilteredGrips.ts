@@ -6,15 +6,12 @@ const db = firebaseAdmin.firestore();
 
 const getFilteredGrips = onCall(async (_request: CallableRequest) => {
   const gripType = _request?.data?.gripType;
-  console.log("********")
-  console.log(gripType);
   const grips = (
     await db.collection("Grips").where("gripType", "==", gripType).get()
   ).docs;
 
   const arr: GripModel[] = [];
   grips.forEach((grip) => {
-    console.log(grip.data(), "\n----------\n");
     arr.push(grip.data() as GripModel);
   });
 

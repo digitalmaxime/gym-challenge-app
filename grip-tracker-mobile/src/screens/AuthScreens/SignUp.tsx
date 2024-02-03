@@ -8,7 +8,7 @@ import { useToast } from "react-native-toast-notifications";
 import Colors from "../../constants/styles";
 import { auth } from "../../utils/firebase";
 import { handleSignUp, resendEmailVerification } from "../../utils/authHandler";
-import { ButtonText } from "../../components/basics/btn/textButton";
+import { TextButton } from "../../components/basics/btn/textButton";
 import { User } from "firebase/auth";
 
 // eslint-disable-next-line no-useless-escape
@@ -185,7 +185,7 @@ function SignUp() {
       </View>
 
       <View style={styles.buttonsContainer}>
-        <ButtonText
+        <TextButton
           onPress={handleSubmit(onSubmit)}
           textContent="create account"
           height={60}
@@ -194,7 +194,7 @@ function SignUp() {
           disabled={false}
         />
 
-        <ButtonText
+        <TextButton
           onPress={() => {
             reset();
             navigation.navigate("Login", {});
@@ -207,7 +207,7 @@ function SignUp() {
           disabled={false}
         />
 
-        <ButtonText
+        <TextButton
           onPress={() => {
             reset({
               email: "maxime.rheault@gmail.com",

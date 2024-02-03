@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 import React from "react";
 import { View, Modal, Text, StyleSheet } from "react-native";
-import { ButtonText } from "../btn/textButton";
+import { TextButton } from "../btn/textButton";
 import Colors from "../../../constants/styles";
 
 type WarningModalProps = {
@@ -30,7 +30,7 @@ export default function WarningModal({
           </Text>
 
           <View style={{ flexDirection: "row", justifyContent: "center" }}>
-            <ButtonText
+            <TextButton
               onPress={() => {
                 confirm();
               }}
@@ -40,7 +40,7 @@ export default function WarningModal({
               width={"50%"}
                 textFontSize={22}
             />
-            <ButtonText
+            <TextButton
               onPress={() => {
                 cancel();
               }}

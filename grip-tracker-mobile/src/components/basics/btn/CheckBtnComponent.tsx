@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import { ButtonText } from './textButton';
+import { TextButton } from './textButton';
 import Colors from '../../../constants/styles';
 interface CheckBtnComponentProps {
   handleCheckPress: () => boolean;
@@ -15,7 +15,7 @@ function CheckBtnComponent({
   return (
     <View style={styles.checkContainer}>
       <View style={styles.goToNextQuestionContainer}>
-        <ButtonText
+        <TextButton
           onPress={saveData}
           textContent="Done"
           height={60}

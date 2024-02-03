@@ -22,27 +22,24 @@ function GripChallengeSelectionStack() {
       <Stack.Screen
         name="GripSelectionScreen"
         component={GripChallengeSelectionScreen}
-        options={{ title: 'My GripSelectionScreen' }}
+        options={{title: "grip options"}}
       />
       <Stack.Screen
         name="DeadhangSelectionStack"
         component={DeadhangSelectionStack}
-        options={{ title: 'Awesome DeadhangSelectionScreen' }}
+        options={{title: ""}}
       />
       <Stack.Screen
         name="CrimpSelectionStack"
         component={CrimpSelectionStack}
-        options={{ title: 'Awesome CrimpSelectionStack' }}
       />
       <Stack.Screen
         name="PinchSelectionStack"
         component={PinchSelectionStack}
-        options={{ title: 'Awesome PinchSelectionStack' }}
       />
       <Stack.Screen
         name="ChallengeResultSummary"
         component={ChallengeResultSummary}
-        options={{ title: 'Awesome ChallengeResultSummary' }}
       />
     </Stack.Navigator>
   );

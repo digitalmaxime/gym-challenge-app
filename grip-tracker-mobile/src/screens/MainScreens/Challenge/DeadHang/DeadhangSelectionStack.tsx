@@ -13,19 +13,16 @@ const DeadhangSelectionStack = () => {
       initialRouteName="DeadhangSelectionScreen"
       screenOptions={{
         headerTintColor: 'white',
-        headerStyle: { backgroundColor: 'tomato' },
         headerShown: false,
       }}
     >
       <Stack.Screen
         name="DeadhangSelectionScreen"
         component={DeadhangSelectionScreen}
-        options={{ title: 'My DeadhangSelectionScreen' }}
-      />
+        />
       <Stack.Screen
         name="DeadhangChallenge"
         component={DeadhangChallenge}
-        options={{ title: 'Awesome DeadhangChallenge', presentation: 'modal' }}
       />
 
     </Stack.Navigator>

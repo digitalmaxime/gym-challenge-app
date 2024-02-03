@@ -4,7 +4,7 @@ import { useToast } from 'react-native-toast-notifications';
 import Colors from '../../../constants/styles'
 import { useUserContext } from '../../../contexts/UserContext';
 import { auth } from '../../../utils/firebase';
-import { ButtonText } from '../../../components/basics/btn/textButton';
+import { TextButton } from '../../../components/basics/btn/textButton';
 import WarningModal from '../../../components/basics/warnings/WarningModal';
 import { handlerCurrentDeleteUser } from '../../../utils/authHandler';
 
@@ -21,7 +21,7 @@ function ProfileScreen() {
         <Text style={styles.text}>{userContext.userData?.email || 'userData.email not found..'}</Text>
       </View>
       <View style={styles.bottomBtnContainer}>
-        <ButtonText
+        <TextButton
           onPress={async () => {
             try {
               // await deleteCache();
@@ -48,7 +48,7 @@ function ProfileScreen() {
           disabled={false}
           padding={8}
         />
-        <ButtonText
+        <TextButton
           onPress={async () => {
             await auth.signOut();
             userContext.reset();
@@ -57,7 +57,7 @@ function ProfileScreen() {
           disabled={false}
           padding={8}
         />
-        <ButtonText
+        <TextButton
           onPress={async () => {
             setShowWarning(true);
           }}

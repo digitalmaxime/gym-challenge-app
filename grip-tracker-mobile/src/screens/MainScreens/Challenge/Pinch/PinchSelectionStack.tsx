@@ -11,19 +11,19 @@ function PinchSelectionStack() {
       initialRouteName="PinchSelectionScreen"
       screenOptions={{
         headerTintColor: 'white',
-        headerStyle: { backgroundColor: 'tomato' },
+        headerStyle: { },
         headerShown: false,
       }}
     >
       <Stack.Screen
         name="PinchSelectionScreen"
         component={PinchSelectionScreen}
-        options={{ title: 'My PinchSelectionScreen' }}
+        options={{ title: 'PinchSelectionScreen' }}
       />
       <Stack.Screen
         name="PinchChallenge"
         component={PinchChallenge}
-        options={{ title: 'Awesome Test', presentation: 'modal' }}
+        options={{ title: 'PinchChallenge', presentation: 'modal' }}
       />
 
     </Stack.Navigator>
