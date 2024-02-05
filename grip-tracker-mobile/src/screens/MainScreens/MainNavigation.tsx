@@ -9,6 +9,7 @@ import Colors from "../../constants/styles";
 import ProfileScreen from "./Profile/ProfileScreen";
 import { Test } from "./Training/test";
 import GripChallengeSelectionStack from "./Challenge/GripChallengeSelectionStack";
+import Stats from "./Stats/Stats";
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -19,7 +20,8 @@ export default function MainNavigation() {
         initialRouteName="Train"
         activeColor={Colors.activeIcon}
         barStyle={styles.barStyle}
-      >
+        inactiveColor={Colors.inactiveIcon}
+        >
         <Tab.Screen
           name="Train"
           component={Test}
@@ -27,19 +29,30 @@ export default function MainNavigation() {
             tabBarLabel: "Train",
             tabBarIcon: ({ color }) => (
               <MaterialCommunityIcons name="home" color={color} size={26} />
-            ),
-          }}
+              ),
+            }}
         />
         <Tab.Screen
           name="Challenge"
           component={GripChallengeSelectionStack}
           options={{
             tabBarLabel: "Challenge",
-            tabBarIcon: ({ color }) => (
+            tabBarIcon: ({ color,  }) => (
               <MaterialCommunityIcons name="arm-flex" color={color} size={26} />
             ),
           }}
         />
+          <Tab.Screen
+            name="Stats"
+            component={Stats}
+            options={{
+              tabBarLabel: "Stats",
+              tabBarIcon: ({ color }) => (
+                <MaterialCommunityIcons name="chart-timeline-variant-shimmer" color={color} size={26} />
+                // chart-bell-curve-cumulative chart-line chart-timeline-variant-shimmer
+              ),
+            }}
+          />
         <Tab.Screen
           name="ProfileScreen"
           component={ProfileScreen}

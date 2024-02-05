@@ -41,6 +41,9 @@ export { default as getUserByIdMobile } from "./users/getUser";
 export { default as createUserOnFirestore } from "./users/createUserOnFirestore";
 export { default as deleteUserOnFirestore } from "./users/deleteUserOnFirestore";
 
+/*** Progress ***/
+export { default as getChallengeProgress } from "./progress/getChallengeProgress";
+
 /*** Initialize Data ***/
 
 const db = firebaseAdmin.firestore();

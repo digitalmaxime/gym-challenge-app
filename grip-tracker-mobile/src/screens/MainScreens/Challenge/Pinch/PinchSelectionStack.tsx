@@ -18,7 +18,6 @@ function PinchSelectionStack() {
       <Stack.Screen
         name="PinchSelectionScreen"
         component={PinchSelectionScreen}
-        options={{ title: 'PinchSelectionScreen' }}
       />
       <Stack.Screen
         name="PinchChallenge"

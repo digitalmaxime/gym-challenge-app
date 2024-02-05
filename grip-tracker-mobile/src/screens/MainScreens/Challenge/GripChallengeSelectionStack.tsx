@@ -28,14 +28,16 @@ function GripChallengeSelectionStack() {
         name="DeadhangSelectionStack"
         component={DeadhangSelectionStack}
         options={{title: ""}}
-      />
+        />
       <Stack.Screen
         name="CrimpSelectionStack"
         component={CrimpSelectionStack}
-      />
+        options={{title: ""}}
+        />
       <Stack.Screen
         name="PinchSelectionStack"
         component={PinchSelectionStack}
+        options={{title: ""}}
       />
       <Stack.Screen
         name="ChallengeResultSummary"

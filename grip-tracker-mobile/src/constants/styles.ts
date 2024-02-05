@@ -12,11 +12,11 @@ const Colors = {
   PoundTracker: '#79bea7',
 
   // Navs
-  bottomNavBarColor: '#2D3748',
+  bottomNavBarColor: '#3e4756',
 
   // Icons
-  activeIcon: '#3182CE',
-  lockIconColor: '#2f4468af',
+  activeIcon: '#79a1c7',
+  inactiveIcon: '#a2b4c5',
 
   // Buttons
   btnBackgroundColor: '#718096',

@@ -23,6 +23,7 @@ const DeadhangSelectionStack = () => {
       <Stack.Screen
         name="DeadhangChallenge"
         component={DeadhangChallenge}
+        options={{ presentation: 'modal' }}
       />
 
     </Stack.Navigator>
