@@ -10,22 +10,13 @@ async function createChallenge(): Promise<HttpsCallableResult<unknown>> {
   return callCreateChallenge({});
 }
 
-async function saveChallengeResult(
-  userId: string,
-  challengeId: string,
-  weight: number,
-  duration: number
+async function saveChallengeProgress(challengeProgress: ChallengeProgressModel
 ): Promise<HttpsCallableResult<unknown>> {
-  const callCreateChallenge = httpsCallable(
+  const callSaveChallengeProgress = httpsCallable(
     firebaseFunctions,
     "saveChallengeProgress"
   );
-  return callCreateChallenge({
-    userId,
-    challengeId,
-    weight,
-    duration,
-  });
+  return callSaveChallengeProgress(challengeProgress);
 }
 
 async function getAllChallenges(): Promise<HttpsCallableResult<unknown>> {
@@ -77,14 +68,22 @@ async function getChallengeProgress(
   return callGetChallengeProgress({ userId, gripType, subGripType });
 }
 
+async function getUserChallengeProgresses(
+  userId: string
+): Promise<HttpsCallableResult<ChallengeProgressModel[]>> {
+  const callGetUserChallengeProgresses = httpsCallable<unknown, ChallengeProgressModel[]>(firebaseFunctions, "getUserChallengeProgresses");
+  return callGetUserChallengeProgresses({ userId });
+}
+
 export {
   createChallenge,
   getAllChallenges,
+  saveChallengeProgress,
   getFilteredChallenges,
-  saveChallengeResult,
   getAllGrips,
   getFilteredGrips,
   getUserById,
-
+  
+  getUserChallengeProgresses,
   getChallengeProgress,
 };

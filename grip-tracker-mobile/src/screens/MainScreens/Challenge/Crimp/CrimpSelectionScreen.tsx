@@ -24,7 +24,6 @@ export function CrimpSelectionScreen() {
   React.useEffect(() => {
     const getPinchGrips = async () => {
       const allGrips = (await Controller.getFilteredGrips("crimp")).data as any[];
-      console.log(allGrips);
       setAllGrips((_) => allGrips);
     };
     

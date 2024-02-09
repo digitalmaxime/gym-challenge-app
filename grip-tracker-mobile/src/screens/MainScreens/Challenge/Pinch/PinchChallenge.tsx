@@ -43,7 +43,7 @@ export function PinchChallenge() {
 
       <CheckBtnComponent
         handleCheckPress={() => true}
-        saveData={() => {
+        saveData={async () => {
           // TODO: check if user still connected
           if (user.userData === undefined) {
             toast.show("user disconnected, enable to save your results", {
@@ -55,13 +55,20 @@ export function PinchChallenge() {
             });
           }
           try {
-            Controller.saveChallengeResult(
-              user.userData.id,
-              pinchChallenge.id,
-              weightInKilos,
-              pinchChallenge.duration!
-            );
+            const payload = {
+              userId: user.userData.id,
+              challengeId: pinchChallenge.id,
+              duration: pinchChallenge.duration!,
+              weight: weightInKilos,
+            } as ChallengeProgressModel;
+
+            const id = await Controller.saveChallengeProgress(payload);
+
+            user.getUserChallengeProgresses(user.userData.id); 
+            // TODO: consider only updating with recent result (instead of fetching the whole userChallengeProgress..)
+
             navigation.goBack();
+
             setTimeout(() => {
               navigation.navigate("ChallengeResultSummary", {
                 ...pinchChallenge,
@@ -69,7 +76,6 @@ export function PinchChallenge() {
               });
             }, 400);
           } catch (error) {
-            console.log(":(");
             console.log(error);
           }
         }}

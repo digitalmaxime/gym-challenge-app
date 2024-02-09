@@ -1,23 +1,12 @@
 import * as firebaseAdmin from "firebase-admin";
 import { CallableRequest, onCall } from "firebase-functions/v2/https";
-import ChallengeModel from "../models/challenge/ChallengeModel";
 
 const db = firebaseAdmin.firestore();
 
 const getChallengeProgress = onCall(async (_request: CallableRequest) => {
-  console.log("%%%%%%%%%%%%%%%%%%%%%%%%")
-  console.log("%%%%%%%%%%%%%%%%%%%%%%%%")
-  console.log("%%%%%%%%%%%%%%%%%%%%%%%%")
-  console.log("%%%%%%%%%%%%%%%%%%%%%%%%")
-  console.log("%%%%%%%%%%%%%%%%%%%%%%%%")
-  console.log("%%%%%%%%%%%%%%%%%%%%%%%%")
   const userId = _request.data.userId;
   const gripType = _request.data.gripType;
   const subGripType = _request.data.subGripType;
-
-  console.log("userId", userId)
-  console.log("gripType", gripType)
-  console.log("subGripType", subGripType)
 
   /** Get the grips (fast)*/
   const grips = (
@@ -30,12 +19,13 @@ const getChallengeProgress = onCall(async (_request: CallableRequest) => {
     });
     console.log("Grips: ", gripIdsArray)
     const gripId = gripIdsArray[0];
+
     /** Get the challenges (fast)*/
     const challenges = (
       await db.collection("Challenges").where("gripId", "==", gripId).get()
       ).docs;
       
-      const challengeIdsArray: ChallengeModel[] = [];
+      const challengeIdsArray: string[] = [];
       challenges.forEach((challenge) => {
         challengeIdsArray.push(challenge.data().id);
       });

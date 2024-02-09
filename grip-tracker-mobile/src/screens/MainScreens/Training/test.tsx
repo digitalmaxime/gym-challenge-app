@@ -22,7 +22,7 @@ export function Test() {
       <TextButton
         onPress={async () => {
           try {
-            const toto = await Controller.getChallengeProgress(user.userData.id, GripTypeEnum.Pinch, SubGripTypeEnum.wideDeep);
+            const toto = await Controller.getAllGrips();
             console.log("toto", toto.data);
           } catch (e) {
             console.log(e);

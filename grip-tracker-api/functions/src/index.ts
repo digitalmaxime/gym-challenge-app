@@ -24,11 +24,8 @@ import {
 
 initializeApp();
 
-/*** Mock Data ***/
-export { default as setMockUserData } from "./data/mock/setMockUser";
-
 /*** Challenges ***/
-export { default as saveChallengeProgress } from "./challenge/saveChallengeResult";
+export { default as saveChallengeProgress } from "./challenge/saveChallengeProgress";
 export { default as getAllChallenges } from "./challenge/getAllChallenges";
 export { default as getFilteredChallenges } from "./challenge/getFilteredChallenges";
 
@@ -43,6 +40,7 @@ export { default as deleteUserOnFirestore } from "./users/deleteUserOnFirestore"
 
 /*** Progress ***/
 export { default as getChallengeProgress } from "./progress/getChallengeProgress";
+export { default as getUserChallengeProgresses } from "./progress/getUserChallengeProgresses";
 
 /*** Initialize Data ***/
 

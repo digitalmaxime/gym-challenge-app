@@ -73,7 +73,7 @@ const DeadhangChallenge = () => {
       <CheckBtnComponent
         handleCheckPress={() => true}
         saveData={() => {
-          Controller.saveChallengeResult(
+          Controller.saveChallengeProgress(
             user.userData.id,
             deadhangChallenge.id,
             deadhangChallenge.weight!,

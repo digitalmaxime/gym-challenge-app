@@ -18,11 +18,6 @@ function ChallengeResultSummary() {
   const navigation = useNavigation();
   const route = useRoute<RouteProp<pathParam>>();
   const challenge = route.params;
-console.log(challenge.duration)
-console.log(challenge.duration)
-console.log(challenge.duration)
-console.log(challenge.weight)
-console.log(challenge.weight)
 
   function closeChallenge() {
     navigation.goBack();

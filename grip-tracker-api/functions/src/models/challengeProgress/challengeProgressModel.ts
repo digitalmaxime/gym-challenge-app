@@ -1,5 +1,5 @@
 interface ChallengeProgressModel {
-  challengeProgressId: string;
+  id: string;
   userId: string;
   challengeId: string;
   duration: number;
