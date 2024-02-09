@@ -7,8 +7,8 @@ import { MODE } from '@env';
 import { TextButton } from '../../../components/basics/btn/textButton';
 import * as Controller from '../../../api/controller';
 import { GripTypeEnum } from '../../../models/grip/GripTypeEnum';
-import { SubGripTypeEnum } from '../../../models/grip/SubGripTypeEnum';
 import { useUserContext } from '../../../contexts/UserContext';
+import { ProgressDictionary } from '../../../models/challengeProgress/progressDictionary';
 
 type RootStackParamList = Record<string, Record<string, never>>;
 
@@ -21,9 +21,10 @@ export function Test() {
       <Text>{MODE}</Text>
       <TextButton
         onPress={async () => {
+            /** Initialize dictionary of Progresses */
           try {
-            const toto = await Controller.getAllGrips();
-            console.log("toto", toto.data);
+            const toto = await Controller.getUserChallengeProgresses();
+            console.log("toto", toto.data.PinchProgresses);
           } catch (e) {
             console.log(e);
             console.log(':C');

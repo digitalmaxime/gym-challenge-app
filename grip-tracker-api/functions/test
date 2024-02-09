@@ -1,1 +1,0 @@
-curl http://localhost:5001/grip-tracker/northamerica-northeast1/addMessage?text=uppercaseme

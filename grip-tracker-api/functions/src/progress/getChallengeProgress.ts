@@ -3,10 +3,18 @@ import { CallableRequest, onCall } from "firebase-functions/v2/https";
 
 const db = firebaseAdmin.firestore();
 
-const getChallengeProgress = onCall(async (_request: CallableRequest) => {
-  const userId = _request.data.userId;
-  const gripType = _request.data.gripType;
-  const subGripType = _request.data.subGripType;
+const getChallengeProgress = onCall(async (request: CallableRequest) => {
+  
+  const uid = request.auth?.uid;
+  const token = request.auth?.token || null;
+  const email = request.auth?.token.email || null;
+
+  console.log("uid: ", uid);
+  console.log("token: ", token);
+  console.log("email: ", email);
+
+  const gripType = request.data.gripType;
+  const subGripType = request.data.subGripType;
 
   /** Get the grips (fast)*/
   const grips = (
@@ -33,7 +41,7 @@ const getChallengeProgress = onCall(async (_request: CallableRequest) => {
       
       /** Get the progress */
       const progress = (
-        await db.collection("ChallengeProgress").where("challengeId", "in", challengeIdsArray).where("userId", "==", userId).get()
+        await db.collection("ChallengeProgress").where("challengeId", "in", challengeIdsArray).where("userId", "==", uid).get()
         ).docs;
         
         const progressArray: ChallengeProgressModel[] = [];

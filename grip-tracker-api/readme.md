@@ -5,3 +5,6 @@ Testing your api
 
 ref : https://firebase.google.com/docs/functions/local-shell
 
+
+TODO: 
+- use `Select` statement to filter out traffic

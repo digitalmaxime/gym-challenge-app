@@ -1,53 +1,54 @@
 import { GripModel } from '../../models/grip/GripModel';
 import { GripTypeEnum } from '../../models/grip/GripTypeEnum';
-import { SubGripTypeEnum } from '../../models/grip/SubGripTypeEnum';
+import { DeadhangTypeEnum } from '../../models/grip/deadhang/DeadhangTypeEnum';
+import { PinchTypeEnum } from '../../models/grip/pinch/PinchTypeEnum';
 
 const wideShallowPinchGripData: GripModel = {
-  id: GripTypeEnum.Pinch + "_" + SubGripTypeEnum.wideShallow,
+  id: GripTypeEnum.Pinch + "_" + PinchTypeEnum.wideShallow,
   gripType: GripTypeEnum.Pinch,
-  subGripType: SubGripTypeEnum.wideShallow,
+  subGripType: PinchTypeEnum.wideShallow,
   imgUri: 'https://firebasestorage.googleapis.com/v0/b/grip-tracker.appspot.com/o/pinch_wideShallow.png?alt=media&token=e91d265a-3611-434e-ab99-f12c254dcf70'
 }
 
 const wideDeepPinchGripData: GripModel = {
-  id: GripTypeEnum.Pinch + "_" + SubGripTypeEnum.wideDeep,
+  id: GripTypeEnum.Pinch + "_" + PinchTypeEnum.wideDeep,
   gripType: GripTypeEnum.Pinch,
-  subGripType: SubGripTypeEnum.wideDeep,
+  subGripType: PinchTypeEnum.wideDeep,
   imgUri: 'https://firebasestorage.googleapis.com/v0/b/grip-tracker.appspot.com/o/pinch_wideDeep.png?alt=media&token=ea8c8eed-f451-4588-bbdf-6f0322cc880c'
 }
 
 const deadhangBodyWeightGripData: GripModel = {
-  id: GripTypeEnum.Deadhang + "_" + SubGripTypeEnum.bodyWeight,
+  id: GripTypeEnum.Deadhang + "_" + DeadhangTypeEnum.bodyWeight,
   gripType: GripTypeEnum.Deadhang,
-  subGripType: SubGripTypeEnum.bodyWeight,
+  subGripType: DeadhangTypeEnum.bodyWeight,
   imgUri: 'https://firebasestorage.googleapis.com/v0/b/grip-tracker.appspot.com/o/deadhang.png?alt=media&token=0f2f01cf-56bd-4273-b958-7e476d8a0762'
 }
 
 const deadhangOnePlateGripData: GripModel = {
-  id: GripTypeEnum.Deadhang + "_" + SubGripTypeEnum.onePlate,
+  id: GripTypeEnum.Deadhang + "_" + DeadhangTypeEnum.onePlate,
   gripType: GripTypeEnum.Deadhang,
-  subGripType: SubGripTypeEnum.onePlate,
+  subGripType: DeadhangTypeEnum.onePlate,
   imgUri: 'https://firebasestorage.googleapis.com/v0/b/grip-tracker.appspot.com/o/deadhang.png?alt=media&token=0f2f01cf-56bd-4273-b958-7e476d8a0762'
 }
 
 const deadhangTwoPlateGripData: GripModel = {
-  id: GripTypeEnum.Deadhang + "_" + SubGripTypeEnum.twoPlate,
+  id: GripTypeEnum.Deadhang + "_" + DeadhangTypeEnum.twoPlate,
   gripType: GripTypeEnum.Deadhang,
-  subGripType: SubGripTypeEnum.twoPlate,
+  subGripType: DeadhangTypeEnum.twoPlate,
   imgUri: 'https://firebasestorage.googleapis.com/v0/b/grip-tracker.appspot.com/o/deadhang.png?alt=media&token=0f2f01cf-56bd-4273-b958-7e476d8a0762'
 }
 
 const deadhangThreePlateGripData: GripModel = {
-  id: GripTypeEnum.Deadhang + "_" + SubGripTypeEnum.threePlate,
+  id: GripTypeEnum.Deadhang + "_" + DeadhangTypeEnum.threePlate,
   gripType: GripTypeEnum.Deadhang,
-  subGripType: SubGripTypeEnum.threePlate,
+  subGripType: DeadhangTypeEnum.threePlate,
   imgUri: 'https://firebasestorage.googleapis.com/v0/b/grip-tracker.appspot.com/o/deadhang.png?alt=media&token=0f2f01cf-56bd-4273-b958-7e476d8a0762'
 }
 
 const deadhangFourPlateGripData: GripModel = {
-  id: GripTypeEnum.Deadhang + "_" + SubGripTypeEnum.fourPlate,
+  id: GripTypeEnum.Deadhang + "_" + DeadhangTypeEnum.fourPlate,
   gripType: GripTypeEnum.Deadhang,
-  subGripType: SubGripTypeEnum.fourPlate,
+  subGripType: DeadhangTypeEnum.fourPlate,
   imgUri: 'https://firebasestorage.googleapis.com/v0/b/grip-tracker.appspot.com/o/deadhang.png?alt=media&token=0f2f01cf-56bd-4273-b958-7e476d8a0762'
 }
 

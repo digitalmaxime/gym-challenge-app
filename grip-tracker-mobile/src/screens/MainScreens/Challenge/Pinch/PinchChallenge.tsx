@@ -56,7 +56,6 @@ export function PinchChallenge() {
           }
           try {
             const payload = {
-              userId: user.userData.id,
               challengeId: pinchChallenge.id,
               duration: pinchChallenge.duration!,
               weight: weightInKilos,
@@ -64,7 +63,7 @@ export function PinchChallenge() {
 
             const id = await Controller.saveChallengeProgress(payload);
 
-            user.getUserChallengeProgresses(user.userData.id); 
+            user.getUserChallengeProgresses(); 
             // TODO: consider only updating with recent result (instead of fetching the whole userChallengeProgress..)
 
             navigation.goBack();

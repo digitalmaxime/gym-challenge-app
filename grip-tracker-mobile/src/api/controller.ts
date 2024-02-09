@@ -1,5 +1,6 @@
 import { httpsCallable, HttpsCallableResult } from "firebase/functions";
 import { firebaseFunctions } from "../utils/firebase";
+import { ProgressDictionary } from "../models/challengeProgress/progressDictionary";
 
 async function createChallenge(): Promise<HttpsCallableResult<unknown>> {
   const callCreateChallenge = httpsCallable(
@@ -10,7 +11,8 @@ async function createChallenge(): Promise<HttpsCallableResult<unknown>> {
   return callCreateChallenge({});
 }
 
-async function saveChallengeProgress(challengeProgress: ChallengeProgressModel
+async function saveChallengeProgress(
+  challengeProgress: ChallengeProgressModel
 ): Promise<HttpsCallableResult<unknown>> {
   const callSaveChallengeProgress = httpsCallable(
     firebaseFunctions,
@@ -52,11 +54,9 @@ async function getFilteredGrips(
   return callGetFilteredGrips({ gripType });
 }
 
-async function getUserById(
-  userId: string
-): Promise<HttpsCallableResult<unknown>> {
-  const callGetUserById = httpsCallable(firebaseFunctions, "getUserByIdMobile");
-  return callGetUserById({ userId });
+async function getCurrentUser(): Promise<HttpsCallableResult<unknown>> {
+  const callGetUser = httpsCallable(firebaseFunctions, "getUser");
+  return callGetUser();
 }
 
 async function getChallengeProgress(
@@ -64,15 +64,21 @@ async function getChallengeProgress(
   gripType: string,
   subGripType: string
 ): Promise<HttpsCallableResult<ChallengeProgressModel[]>> {
-  const callGetChallengeProgress = httpsCallable<unknown, ChallengeProgressModel[]>(firebaseFunctions, "getChallengeProgress");
+  const callGetChallengeProgress = httpsCallable<
+    unknown,
+    ChallengeProgressModel[]
+  >(firebaseFunctions, "getChallengeProgress");
   return callGetChallengeProgress({ userId, gripType, subGripType });
 }
 
-async function getUserChallengeProgresses(
-  userId: string
-): Promise<HttpsCallableResult<ChallengeProgressModel[]>> {
-  const callGetUserChallengeProgresses = httpsCallable<unknown, ChallengeProgressModel[]>(firebaseFunctions, "getUserChallengeProgresses");
-  return callGetUserChallengeProgresses({ userId });
+async function getUserChallengeProgresses(): Promise<
+  HttpsCallableResult<ProgressDictionary>
+> {
+  const callGetUserChallengeProgresses = httpsCallable<
+    unknown,
+    ProgressDictionary
+  >(firebaseFunctions, "getUserChallengeProgresses");
+  return callGetUserChallengeProgresses();
 }
 
 export {
@@ -82,8 +88,7 @@ export {
   getFilteredChallenges,
   getAllGrips,
   getFilteredGrips,
-  getUserById,
-  
+  getCurrentUser,
   getUserChallengeProgresses,
   getChallengeProgress,
 };

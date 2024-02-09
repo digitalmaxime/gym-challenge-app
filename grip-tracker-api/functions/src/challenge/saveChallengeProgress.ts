@@ -12,11 +12,13 @@ const saveChallengeProgress = onCall(async (request) => {
   console.log("token: ", token);
   console.log("email: ", email);
 
+  // TODO: Ajouter validation
+
   const data = request.data;
   data.timestamp = new Date().getTime();
 
   try {
-    await db.collection("ChallengeProgress").add(data);
+    await db.collection("ChallengeProgress").add({...data, userId: uid});
 
     // response.setHeader('Access-Control-Allow-Origin', '*')
     // response.sendStatus(201)

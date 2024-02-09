@@ -61,7 +61,7 @@ export function GripChallengeSelectionScreen(props: PinchScreenProps) {
           numColumns={1}
           bounces={false}
           renderItem={renderGripTypes}
-          showsVerticalScrollIndicator={true}
+          showsVerticalScrollIndicator={true} // TODO: true, really?
         />
       </View>
     </View>

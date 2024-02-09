@@ -34,7 +34,7 @@ export { default as getAllGrips } from "./grip/getAllGrips";
 export { default as getFilteredGrips } from "./grip/getFilteredGrips";
 
 /*** Users ***/
-export { default as getUserByIdMobile } from "./users/getUser";
+export { default as getUser } from "./users/getUser";
 export { default as createUserOnFirestore } from "./users/createUserOnFirestore";
 export { default as deleteUserOnFirestore } from "./users/deleteUserOnFirestore";
 

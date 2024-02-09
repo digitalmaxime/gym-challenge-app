@@ -73,12 +73,14 @@ const DeadhangChallenge = () => {
       <CheckBtnComponent
         handleCheckPress={() => true}
         saveData={() => {
-          Controller.saveChallengeProgress(
-            user.userData.id,
-            deadhangChallenge.id,
-            deadhangChallenge.weight!,
-            durationInSeconds
-          );
+          const payload = {
+            challengeId: deadhangChallenge.id,
+            duration: durationInSeconds,
+            weight: deadhangChallenge.weight!,
+          } as ChallengeProgressModel;
+          
+          Controller.saveChallengeProgress(payload);
+          
           try {
             navigation.goBack();
             setTimeout(() => {

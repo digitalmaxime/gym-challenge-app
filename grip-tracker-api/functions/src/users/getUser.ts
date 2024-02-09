@@ -1,27 +1,35 @@
-import { https } from 'firebase-functions';
+import { onCall } from "firebase-functions/v2/https";
 import { firestore } from 'firebase-admin';
 import { HttpsError } from 'firebase-functions/v1/https';
 import UserModel from '../models/user/UserModel';
 
-const getUserByIdMobile = https.onCall(async data => {
-  const userId : string = data.userId;
-  if (!userId) {
-    throw new HttpsError('invalid-argument', 'User id provided is undefined..');
+const getUser = onCall(async request => {
+  const uid = request.auth?.uid;
+  const token = request.auth?.token || null;
+  const email = request.auth?.token.email || null;
+
+  if (uid == undefined) {
+    throw new HttpsError('unauthenticated', `uid undefined`);
   }
-  const docRef = firestore().collection('Users').doc(userId);
+
+  console.log("uid: ", uid);
+  console.log("token: ", token);
+  console.log("email: ", email);
+  
+  const docRef = firestore().collection('Users').doc(uid);
   const fetchedUser = await docRef.get();
   const userData = fetchedUser.data();
   if (userData == undefined) {
-    throw new HttpsError('not-found', `User ${userId} not found`);
+    throw new HttpsError('not-found', `User ${uid} not found`);
   } else {
     const user: UserModel = {
-      id: fetchedUser.id,
       email: userData.email,
       authLevel: userData.authLevel,
     };
 
+    console.log(user)
     return user;
   }
 });
 
-export default getUserByIdMobile;
+export default getUser;

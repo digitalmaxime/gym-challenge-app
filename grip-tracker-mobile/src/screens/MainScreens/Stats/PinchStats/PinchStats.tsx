@@ -1,70 +1,53 @@
-import * as React from 'react';
-import { Text, View, StyleSheet } from 'react-native';
-import { LineChart } from 'react-native-gifted-charts';
+import * as React from "react";
+import { Text, View, StyleSheet, FlatList } from "react-native";
+import { LineChart } from "react-native-gifted-charts";
+import { PinchTypeEnum } from "../../../../models/grip/pinch/PinchTypeEnum";
 
 interface PinchStatsProps {
-    challengeProgresses: ChallengeProgressModel[];
+  challengeProgresses: Record<PinchTypeEnum, ChallengeProgressModel[]>;
 }
 
 const PinchStats = (props: PinchStatsProps) => {
+  
+  function renderItem(itemData: any) {
+    const pinchSubType = itemData.item[0];
+    const challengeProgresses = itemData.item[1];
+    console.log(pinchSubType);
+    
     const lineData: { value: number }[] = [];
-    for (const data of props.challengeProgresses) {
-      lineData.push({ value: data.weight });
+    
+    if (challengeProgresses.length === 0) return (<></>)
+
+    for (const data of challengeProgresses) {
+      lineData.push({ value: data?.weight });
     }
 
-  return (
-    <View style={styles.container}>
-      <Text>PinchStats</Text>
+    return (
+      <View style={styles.graph}>
+        <Text>
+          {pinchSubType}
+        </Text>
 
-      <View style={styles.container}>
         <LineChart
           data={lineData}
           color={"#177AD5"}
           thickness={3}
           dataPointsColor={"red"}
         />
-
-        <Text></Text>
-
-        {/* <View style={{ backgroundColor: "#1A3461" }}>
-          <LineChart
-            initialSpacing={0}
-            data={lineData}
-            spacing={30}
-            hideDataPoints
-            thickness={5}
-            hideRules
-            hideYAxisText
-            yAxisColor="#0BA5A4"
-            showVerticalLines
-            verticalLinesColor="rgba(14,164,164,0.5)"
-            xAxisColor="#0BA5A4"
-            color="#0BA5A4"
-          />
-        </View> */}
-
-        <Text></Text>
-
-        {/* <View style={{ backgroundColor: "#1A3461" }}>
-          <LineChart
-            initialSpacing={0}
-            data={lineData}
-            spacing={30}
-            textColor1="yellow"
-            textShiftY={-8}
-            textShiftX={-10}
-            textFontSize={13}
-            thickness={5}
-            hideRules
-            hideYAxisText
-            yAxisColor="#0BA5A4"
-            showVerticalLines
-            verticalLinesColor="rgba(14,164,164,0.5)"
-            xAxisColor="#0BA5A4"
-            color="#0BA5A4"
-          />
-        </View> */}
       </View>
+    );
+  }
+
+  return (
+    <View style={styles.container}>
+      <FlatList
+        data={Object.entries(props.challengeProgresses)}
+        keyExtractor={(item) => item[0]} // TODO:
+        numColumns={1}
+        bounces={false}
+        renderItem={renderItem}
+        showsVerticalScrollIndicator={false}
+      />
     </View>
   );
 };
@@ -73,9 +56,17 @@ export default PinchStats;
 
 const styles = StyleSheet.create({
   container: {
+    borderWidth: 1,
+    borderColor: "black",
+    backgroundColor: "yellow",
     padding: 10,
     flex: 1,
+    width: "100%",
     flexDirection: "column",
-    alignItems: "center",
-  }
+    alignItems: "flex-start",
+    // justifyContent: "center"
+  },
+  graph: {
+    backgroundColor: "green",
+  },
 });

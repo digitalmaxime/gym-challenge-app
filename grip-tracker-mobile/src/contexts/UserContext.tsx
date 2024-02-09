@@ -9,13 +9,15 @@ import React, {
 import * as Controller from "../api/controller";
 import UserData from "../models/user/UserData";
 import { GripTypeEnum } from "../models/grip/GripTypeEnum";
+import { auth } from "../utils/firebase";
+import { ProgressDictionary } from "../models/challengeProgress/progressDictionary";
 
 type User = {
   userData: UserData;
-  initUser: (userId: string) => Promise<void>;
+  initUser: () => Promise<void>;
   reset: () => void;
-  challengeProgresses: ChallengeProgressModel[];
-  getUserChallengeProgresses: (userId: string) => void;
+  challengeProgresses: ProgressDictionary;
+  getUserChallengeProgresses: () => void;
 };
 
 const UserContext = createContext({});
@@ -24,26 +26,24 @@ type AuthProps = {
 };
 export function UserProvider({ children }: AuthProps) {
   const [userData, setUserData] = useState<UserData>();
-  const [challengeProgresses, setChallengeProgresses] = useState<
-    Record<GripTypeEnum, ChallengeProgressModel[]>
-  >();
+  const [challengeProgresses, setChallengeProgresses] = useState<ProgressDictionary>();
 
-  async function initUser(userId: string) {
+  async function initUser() {
     console.log("-- INIT USER");
     try {
-      const res = await Controller.getUserById(userId);
+      console.log(auth.currentUser?.uid);
+      const res = await Controller.getCurrentUser();
       const fetchedUserData = res.data as UserData;
       console.log(fetchedUserData);
 
       if (
         fetchedUserData !== null &&
         fetchedUserData !== undefined &&
-        Object.hasOwn(fetchedUserData, "id") &&
         Object.hasOwn(fetchedUserData, "email")
       ) {
         console.log("setUserData(fetchedUserData as UserData);");
         setUserData(fetchedUserData as UserData);
-        getUserChallengeProgresses(fetchedUserData.id);
+        getUserChallengeProgresses();
       } else {
         // TODO: set error
       }
@@ -56,15 +56,11 @@ export function UserProvider({ children }: AuthProps) {
   }
 
   // TODO: think about inversify
-  async function getUserChallengeProgresses(userId: string) {
+  async function getUserChallengeProgresses() {
     try {
-      const res = await Controller.getUserChallengeProgresses(userId);
+      const res = await Controller.getUserChallengeProgresses();
       const fetchedChallengeProgresses = res.data;
-      console.log("-------------------------->");
-      console.log(fetchedChallengeProgresses);
-      console.log("<--------------------------");
-      // TODO: classify pregresses by type
-      // setChallengeProgresses(fetchedChallengeProgresses);
+      setChallengeProgresses(fetchedChallengeProgresses);
     } catch (error) {
       const message = error instanceof Error ? error.message : String(error);
       console.error({ message });

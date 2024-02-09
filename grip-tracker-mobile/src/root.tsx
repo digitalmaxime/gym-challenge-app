@@ -11,10 +11,12 @@ const Stack = createNativeStackNavigator();
 
 export default function Root() {
   /** * Listen to firebase auth to set isLoggedIn conditional variable ** */
-  // console.log("--> ROOT : after setIsLoggedIn()")
+  console.log("--> ROOT : after setIsLoggedIn()")
   const [isLoggedIn, setIsLoggedIn] = useState(auth.currentUser !== null);
   useEffect(() => {
     const listener = onIdTokenChanged(auth, async user => {
+      console.log("!!user && user.emailVerified")
+      console.log(!!user && user.emailVerified)
       setIsLoggedIn(!!user && user.emailVerified);
     });
 

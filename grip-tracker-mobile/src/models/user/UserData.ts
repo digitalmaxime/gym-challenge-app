@@ -1,5 +1,4 @@
 type UserData = {
-    id: string;
     email: string;
     userName?: string | undefined;
     authLevel: number | undefined;

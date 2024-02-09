@@ -49,7 +49,7 @@ export default function Login() {
       const userId = await handleLogin(data.email, data.password);
       if (userId) {
         console.log("--> LOGIN : after handleLogin()");
-        await userContext.initUser(userId);
+        await userContext.initUser();
       } else if (auth.currentUser?.email && !auth.currentUser?.emailVerified) {
         toast.show(
           "Authentication failed..\nVerify your email",
