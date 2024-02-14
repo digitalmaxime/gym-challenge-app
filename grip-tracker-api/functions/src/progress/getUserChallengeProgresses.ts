@@ -6,12 +6,13 @@ import { PinchTypeEnum } from "../models/grip/pinch/PinchTypeEnum";
 import { DeadhangTypeEnum } from "../models/grip/deadhang/DeadhangTypeEnum";
 import { CrimpTypeEnum } from "../models/grip/crimp/CrimpTypeEnum";
 import { SubGripType } from "../models/grip/SubGripType";
+import { ChallengeProgressModel } from "../models/challengeProgress/challengeProgressModel";
 
 const db = firestore();
 
 // TODO: refactor into methods etc
 
-const getUserChallengeProgresses = onCall(async (request: CallableRequest) => {
+const getUserChallengeProgresses = onCall(async (request: CallableRequest): Promise<ProgressDictionary> => {
   const uid = request.auth?.uid;
   const token = request.auth?.token || null;
   const email = request.auth?.token.email || null;
@@ -20,7 +21,7 @@ const getUserChallengeProgresses = onCall(async (request: CallableRequest) => {
   console.log("token: ", token);
   console.log("email: ", email);
 
-  /** Get the users progresses (slow, needs indexing on userId) */
+  /** Get the users progresses (slow, needs indexing on userId) */ // TODO: index on userId
   const progress = await db
     .collection("ChallengeProgress")
     .where("userId", "==", uid)
@@ -55,9 +56,7 @@ const getUserChallengeProgresses = onCall(async (request: CallableRequest) => {
   };
 
   for (const gripTypeValue of Object.values(GripTypeEnum)) {
-    console.log("gripTypeValue: ", gripTypeValue);
     switch (gripTypeValue) {
-
       case GripTypeEnum.Pinch:
         for (const pinchType of Object.values(PinchTypeEnum)) {
           const gripId = await getGripId(GripTypeEnum.Pinch, pinchType);
@@ -86,9 +85,6 @@ const getUserChallengeProgresses = onCall(async (request: CallableRequest) => {
         }
         break;
       case GripTypeEnum.Crimp:
-        Object.values(CrimpTypeEnum).forEach((crimpType: CrimpTypeEnum) => {
-          console.log(" -- ", crimpType);
-        });
         break;
     }
   }
@@ -143,15 +139,20 @@ const getUserChallengeProgresses = onCall(async (request: CallableRequest) => {
   function filterChallengeProgresses(
     challengeIdsArray: string[]
   ): ChallengeProgressModel[] {
-    const filteredChallengeProgresses = userChallengeProgresses.filter((x) =>
-      challengeIdsArray.includes(x.challengeId)
-    ).sort((a, b) => new Date(a.timestamp).getTime() - new Date(b?.timestamp).getTime());
+    const filteredChallengeProgresses = userChallengeProgresses
+      .filter((x) => challengeIdsArray.includes(x.challengeId))
+      // .sort((a, b) => a.timestamp - b.timestamp); // TODO: sort not working somehow..
 
-    return filteredChallengeProgresses;
+    return filteredChallengeProgresses.sort((a, b) => a.timestamp - b.timestamp);
   }
 
   console.log("---------------------------------");
-  console.log(progressDictionary);
+  console.log(progressDictionary.PinchProgresses.wideDeep);
+  progressDictionary.PinchProgresses.wideDeep.forEach(x => {
+    const toto = new Date(x.timestamp!).getDate().toString()
+    console.log ("Date : ", toto)
+
+  })
   return progressDictionary;
 });
 

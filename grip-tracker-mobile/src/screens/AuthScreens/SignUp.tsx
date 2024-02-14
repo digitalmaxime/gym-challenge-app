@@ -8,7 +8,7 @@ import { useToast } from "react-native-toast-notifications";
 import Colors from "../../constants/styles";
 import { auth } from "../../utils/firebase";
 import { handleSignUp, resendEmailVerification } from "../../utils/authHandler";
-import { TextButton } from "../../components/basics/btn/textButton";
+import { TextButton } from "../../components/basics/btn/TextButton";
 import { User } from "firebase/auth";
 
 // eslint-disable-next-line no-useless-escape

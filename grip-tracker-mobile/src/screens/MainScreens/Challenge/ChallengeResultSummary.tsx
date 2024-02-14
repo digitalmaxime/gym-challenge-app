@@ -1,9 +1,9 @@
 import React from "react";
 import { StyleSheet, View, Text, Image } from "react-native";
-import { TextButton } from "../../../components/basics/btn/textButton";
+import { TextButton } from "../../../components/basics/btn/TextButton";
 import Colors from "../../../constants/styles";
-import AnimatedIcon from "../../../components/basics/btn/animatedIcon";
-import { NavigationProp, RouteProp, useNavigation, useRoute } from "@react-navigation/native";
+import AnimatedIcon from "../../../components/basics/btn/AnimatedIcon";
+import { RouteProp, useNavigation, useRoute } from "@react-navigation/native";
 import { useUserContext } from "../../../contexts/UserContext";
 import { ChallengeModel } from "../../../models/challenge/ChallengeModel";
 

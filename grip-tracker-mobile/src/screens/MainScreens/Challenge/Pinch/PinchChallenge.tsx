@@ -12,7 +12,7 @@ import { useUserContext } from "../../../../contexts/UserContext";
 import NumericInputWeight from "../../../../components/basics/numericInputs/NumericInputWeight";
 import { useToast } from "react-native-toast-notifications";
 import { ChallengeModel } from "../../../../models/challenge/ChallengeModel";
-import { TextButton } from "../../../../components/basics/btn/textButton";
+import { TextButton } from "../../../../components/basics/btn/TextButton";
 import Colors from "../../../../constants/styles";
 
 type pathParam = {
@@ -60,10 +60,9 @@ export function PinchChallenge() {
               duration: pinchChallenge.duration!,
               weight: weightInKilos,
             } as ChallengeProgressModel;
-
             const id = await Controller.saveChallengeProgress(payload);
 
-            user.getUserChallengeProgresses(); 
+            user.SyncUserChallengeProgresses();
             // TODO: consider only updating with recent result (instead of fetching the whole userChallengeProgress..)
 
             navigation.goBack();

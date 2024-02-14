@@ -6,10 +6,10 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 // Styles
 import Colors from "../../constants/styles";
-import ProfileScreen from "./Profile/ProfileScreen";
-import { Test } from "./Training/test";
-import GripChallengeSelectionStack from "./Challenge/GripChallengeSelectionStack";
-import Stats from "./Stats/Stats";
+import ProfileScreen from "./profile/ProfileScreen";
+import { Test } from "./training/test";
+import GripChallengeSelectionStack from "./challenge/GripChallengeSelectionStack";
+import AnalyticsScreen from "./analytics/AnalyticsScreen";
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -44,7 +44,7 @@ export default function MainNavigation() {
         />
           <Tab.Screen
             name="Stats"
-            component={Stats}
+            component={AnalyticsScreen}
             options={{
               tabBarLabel: "Stats",
               tabBarIcon: ({ color }) => (

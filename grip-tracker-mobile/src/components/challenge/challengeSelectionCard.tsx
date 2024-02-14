@@ -1,6 +1,6 @@
 import * as React from "react";
 import { StyleSheet, ImageBackground } from "react-native";
-import { TextButton } from "../basics/btn/textButton";
+import { TextButton } from "../basics/btn/TextButton";
 import { ChallengeModel } from "../../models/challenge/ChallengeModel";
 
 interface ChallengeSelectionCardProps {
@@ -12,17 +12,18 @@ const ChallengeSelectionCard = ({
   challenge,
   onPress,
 }: ChallengeSelectionCardProps) => {
-    return (
+    
+  return (
     <ImageBackground
       resizeMode="cover" // contain, cover, center
       source={{
-        uri: challenge.imgUri,
+        uri: challenge?.imgUri,
       }}
       style={styles.backgroundImage}
     >
       <TextButton
         onPress={onPress}
-        textContent={challenge.name}
+        textContent={challenge?.name}
         disabled={false}
         btnBackgroundColor="rgba(44, 44, 44, 0.4)"
         height="100%"

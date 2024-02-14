@@ -1,15 +1,8 @@
 import { httpsCallable, HttpsCallableResult } from "firebase/functions";
 import { firebaseFunctions } from "../utils/firebase";
-import { ProgressDictionary } from "../models/challengeProgress/progressDictionary";
-
-async function createChallenge(): Promise<HttpsCallableResult<unknown>> {
-  const callCreateChallenge = httpsCallable(
-    firebaseFunctions,
-    "createChallenge",
-    { timeout: 2000 }
-  );
-  return callCreateChallenge({});
-}
+import { ProgressDictionary } from "../models/challengeProgress/ProgressDictionary";
+import { ChallengeModel } from "../models/challenge/ChallengeModel";
+import { GripModel } from "../models/grip/GripModel";
 
 async function saveChallengeProgress(
   challengeProgress: ChallengeProgressModel
@@ -21,8 +14,8 @@ async function saveChallengeProgress(
   return callSaveChallengeProgress(challengeProgress);
 }
 
-async function getAllChallenges(): Promise<HttpsCallableResult<unknown>> {
-  const callGetAllChallenges = httpsCallable(
+async function getAllChallenges(): Promise<HttpsCallableResult<ChallengeModel[]>> {
+  const callGetAllChallenges = httpsCallable<unknown, ChallengeModel[]>(
     firebaseFunctions,
     "getAllChallenges"
   );
@@ -39,8 +32,8 @@ async function getFilteredChallenges(
   return callGetFilteredChallenges({ gripType });
 }
 
-async function getAllGrips(): Promise<HttpsCallableResult<unknown>> {
-  const callGetAllGrips = httpsCallable(firebaseFunctions, "getAllGrips");
+async function getAllGrips(): Promise<HttpsCallableResult<GripModel[]>> {
+  const callGetAllGrips = httpsCallable<unknown, GripModel[]>(firebaseFunctions, "getAllGrips");
   return callGetAllGrips();
 }
 
@@ -81,8 +74,17 @@ async function getUserChallengeProgresses(): Promise<
   return callGetUserChallengeProgresses();
 }
 
+async function setChallengeProgressMockData(): Promise<
+  HttpsCallableResult<ProgressDictionary>
+> {
+  const callSetChallengeProgressMockData = httpsCallable<
+    unknown,
+    ProgressDictionary
+  >(firebaseFunctions, "setChallengeProgressMockData");
+  return callSetChallengeProgressMockData();
+}
+
 export {
-  createChallenge,
   getAllChallenges,
   saveChallengeProgress,
   getFilteredChallenges,
@@ -91,4 +93,6 @@ export {
   getCurrentUser,
   getUserChallengeProgresses,
   getChallengeProgress,
+
+  setChallengeProgressMockData,
 };

@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import Login from './screens/AuthScreens/Login';
-import SignUp from './screens/AuthScreens/SignUp';
+import Login from './screens/authScreens/Login';
+import SignUp from './screens/authScreens/SignUp';
 import { auth } from './utils/firebase';
-import MainNavigation from './screens/MainScreens/MainNavigation';
+import MainNavigation from './screens/mainScreens/MainNavigation';
 import { onIdTokenChanged } from 'firebase/auth';
 
 const Stack = createNativeStackNavigator();

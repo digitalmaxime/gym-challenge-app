@@ -1,4 +1,6 @@
+import saveChallengeProgress from "../../challenge/saveChallengeProgress";
 import ChallengeModel from "../../models/challenge/ChallengeModel";
+import { ChallengeProgressModel } from "../../models/challengeProgress/challengeProgressModel";
 import { GripTypeEnum } from "../../models/grip/GripTypeEnum";
 import { DeadhangTypeEnum } from "../../models/grip/deadhang/DeadhangTypeEnum";
 import { PinchTypeEnum } from "../../models/grip/pinch/PinchTypeEnum";
@@ -88,3 +90,4 @@ export {
   pinchWideShallowTenSecondsChallenge,
   pinchWideDeepTenSecondsChallenge
 };
+

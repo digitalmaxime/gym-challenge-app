@@ -1,32 +1,27 @@
 import * as React from "react";
 import { Text, View, StyleSheet, FlatList } from "react-native";
 import { LineChart } from "react-native-gifted-charts";
-import { PinchTypeEnum } from "../../../../models/grip/pinch/PinchTypeEnum";
+import { useUserContext } from "../../../../contexts/UserContext";
 
-interface PinchStatsProps {
-  challengeProgresses: Record<PinchTypeEnum, ChallengeProgressModel[]>;
-}
+const DeadhangStats = () => {
+  const user = useUserContext();
 
-const PinchStats = (props: PinchStatsProps) => {
-  
   function renderItem(itemData: any) {
-    const pinchSubType = itemData.item[0];
+    const deadhangSubType = itemData.item[0];
     const challengeProgresses = itemData.item[1];
-    console.log(pinchSubType);
-    
-    const lineData: { value: number }[] = [];
-    
-    if (challengeProgresses.length === 0) return (<></>)
+    console.log(deadhangSubType);
 
-    for (const data of challengeProgresses) {
-      lineData.push({ value: data?.weight });
+    const lineData: { value: number }[] = [];
+
+    if (challengeProgresses.length > 0) {
+      for (const data of challengeProgresses) {
+        lineData.push({ value: data?.duration });
+      }
     }
 
     return (
       <View style={styles.graph}>
-        <Text>
-          {pinchSubType}
-        </Text>
+        <Text>{deadhangSubType}</Text>
 
         <LineChart
           data={lineData}
@@ -41,7 +36,9 @@ const PinchStats = (props: PinchStatsProps) => {
   return (
     <View style={styles.container}>
       <FlatList
-        data={Object.entries(props.challengeProgresses)}
+        data={Object.entries(
+          user.challengeProgresses?.DeadhangProgresses || []
+        )}
         keyExtractor={(item) => item[0]} // TODO:
         numColumns={1}
         bounces={false}
@@ -52,21 +49,23 @@ const PinchStats = (props: PinchStatsProps) => {
   );
 };
 
-export default PinchStats;
+export default DeadhangStats;
 
 const styles = StyleSheet.create({
   container: {
     borderWidth: 1,
     borderColor: "black",
-    backgroundColor: "yellow",
+    backgroundColor: "turquoise",
     padding: 10,
+    margin: 20,
     flex: 1,
-    width: "100%",
+    width: "80%",
     flexDirection: "column",
     alignItems: "flex-start",
     // justifyContent: "center"
   },
   graph: {
     backgroundColor: "green",
+    width: 500,
   },
 });

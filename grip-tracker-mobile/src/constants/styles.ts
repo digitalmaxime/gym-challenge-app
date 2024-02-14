@@ -26,12 +26,18 @@ const Colors = {
   progressBackgroundColour: 'rgba(123, 255, 240, 0.859)',
 
   // headerStyle top navigation
-  headerStyleBackgroundColor: 'rgba(93, 138, 134, 0.329)',
+  headerStyleBackgroundColor: 'rgba(183, 242, 237, 0.329)',
 
   // Text
   textColor: '#353e47',
   darkTextColor: '#1A202C',
   textBackGroundColor: '#ccc',
+
+  // GripType
+  pinchColor: '#e14d09',
+  deadhangColor: '#1766b4',
+  crimpColor: '#317126',
+  
 };
 
 export default Colors;

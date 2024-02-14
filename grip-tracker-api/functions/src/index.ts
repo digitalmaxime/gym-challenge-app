@@ -25,9 +25,9 @@ import {
 initializeApp();
 
 /*** Challenges ***/
-export { default as saveChallengeProgress } from "./challenge/saveChallengeProgress";
 export { default as getAllChallenges } from "./challenge/getAllChallenges";
 export { default as getFilteredChallenges } from "./challenge/getFilteredChallenges";
+export { default as saveChallengeProgress } from "./challenge/saveChallengeProgress";
 
 /*** Grips ***/
 export { default as getAllGrips } from "./grip/getAllGrips";
@@ -41,6 +41,7 @@ export { default as deleteUserOnFirestore } from "./users/deleteUserOnFirestore"
 /*** Progress ***/
 export { default as getChallengeProgress } from "./progress/getChallengeProgress";
 export { default as getUserChallengeProgresses } from "./progress/getUserChallengeProgresses";
+export { default as setChallengeProgressMockData } from "./progress/setChallengeProgressMockData";
 
 /*** Initialize Data ***/
 

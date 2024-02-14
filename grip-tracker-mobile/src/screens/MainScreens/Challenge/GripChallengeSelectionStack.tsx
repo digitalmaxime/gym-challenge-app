@@ -1,12 +1,12 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import GripChallengeSelectionScreen from './GripChallengeSelectionScreen';
-import PinchSelectionStack from './Pinch/PinchSelectionStack';
-import ChallengeResultSummary from './ChallengeResultSummary';
-import DeadhangSelectionStack from './DeadHang/DeadhangSelectionStack';
-import CrimpSelectionStack from './Crimp/CrimpSelectionStack';
+import PinchSelectionStack from './pinch/PinchSelectionStack';
+import DeadhangSelectionStack from './deadHang/DeadhangSelectionStack';
+import CrimpSelectionStack from './crimp/CrimpSelectionStack';
 import Colors from '../../../constants/styles';
+import GripChallengeSelectionScreen from './GripChallengeSelectionScreen';
+import ChallengeResultSummary from './ChallengeResultSummary';
 
 function GripChallengeSelectionStack() {
   const Stack = createNativeStackNavigator();

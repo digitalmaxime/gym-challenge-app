@@ -43,8 +43,8 @@ function AnimatedIcon({
                     {
                       rotate: progress.interpolate(
                         {
-                          inputRange: [0.5, 1],
-                          outputRange: [`${1.7 * Math.PI}rad`, `${1.8 * Math.PI}rad`],
+                          inputRange: [0, 4],
+                          outputRange: [`${0 * Math.PI}rad`, `${0.1 * Math.PI}rad`],
                         },
                       ),
                     },

@@ -1,13 +1,12 @@
 import * as React from "react";
-import { View, FlatList, StyleSheet, ImageBackground } from "react-native";
+import { View, FlatList, StyleSheet } from "react-native";
 import { NavigationProp, useNavigation } from "@react-navigation/native";
 import * as Controller from "../../../../api/controller";
-import { GripModel } from "../../../../models/grip/GripModel";
-import { TextButton } from "../../../../components/basics/btn/textButton";
 import { GripTypeEnum } from "../../../../models/grip/GripTypeEnum";
 import { ChallengeModel } from "../../../../models/challenge/ChallengeModel";
 import { useState } from "react";
-import ChallengeSelectionCard from "../../../../components/challenge/challengeSelectionCard";
+import ChallengeSelectionCard from "../../../../components/challenge/ChallengeSelectionCard";
+import { useChallengeContext } from "../../../../contexts/ChallengeContext";
 
 export interface PinchSelectionScreenProps {}
 
@@ -17,21 +16,23 @@ type RootStackParamList = {
 
 export function PinchSelectionScreen() {
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
-  const [allPinchChallenges, setAllPinchChallenges] = useState<ChallengeModel[]>([]);
+  const challengeCtx = useChallengeContext();
 
-  React.useEffect(() => {
-    const getPinchChallenges = async () => {
-      const filteredChallenges = (
-        await Controller.getFilteredChallenges(GripTypeEnum.Pinch)
-      ).data as ChallengeModel[];
+  // const [allPinchChallenges, setAllPinchChallenges] = useState<ChallengeModel[]>([]);
 
-      filteredChallenges.sort((a, b) => a.duration! - b.duration!);
+  // React.useEffect(() => {
+  //   const getPinchChallenges = async () => {
+  //     const filteredChallenges = (
+  //       await Controller.getFilteredChallenges(GripTypeEnum.Pinch)
+  //     ).data as ChallengeModel[];
 
-      setAllPinchChallenges((_) => filteredChallenges);
-    };
+  //     filteredChallenges.sort((a, b) => a.duration! - b.duration!);
 
-    getPinchChallenges();
-  }, []);
+  //     setAllPinchChallenges((_) => filteredChallenges);
+  //   };
+
+  //   getPinchChallenges();
+  // }, []);
 
 
   const navigateToChallenge = (pinchChallenge: ChallengeModel) => {
@@ -52,7 +53,7 @@ export function PinchSelectionScreen() {
   return (
     <View style={styles.mainContainer}>
       <FlatList
-        data={allPinchChallenges}
+        data={challengeCtx.challengeDictionary.pinch}
         keyExtractor={(item) => item.id}
         numColumns={1}
         bounces={false}

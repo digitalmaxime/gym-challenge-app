@@ -4,7 +4,7 @@ import * as Controller from "../../../../api/controller";
 import { NavigationProp, useNavigation } from "@react-navigation/native";
 import { ChallengeModel } from "../../../../models/challenge/ChallengeModel";
 import { GripTypeEnum } from "../../../../models/grip/GripTypeEnum";
-import ChallengeSelectionCard from "../../../../components/challenge/challengeSelectionCard";
+import ChallengeSelectionCard from "../../../../components/challenge/ChallengeSelectionCard";
 import { useState } from "react";
 
 export interface DeadhangSelectionProps {}

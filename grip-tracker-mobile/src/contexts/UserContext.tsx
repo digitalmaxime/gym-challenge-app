@@ -8,32 +8,35 @@ import React, {
 } from "react";
 import * as Controller from "../api/controller";
 import UserData from "../models/user/UserData";
-import { GripTypeEnum } from "../models/grip/GripTypeEnum";
 import { auth } from "../utils/firebase";
-import { ProgressDictionary } from "../models/challengeProgress/progressDictionary";
+import { ProgressDictionary } from "../models/challengeProgress/ProgressDictionary";
 
 type User = {
   userData: UserData;
   initUser: () => Promise<void>;
   reset: () => void;
   challengeProgresses: ProgressDictionary;
-  getUserChallengeProgresses: () => void;
+  SyncUserChallengeProgresses: () => void;
 };
 
 const UserContext = createContext({});
-type AuthProps = {
+
+type UserProviderProps = {
   children: ReactNode;
 };
-export function UserProvider({ children }: AuthProps) {
+
+export function UserProvider({ children }: UserProviderProps) {
   const [userData, setUserData] = useState<UserData>();
-  const [challengeProgresses, setChallengeProgresses] = useState<ProgressDictionary>();
+  const [challengeProgresses, setChallengeProgresses] =
+    useState<ProgressDictionary>();
 
   async function initUser() {
-    console.log("-- INIT USER");
+    console.log("-- INIT USER ctx");
     try {
       console.log(auth.currentUser?.uid);
-      const res = await Controller.getCurrentUser();
+      const res = await Controller.getCurrentUser(); // TODO: erreur ici
       const fetchedUserData = res.data as UserData;
+
       console.log(fetchedUserData);
 
       if (
@@ -43,7 +46,7 @@ export function UserProvider({ children }: AuthProps) {
       ) {
         console.log("setUserData(fetchedUserData as UserData);");
         setUserData(fetchedUserData as UserData);
-        getUserChallengeProgresses();
+        await SyncUserChallengeProgresses();
       } else {
         // TODO: set error
       }
@@ -55,16 +58,29 @@ export function UserProvider({ children }: AuthProps) {
     }
   }
 
-  // TODO: think about inversify
-  async function getUserChallengeProgresses() {
+  async function SyncUserChallengeProgresses() {
     try {
       const res = await Controller.getUserChallengeProgresses();
+
       const fetchedChallengeProgresses = res.data;
-      setChallengeProgresses(fetchedChallengeProgresses);
+      // Object.entries(fetchedChallengeProgresses).forEach(record => { // TODO: figure out why shit ain't sorted..
+      //   Object.entries(record[1]).forEach(challengeProgress => {
+      //     challengeProgress[1].sort((a, b) => (a?.timestamp || 0) - (b?.timestamp || 0))
+      //   })
+      // })
+      // fetchedChallengeProgresses
+      // .PinchProgresses.wideDeep.sort(
+      //   (a, b) => (a?.timestamp || 0) - (b?.timestamp || 0)
+      // );
+      setChallengeProgresses((_) => fetchedChallengeProgresses);
+      console.log("challengeProgresses");
+      console.log("challengeProgresses");
+      console.log("challengeProgresses");
+      console.log(challengeProgresses);
     } catch (error) {
       const message = error instanceof Error ? error.message : String(error);
       console.error({ message });
-      console.warn(`failed at ${getUserChallengeProgresses.name}..`);
+      console.warn(`failed at ${SyncUserChallengeProgresses.name}..`);
     }
   }
 
@@ -72,12 +88,11 @@ export function UserProvider({ children }: AuthProps) {
     setUserData(undefined);
   }
 
-  // TODO: think about memo when progress is updated
   const value = useMemo(
     () => ({
       userData,
       challengeProgresses,
-      getUserChallengeProgresses,
+      SyncUserChallengeProgresses,
       initUser,
       reset,
     }),

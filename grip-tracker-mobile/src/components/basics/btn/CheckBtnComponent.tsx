@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import { TextButton } from './textButton';
+import { TextButton } from './TextButton';
 import Colors from '../../../constants/styles';
 interface CheckBtnComponentProps {
   handleCheckPress: () => boolean;

@@ -4,7 +4,7 @@ interface ChallengeModel {
   gripId: string;
   weight?: number;
   duration?: number;
-  imgUri: string;
+  imgUri?: string;
 }
 
 export default ChallengeModel;

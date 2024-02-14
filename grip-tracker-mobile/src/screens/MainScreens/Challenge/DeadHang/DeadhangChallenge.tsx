@@ -11,9 +11,9 @@ import * as Controller from "../../../../api/controller";
 import Colors from "../../../../constants/styles";
 import CheckBtnComponent from "../../../../components/basics/btn/CheckBtnComponent";
 import NumericInputDuration from "../../../../components/basics/numericInputs/NumericInputDuration";
-import { IconBtn } from "../../../../components/basics/btn/iconButton";
+import { IconBtn } from "../../../../components/basics/btn/IconButton";
 import { ChallengeModel } from "../../../../models/challenge/ChallengeModel";
-import { TextButton } from "../../../../components/basics/btn/textButton";
+import { TextButton } from "../../../../components/basics/btn/TextButton";
 import { POUNDS_KILOS_RATIO } from "../../../../components/basics/numericInputs/NumericInputWeight";
 
 type pathParam = {

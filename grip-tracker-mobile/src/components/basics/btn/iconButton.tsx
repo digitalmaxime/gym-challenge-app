@@ -3,15 +3,16 @@ import { StyleSheet, Pressable, Text } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import Colors from "../../../constants/styles";
 
-interface IconBtnProps {
+interface IconBtnProps { // TODO: use paper instead;
   onPress: () => void;
   iconName: keyof typeof MaterialCommunityIcons.glyphMap;
   iconSize?: number;
   iconColor?: string;
   btnBackgroundColor?: string;
+  disabled: boolean;
   margin?: number;
   padding?: number;
-  disabled: boolean;
+  text?: string;
 }
 
 export function IconBtn({
@@ -23,6 +24,7 @@ export function IconBtn({
   margin = 0,
   padding = 0,
   disabled,
+  text,
 }: IconBtnProps) {
   return (
     <Pressable
@@ -42,7 +44,13 @@ export function IconBtn({
         name={iconName}
         color={iconColor}
         size={iconSize}
+        style={{alignSelf: 'center'}}
       />
+
+      {text && (
+        <Text style={{alignSelf: 'center'}}>{text}</Text>
+      )}
+
     </Pressable>
   );
 }

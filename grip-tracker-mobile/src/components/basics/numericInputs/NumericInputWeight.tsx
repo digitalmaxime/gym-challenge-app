@@ -3,7 +3,7 @@ import { Text, Switch, View, StyleSheet } from "react-native";
 import InputSpinner from "react-native-input-spinner";
 import Colors from "../../../constants/styles";
 import { useState } from "react";
-import { IconBtn } from "../btn/iconButton";
+import { IconBtn } from "../btn/IconButton";
 
 interface NumericInputWeightProps {
   onChange: (value: number) => void;

@@ -4,9 +4,10 @@ import { useToast } from 'react-native-toast-notifications';
 import Colors from '../../../constants/styles'
 import { useUserContext } from '../../../contexts/UserContext';
 import { auth } from '../../../utils/firebase';
-import { TextButton } from '../../../components/basics/btn/textButton';
+import { TextButton } from '../../../components/basics/btn/TextButton';
 import WarningModal from '../../../components/basics/warnings/WarningModal';
 import { handlerCurrentDeleteUser } from '../../../utils/authHandler';
+import Header from '../../../components/header/Header';
 
 function ProfileScreen() {
   const userContext = useUserContext();
@@ -16,8 +17,12 @@ function ProfileScreen() {
 
   return (
     <View style={styles.container}>
+      
+      {/********* Header *********/}
+      <Header></Header>
+      
       <Text style={styles.title}>Profile</Text>
-      <View style={styles.row}>
+      <View>
         <Text style={styles.text}>{userContext.userData?.email || 'userData.email not found..'}</Text>
       </View>
       <View style={styles.bottomBtnContainer}>
@@ -90,10 +95,17 @@ export default ProfileScreen;
 
 const styles = StyleSheet.create({
   container: {
-    padding: 20,
     flex: 1,
-    flexDirection: 'column',
-    alignItems: 'center',
+    alignItems: "center",
+    padding: 0,
+    margin: 0,
+  },
+  contentContainer: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "space-evenly",
+    width: "100%",
+    // backgroundColor: 'blue',
   },
   title: {
     fontSize: 32,
@@ -106,12 +118,6 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 18,
     color: Colors.textColor,
-  },
-  row: {
-    flexDirection: 'row',
-    marginTop: 10,
-    marginLeft: 10,
-    flexShrink: 1,
   },
   bottomBtnContainer: {
     flexGrow: 1,
