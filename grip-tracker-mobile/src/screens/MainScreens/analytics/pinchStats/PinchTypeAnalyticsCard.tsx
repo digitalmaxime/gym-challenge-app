@@ -22,19 +22,7 @@ const PinchTypeAnalyticsCard = ({
   const [modalVisible, setModalVisible] = useState(false);
   const toggleModal = () => setModalVisible(!modalVisible);
 
-  
-
-  console.log(challengeProgresses[0]?.weight);
-
-  const timeSortedProgresses = challengeProgresses.sort((a, b) => {
-    return new Date(a.timestamp!).getTime() - new Date(b.timestamp!).getTime();
-  });
-
-  const weightSortedProgresses = challengeProgresses.sort((a, b) => {
-    return new Date(a.weight!).getTime() - new Date(b.weight!).getTime();
-  });
-
-  const LeftContent = (props: any) => <Avatar.Icon {...props} icon="folder" />;
+  const LeftContent = (props: any) => <Avatar.Icon {...props} icon="fire" />;
 
   return (
     <View style={styles.container}>
@@ -45,27 +33,27 @@ const PinchTypeAnalyticsCard = ({
         elevation={1}
       >
         <Card.Title
+        titleVariant="titleMedium"
           title={challenge?.name || "not found.."}
           subtitle="Card Subtitle"
           left={LeftContent}
         />
         <Card.Content>
-          <Text variant="titleLarge">Card title</Text>
+          {/* <Text variant="titleLarge">{challenge?.name}</Text> */}
           <Text variant="bodyMedium">
             max weight :{" "}
-            {weightSortedProgresses[weightSortedProgresses.length - 1]?.weight}
+            {Math.max( ...challengeProgresses.map(x => x.weight) )}
           </Text>
           <Text variant="bodyMedium">
             last weight :{" "}
-            {/* {timeSortedProgresses[timeSortedProgresses.length - 1]?.weight} */}
+            {challengeProgresses[challengeProgresses.length - 1].weight}
           </Text>
-          <Text variant="bodyMedium">Card content</Text>
-          <Text variant="bodyMedium">Card content</Text>
+          <Text variant="bodyMedium">weight / body ratio : </Text>
         </Card.Content>
-        {/* <Card.Cover source={{ uri: "https://picsum.photos/700" }} /> */}
+        <Card.Cover style={{margin: 5, resizeMode: "cover", opacity: 0.2, height: 60, borderRadius: 0}} source={{ uri: challenge.imgUri }} />
         <Card.Actions>
-          <Button>Cancel</Button>
-          <Button>Ok</Button>
+          {/* <Button>Cancel</Button> */}
+          <Button onPress={() => console.log("sdf")}>view</Button>
         </Card.Actions>
       </Card>
       <DetailedPinchAnalyticsModal
@@ -85,11 +73,11 @@ const styles = StyleSheet.create({
     // borderWidth: 1,
     // borderColor: "black",
     // backgroundColor: "#F8F",
-    margin: 10,
-    flex: 1,
-    // flexDirection: "column",
+    margin: 15,
+    // flex: 1,
+    // flexDirection: "row",
     // alignItems: "flex-start",
-    // width: "100%",
-    // justifyContent: "center"
+    width: "80%",
+    // justifyContent: "flex-start"
   },
 });

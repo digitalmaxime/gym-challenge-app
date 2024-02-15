@@ -1,12 +1,20 @@
 import * as React from "react";
-import { Text, StyleSheet, Modal, ScrollView, View } from "react-native";
-import { BarChart } from "react-native-gifted-charts";
-import Colors from "../../../../constants/styles";
+import {
+  Text,
+  StyleSheet,
+  Modal,
+  ScrollView,
+  View,
+  SafeAreaView,
+} from "react-native";
 import { ChallengeModel } from "../../../../models/challenge/ChallengeModel";
 import { DateTimeService } from "../../../../services/dateTime/DateTimeService";
-import { WeekDays } from "../../../../constants/Date/DateConstantes";
-import PinchGraph from "./pinchGraph/PinchGraph";
-import { IconButton, List, SegmentedButtons } from "react-native-paper";
+import { TimePeriod, WeekDays } from "../../../../constants/Date/DateConstants";
+import WeekPinchGraph from "./pinchGraph/WeekPinchGraph";
+import { SegmentedButtons } from "react-native-paper";
+import { useState } from "react";
+import YearPinchGraph from "./pinchGraph/YearPinchGraph";
+import MonthPinchGraph from "./pinchGraph/MonthPinchGraph";
 
 interface DetailedPinchAnalyticsProps {
   modalVisible: boolean;
@@ -21,26 +29,38 @@ const DetailedPinchAnalyticsModal = ({
   challenge,
   challengeProgresses,
 }: DetailedPinchAnalyticsProps) => {
-
-  challengeProgresses.sort(
-    (a, b) =>
-      new Date(a.timestamp!).getTime() - new Date(b.timestamp!).getTime()
+  const [timePeriod, setTimePeriod] = useState<string>(
+    TimePeriod[TimePeriod.Week]
   );
 
   const weekBarData: { value: number; label: string }[] = [];
 
   for (let x of DateTimeService.getPastWeekDates()) {
-    const found = challengeProgresses.find(
+    const matchingDateProgress = challengeProgresses.find(
       (progress) =>
         new Date(progress.timestamp!).setHours(0, 0, 0, 0) ==
         new Date(x.date!).setHours(0, 0, 0, 0)
     );
     weekBarData.push({
-      value: found?.weight || 0,
+      value: matchingDateProgress?.weight || 0,
       label: WeekDays[x.day].substring(0, 2),
     });
   }
-  
+
+  const monthBarData: { value: number; label: string }[] = [];
+
+  for (let x of DateTimeService.getPastMonthDates()) {
+    const matchingDateProgress = challengeProgresses.find(
+      (progress) =>
+        new Date(progress.timestamp!).setHours(0, 0, 0, 0) ==
+        new Date(x.date!).setHours(0, 0, 0, 0)
+    );
+    monthBarData.push({
+      value: matchingDateProgress?.weight || 0,
+      label: x.day.toString(),
+    });
+  }
+
   return (
     <Modal
       visible={modalVisible}
@@ -52,44 +72,61 @@ const DetailedPinchAnalyticsModal = ({
     >
       <ScrollView
         showsVerticalScrollIndicator={false}
-        contentContainerStyle={styles.container}
+        contentContainerStyle={styles.scrollContainer}
       >
-        <Text>{challenge.name}</Text>
+        <View style={styles.container}>
+          <Text style={{ fontSize: 18, margin: 20, alignSelf: "flex-start" }}>
+            {challenge.name}
+          </Text>
 
-        <Text>{"\n"}</Text>
-        <Text>{"\n"}</Text>
-        <Text>All time record</Text>
+          <View
+            style={{
+              flexDirection: "row",
+              margin: 10,
+              alignSelf: "flex-start",
+            }}
+          >
+            <Text style={{ fontSize: 15, margin: 5 }}>All time record</Text>
+            <Text style={{ fontSize: 15, margin: 5 }}>
+              {Math.max(...challengeProgresses.map((x) => x.weight))}
+            </Text>
+          </View>
 
-        <View>
-          <>
-            <SegmentedButtons // TODO: Choose between week / month / year / all time
-              value={"walk"}
-              onValueChange={() => console.log("asdf")}
+          <View style={styles.timePeriodOption}>
+            <Text style={{ fontSize: 16 }}>progress</Text>
+            <SegmentedButtons
+              style={{ width: 200, height: 40, padding: 0, margin: 10 }}
+              value={timePeriod}
+              onValueChange={setTimePeriod}
               buttons={[
                 {
-                  value: "walk",
-                  label: "Walking",
+                  value: TimePeriod[TimePeriod.Week],
+                  label: TimePeriod[TimePeriod.Week],
                 },
                 {
-                  value: "train",
-                  label: "Transit",
+                  value: TimePeriod[TimePeriod.Month],
+                  label: TimePeriod[TimePeriod.Month],
                 },
-                { value: "drive", label: "Driving" },
+                {
+                  value: TimePeriod[TimePeriod.Year],
+                  label: TimePeriod[TimePeriod.Year],
+                },
               ]}
             />
-          </>
-          <PinchGraph weekBarData={weekBarData} />
-        </View>
+          </View>
 
-        <Text></Text>
-        {/* <BarChart
-          width={300}
-          rotateLabel
-          noOfSections={5}
-          maxValue={3}
-          stackData={stackDataWeeklyActivity}
-        /> */}
-        {/* <PieChart data={data} /> */}
+          {timePeriod == TimePeriod[TimePeriod.Week] && (
+            <WeekPinchGraph data={weekBarData} />
+          )}
+
+          {timePeriod == TimePeriod[TimePeriod.Month] && (
+            <MonthPinchGraph data={monthBarData} />
+          )}
+
+          {timePeriod == TimePeriod[TimePeriod.Year] && (
+            <YearPinchGraph data={monthBarData} />
+          )}
+        </View>
       </ScrollView>
     </Modal>
   );
@@ -98,10 +135,23 @@ const DetailedPinchAnalyticsModal = ({
 export default DetailedPinchAnalyticsModal;
 
 const styles = StyleSheet.create({
-  container: {
+  scrollContainer: {
     // backgroundColor: 'turquoise',
     padding: 20,
     justifyContent: "center",
     alignItems: "center",
+  },
+  container: {
+    // backgroundColor: 'green',
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  timePeriodOption: {
+    // backgroundColor: "blue",
+    flexDirection: "row",
+    justifyContent: "space-evenly",
+    alignItems: "center",
+    width: "100%",
+    padding: 5,
   },
 });

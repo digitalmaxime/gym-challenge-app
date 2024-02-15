@@ -21,7 +21,7 @@ const AnalyticsNavigation = ({ setGripTypeOption }: StatsNavigationProps) => {
         onPress={() => setGripTypeOption((_) => AnalyticsNavigationOptions.General)}
         iconName={"trophy"}
         disabled={false}
-        text="analytics"
+        text="general"
       />
       <IconBtn
         onPress={() => setGripTypeOption(AnalyticsNavigationOptions.Pinch)}

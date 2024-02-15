@@ -12,20 +12,43 @@ import {
   deadhangFourPlateGripData,
   wideDeepPinchGripData,
   wideShallowPinchGripData,
+  deadhangRightArmGripData,
+  deadhangLeftArmGripData,
 } from "../grip/gripData";
 
 const deadhangBodyWeightChallenge: ChallengeModel = {
   id: GripTypeEnum.Deadhang + "_" + DeadhangTypeEnum.bodyWeight,
-  name: "Body weight deadhang",
+  name: "Body weight",
   gripId: deadhangBodyWeightGripData.id,
   weight: 0,
   duration: 0,
   imgUri:
     "https://firebasestorage.googleapis.com/v0/b/grip-tracker.appspot.com/o/deadhang.png?alt=media&token=0f2f01cf-56bd-4273-b958-7e476d8a0762",
 };
+
+const deadhangRightArmChallenge: ChallengeModel = {
+  id: GripTypeEnum.Deadhang + "_" + DeadhangTypeEnum.rightArm,
+  name: "right arm",
+  gripId: deadhangRightArmGripData.id,
+  weight: 0,
+  duration: 0,
+  imgUri:
+    "https://firebasestorage.googleapis.com/v0/b/grip-tracker.appspot.com/o/deadhang.png?alt=media&token=0f2f01cf-56bd-4273-b958-7e476d8a0762",
+};
+
+const deadhangLeftArmChallenge: ChallengeModel = {
+  id: GripTypeEnum.Deadhang + "_" + DeadhangTypeEnum.leftArm,
+  name: "left arm",
+  gripId: deadhangLeftArmGripData.id,
+  weight: 0,
+  duration: 0,
+  imgUri:
+    "https://firebasestorage.googleapis.com/v0/b/grip-tracker.appspot.com/o/deadhang.png?alt=media&token=0f2f01cf-56bd-4273-b958-7e476d8a0762",
+};
+
 const deadhangOnePlateChallenge: ChallengeModel = {
   id: GripTypeEnum.Deadhang + "_" + DeadhangTypeEnum.onePlate,
-  name: "One plate deadhang",
+  name: "One plate",
   gripId: deadhangOnePlateGripData.id,
   weight: 20.4117,
   duration: 0,
@@ -35,7 +58,7 @@ const deadhangOnePlateChallenge: ChallengeModel = {
 
 const deadhangTwoPlateChallenge: ChallengeModel = {
   id: GripTypeEnum.Deadhang + "_" + DeadhangTypeEnum.twoPlate,
-  name: "Two plates deadhang",
+  name: "Two plates",
   gripId: deadhangTwoPlateGripData.id,
   weight: 20.4117 * 2,
   duration: 0,
@@ -45,7 +68,7 @@ const deadhangTwoPlateChallenge: ChallengeModel = {
 
 const deadhangThreePlateChallenge: ChallengeModel = {
   id: GripTypeEnum.Deadhang + "_" + DeadhangTypeEnum.threePlate,
-  name: "Three plates deadhang",
+  name: "Three plates",
   gripId: deadhangThreePlateGripData.id,
   weight: 20.4117 * 3,
   duration: 0,
@@ -55,7 +78,7 @@ const deadhangThreePlateChallenge: ChallengeModel = {
 
 const deadhangFourPlateChallenge: ChallengeModel = {
   id: GripTypeEnum.Deadhang + "_" + DeadhangTypeEnum.fourPlate,
-  name: "Four plates deadhang",
+  name: "Four plates",
   gripId: deadhangFourPlateGripData.id,
   weight: 20.4117 * 4,
   duration: 0,
@@ -65,7 +88,7 @@ const deadhangFourPlateChallenge: ChallengeModel = {
 
 const pinchWideShallowTenSecondsChallenge: ChallengeModel = {
   id: GripTypeEnum.Pinch + "_" + PinchTypeEnum.wideShallow + "_10Seconds",
-  name: "Pinch wide shallow ten seconds challenge",
+  name: "Pinch wide shallow ten seconds",
   gripId: wideShallowPinchGripData.id,
   weight: 0,
   duration: 10,
@@ -74,7 +97,7 @@ const pinchWideShallowTenSecondsChallenge: ChallengeModel = {
 
 const pinchWideDeepTenSecondsChallenge: ChallengeModel = {
   id: GripTypeEnum.Pinch + "_" + PinchTypeEnum.wideDeep + "_10Seconds",
-  name: "Pinch wide deep ten seconds challenge",
+  name: "Pinch wide deep ten seconds",
   gripId: wideDeepPinchGripData.id,
   weight: 0,
   duration: 10,
@@ -83,6 +106,8 @@ const pinchWideDeepTenSecondsChallenge: ChallengeModel = {
 
 export {
   deadhangBodyWeightChallenge,
+  deadhangRightArmChallenge,
+  deadhangLeftArmChallenge,
   deadhangOnePlateChallenge,
   deadhangTwoPlateChallenge,
   deadhangThreePlateChallenge,

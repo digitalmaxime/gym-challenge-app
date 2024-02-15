@@ -14,6 +14,8 @@ import {
 } from "./data/grip/gripData";
 import {
   deadhangBodyWeightChallenge,
+  deadhangRightArmChallenge,
+  deadhangLeftArmChallenge,
   deadhangFourPlateChallenge,
   deadhangOnePlateChallenge,
   deadhangThreePlateChallenge,
@@ -63,6 +65,8 @@ for (const data of gripData) {
 
 const challengeData = [
   deadhangBodyWeightChallenge,
+  deadhangRightArmChallenge,
+  deadhangLeftArmChallenge,
   deadhangOnePlateChallenge,
   deadhangTwoPlateChallenge,
   deadhangThreePlateChallenge,

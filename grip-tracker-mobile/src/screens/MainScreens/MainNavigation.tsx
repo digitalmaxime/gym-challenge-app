@@ -17,7 +17,7 @@ export default function MainNavigation() {
   return (
     <NavigationContainer>
       <Tab.Navigator
-        initialRouteName="Train"
+        initialRouteName="Stats"
         activeColor={Colors.activeIcon}
         barStyle={styles.barStyle}
         inactiveColor={Colors.inactiveIcon}

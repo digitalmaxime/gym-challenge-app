@@ -24,6 +24,20 @@ const deadhangBodyWeightGripData: GripModel = {
   imgUri: 'https://firebasestorage.googleapis.com/v0/b/grip-tracker.appspot.com/o/deadhang.png?alt=media&token=0f2f01cf-56bd-4273-b958-7e476d8a0762'
 }
 
+const deadhangRightArmGripData: GripModel = {
+  id: GripTypeEnum.Deadhang + "_" + DeadhangTypeEnum.rightArm,
+  gripType: GripTypeEnum.Deadhang,
+  subGripType: DeadhangTypeEnum.rightArm,
+  imgUri: 'https://firebasestorage.googleapis.com/v0/b/grip-tracker.appspot.com/o/deadhang.png?alt=media&token=0f2f01cf-56bd-4273-b958-7e476d8a0762'
+}
+
+const deadhangLeftArmGripData: GripModel = {
+  id: GripTypeEnum.Deadhang + "_" + DeadhangTypeEnum.leftArm,
+  gripType: GripTypeEnum.Deadhang,
+  subGripType: DeadhangTypeEnum.leftArm,
+  imgUri: 'https://firebasestorage.googleapis.com/v0/b/grip-tracker.appspot.com/o/deadhang.png?alt=media&token=0f2f01cf-56bd-4273-b958-7e476d8a0762'
+}
+
 const deadhangOnePlateGripData: GripModel = {
   id: GripTypeEnum.Deadhang + "_" + DeadhangTypeEnum.onePlate,
   gripType: GripTypeEnum.Deadhang,
@@ -52,4 +66,4 @@ const deadhangFourPlateGripData: GripModel = {
   imgUri: 'https://firebasestorage.googleapis.com/v0/b/grip-tracker.appspot.com/o/deadhang.png?alt=media&token=0f2f01cf-56bd-4273-b958-7e476d8a0762'
 }
 
-export { wideShallowPinchGripData, wideDeepPinchGripData, deadhangBodyWeightGripData, deadhangOnePlateGripData, deadhangTwoPlateGripData, deadhangThreePlateGripData, deadhangFourPlateGripData }
+export { wideShallowPinchGripData, wideDeepPinchGripData, deadhangBodyWeightGripData, deadhangRightArmGripData, deadhangLeftArmGripData, deadhangOnePlateGripData, deadhangTwoPlateGripData, deadhangThreePlateGripData, deadhangFourPlateGripData }
