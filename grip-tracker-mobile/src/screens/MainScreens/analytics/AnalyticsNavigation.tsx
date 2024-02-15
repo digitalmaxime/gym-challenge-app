@@ -2,6 +2,7 @@ import * as React from "react";
 import { View, StyleSheet } from "react-native";
 
 import { IconBtn } from "../../../components/basics/btn/IconButton";
+import Colors from "../../../constants/styles";
 
 export enum AnalyticsNavigationOptions {
   General,
@@ -54,7 +55,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-evenly",
     padding: 0,
     margin: 0,
-    backgroundColor: "turquoise",
+    backgroundColor: Colors.subHeaderStyleBackgroundColor,
     width: "100%",
     height: 60,
   },

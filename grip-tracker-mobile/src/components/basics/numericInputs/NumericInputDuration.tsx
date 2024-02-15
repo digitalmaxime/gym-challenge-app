@@ -10,7 +10,7 @@ interface NumericInputDurationProps {
 const NumericInputDuration = ({ onChange }: NumericInputDurationProps) => {
   return (
     <>
-      <Text style={{ color: Colors.textColor, fontSize: 26 }}>Duration (s)</Text>
+      <Text style={{ color: Colors.textColor, fontSize: 26 }}>Duration</Text>
 
       <InputSpinner
         min={0}

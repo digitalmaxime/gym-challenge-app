@@ -5,16 +5,15 @@ import {
   Modal,
   ScrollView,
   View,
-  SafeAreaView,
 } from "react-native";
 import { ChallengeModel } from "../../../../models/challenge/ChallengeModel";
 import { DateTimeService } from "../../../../services/dateTime/DateTimeService";
 import { TimePeriod, WeekDays } from "../../../../constants/Date/DateConstants";
-import WeekPinchGraph from "./pinchGraph/WeekPinchGraph";
+import WeekPinchGraph from "./pinchGraphs/WeekPinchGraph";
 import { SegmentedButtons } from "react-native-paper";
 import { useState } from "react";
-import YearPinchGraph from "./pinchGraph/YearPinchGraph";
-import MonthPinchGraph from "./pinchGraph/MonthPinchGraph";
+import YearPinchGraph from "./pinchGraphs/YearPinchGraph";
+import MonthPinchGraph from "./pinchGraphs/MonthPinchGraph";
 
 interface DetailedPinchAnalyticsProps {
   modalVisible: boolean;
@@ -127,6 +126,8 @@ const DetailedPinchAnalyticsModal = ({
             <YearPinchGraph data={monthBarData} />
           )}
         </View>
+
+        <Text style={{margin: 20}}>Leader Board</Text>
       </ScrollView>
     </Modal>
   );

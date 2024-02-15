@@ -10,8 +10,6 @@ const CrimpSelectionStack = () => {
     <Stack.Navigator
       initialRouteName="CrimpSelectionScreen"
       screenOptions={{
-        headerTintColor: 'white',
-        headerStyle: { backgroundColor: 'tomato' },
         headerShown: false,
       }}
     >

@@ -1,7 +1,8 @@
-import React from 'react';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { PinchSelectionScreen } from './PinchSelectionScreen';
-import PinchChallenge from './PinchChallenge';
+import React from "react";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { PinchSelectionScreen } from "./PinchSelectionScreen";
+import PinchChallenge from "./PinchChallenge";
+import Colors from "../../../../constants/styles";
 
 function PinchSelectionStack() {
   const Stack = createNativeStackNavigator();
@@ -10,8 +11,6 @@ function PinchSelectionStack() {
     <Stack.Navigator
       initialRouteName="PinchSelectionScreen"
       screenOptions={{
-        headerTintColor: 'white',
-        headerStyle: { },
         headerShown: false,
       }}
     >
@@ -22,9 +21,8 @@ function PinchSelectionStack() {
       <Stack.Screen
         name="PinchChallenge"
         component={PinchChallenge}
-        options={{ title: 'PinchChallenge', presentation: 'modal' }}
+        options={{ title: "PinchChallenge", presentation: "modal" }}
       />
-
     </Stack.Navigator>
   );
 }

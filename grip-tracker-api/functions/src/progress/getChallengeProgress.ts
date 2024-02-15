@@ -1,5 +1,6 @@
 import * as firebaseAdmin from "firebase-admin";
 import { CallableRequest, onCall } from "firebase-functions/v2/https";
+import { ChallengeProgressModel } from "../models/challengeProgress/challengeProgressModel";
 
 const db = firebaseAdmin.firestore();
 
@@ -25,7 +26,7 @@ const getChallengeProgress = onCall(async (request: CallableRequest) => {
     grips.forEach((grip) => {
       gripIdsArray.push(grip.data().id);
     });
-    console.log("Grips: ", gripIdsArray)
+
     const gripId = gripIdsArray[0];
 
     /** Get the challenges (fast)*/
@@ -37,7 +38,6 @@ const getChallengeProgress = onCall(async (request: CallableRequest) => {
       challenges.forEach((challenge) => {
         challengeIdsArray.push(challenge.data().id);
       });
-      console.log("Challenges: ", challengeIdsArray)
       
       /** Get the progress */
       const progress = (
@@ -48,8 +48,8 @@ const getChallengeProgress = onCall(async (request: CallableRequest) => {
         progress.forEach((progress) => {
           progressArray.push(progress.data() as ChallengeProgressModel);
         });
-        console.log("Progress : ", progressArray)
 
+        
   return progressArray;
 });
 

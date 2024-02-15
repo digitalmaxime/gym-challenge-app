@@ -31,7 +31,6 @@ const getUserChallengeProgresses = onCall(async (request: CallableRequest): Prom
   progress.forEach((progress) => {
     userChallengeProgresses.push(progress.data() as ChallengeProgressModel);
   });
-  console.log("Progress : ", userChallengeProgresses);
 
   /** Initialize dictionary of Progresses */
   const progressDictionary: ProgressDictionary = {
@@ -146,13 +145,6 @@ const getUserChallengeProgresses = onCall(async (request: CallableRequest): Prom
     return filteredChallengeProgresses.sort((a, b) => a.timestamp - b.timestamp);
   }
 
-  console.log("---------------------------------");
-  console.log(progressDictionary.PinchProgresses.wideDeep);
-  progressDictionary.PinchProgresses.wideDeep.forEach(x => {
-    const toto = new Date(x.timestamp!).getDate().toString()
-    console.log ("Date : ", toto)
-
-  })
   return progressDictionary;
 });
 

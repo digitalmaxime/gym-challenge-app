@@ -44,7 +44,6 @@ export function UserProvider({ children }: UserProviderProps) {
         fetchedUserData !== undefined &&
         Object.hasOwn(fetchedUserData, "email")
       ) {
-        console.log("setUserData(fetchedUserData as UserData);");
         setUserData(fetchedUserData as UserData);
         await SyncUserChallengeProgresses();
       } else {
@@ -54,29 +53,15 @@ export function UserProvider({ children }: UserProviderProps) {
       const message = error instanceof Error ? error.message : String(error);
       console.error({ message });
       console.warn("initUser failed .. :(");
-      throw new Error("l'initialisation des donnees a échoué");
+      throw new Error("init User failed");
     }
   }
 
   async function SyncUserChallengeProgresses() {
     try {
       const res = await Controller.getUserChallengeProgresses();
-
       const fetchedChallengeProgresses = res.data;
-      // Object.entries(fetchedChallengeProgresses).forEach(record => { // TODO: figure out why shit ain't sorted..
-      //   Object.entries(record[1]).forEach(challengeProgress => {
-      //     challengeProgress[1].sort((a, b) => (a?.timestamp || 0) - (b?.timestamp || 0))
-      //   })
-      // })
-      // fetchedChallengeProgresses
-      // .PinchProgresses.wideDeep.sort(
-      //   (a, b) => (a?.timestamp || 0) - (b?.timestamp || 0)
-      // );
       setChallengeProgresses((_) => fetchedChallengeProgresses);
-      console.log("challengeProgresses");
-      console.log("challengeProgresses");
-      console.log("challengeProgresses");
-      console.log(challengeProgresses);
     } catch (error) {
       const message = error instanceof Error ? error.message : String(error);
       console.error({ message });

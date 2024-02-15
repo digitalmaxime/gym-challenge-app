@@ -1,5 +1,5 @@
 import * as React from "react";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, Image } from "react-native";
 import { Avatar, Button, Card, Text } from "react-native-paper";
 import DetailedPinchAnalyticsModal from "./DetailedPinchAnalyticsModal";
 import { useState } from "react";
@@ -22,7 +22,18 @@ const PinchTypeAnalyticsCard = ({
   const [modalVisible, setModalVisible] = useState(false);
   const toggleModal = () => setModalVisible(!modalVisible);
 
-  const LeftContent = (props: any) => <Avatar.Icon {...props} icon="fire" />;
+  const LeftContent = () => (
+    <Image
+      style={{
+        resizeMode: "cover",
+        opacity: 0.5,
+        height: 40,
+        width: 40,
+        borderRadius: 50,
+      }}
+      source={{ uri: challenge.imgUri }}
+    />
+  );
 
   return (
     <View style={styles.container}>
@@ -33,16 +44,14 @@ const PinchTypeAnalyticsCard = ({
         elevation={1}
       >
         <Card.Title
-        titleVariant="titleMedium"
+          titleVariant="titleMedium"
           title={challenge?.name || "not found.."}
           subtitle="Card Subtitle"
           left={LeftContent}
         />
         <Card.Content>
-          {/* <Text variant="titleLarge">{challenge?.name}</Text> */}
           <Text variant="bodyMedium">
-            max weight :{" "}
-            {Math.max( ...challengeProgresses.map(x => x.weight) )}
+            max weight : {Math.max(...challengeProgresses.map((x) => x.weight))}
           </Text>
           <Text variant="bodyMedium">
             last weight :{" "}
@@ -50,10 +59,9 @@ const PinchTypeAnalyticsCard = ({
           </Text>
           <Text variant="bodyMedium">weight / body ratio : </Text>
         </Card.Content>
-        <Card.Cover style={{margin: 5, resizeMode: "cover", opacity: 0.2, height: 60, borderRadius: 0}} source={{ uri: challenge.imgUri }} />
         <Card.Actions>
           {/* <Button>Cancel</Button> */}
-          <Button onPress={() => console.log("sdf")}>view</Button>
+          <Button onPress={() => setModalVisible(true)}>view</Button>
         </Card.Actions>
       </Card>
       <DetailedPinchAnalyticsModal

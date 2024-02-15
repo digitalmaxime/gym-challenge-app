@@ -26,7 +26,8 @@ const Colors = {
   progressBackgroundColour: 'rgba(123, 255, 240, 0.859)',
 
   // headerStyle top navigation
-  headerStyleBackgroundColor: 'rgba(183, 242, 237, 0.329)',
+  headerStyleBackgroundColor: 'rgba(123, 208, 201, 0.528)',
+  subHeaderStyleBackgroundColor: 'rgba(123, 208, 201, 0.106)',
 
   // Text
   textColor: '#353e47',

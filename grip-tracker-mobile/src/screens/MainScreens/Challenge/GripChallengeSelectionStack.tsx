@@ -15,8 +15,10 @@ function GripChallengeSelectionStack() {
     <Stack.Navigator
       initialRouteName="Home"
       screenOptions={{
-        headerTintColor: 'white',
-        headerStyle: { backgroundColor: Colors.headerStyleBackgroundColor },
+        headerTitleStyle: {
+          color: Colors.textColor,
+        },
+        headerStyle: { backgroundColor: Colors.subHeaderStyleBackgroundColor },
       }}
     >
       <Stack.Screen
@@ -27,17 +29,17 @@ function GripChallengeSelectionStack() {
       <Stack.Screen
         name="DeadhangSelectionStack"
         component={DeadhangSelectionStack}
-        options={{title: ""}}
+        options={{title: "", headerTintColor: Colors.textColor}}
         />
       <Stack.Screen
         name="CrimpSelectionStack"
         component={CrimpSelectionStack}
-        options={{title: ""}}
+        options={{title: "", headerTintColor: Colors.textColor}}
         />
       <Stack.Screen
         name="PinchSelectionStack"
         component={PinchSelectionStack}
-        options={{title: ""}}
+        options={{title: "", headerTintColor: Colors.textColor}}
       />
       <Stack.Screen
         name="ChallengeResultSummary"

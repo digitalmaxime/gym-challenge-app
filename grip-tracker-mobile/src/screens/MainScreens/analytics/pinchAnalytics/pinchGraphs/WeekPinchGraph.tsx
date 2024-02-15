@@ -8,22 +8,24 @@ interface PinchGraphProps {
 
 const WeekPinchGraph = ({ data }: PinchGraphProps) => {
   return (
-    <ScrollView 
-    horizontal={true}
-    contentContainerStyle={styles.scrollContainer}
-    >
-      <View style={styles.container}>
-        <BarChart
-          barWidth={22}
-          // noOfSections={8}
-          barBorderRadius={4}
-          frontColor="lightgray"
-          data={data}
-          yAxisThickness={0}
-          xAxisThickness={0}
-        />
-      </View>
-    </ScrollView>
+    <View style={styles.container}>
+      <ScrollView
+        horizontal={true}
+        contentContainerStyle={styles.scrollContainer}
+      >
+        <View style={{ width: "100%" }}>
+          <BarChart
+            barWidth={22}
+            // noOfSections={8}
+            barBorderRadius={4}
+            frontColor="lightgray"
+            data={data}
+            yAxisThickness={0}
+            xAxisThickness={0}
+          />
+        </View>
+      </ScrollView>
+    </View>
   );
 };
 

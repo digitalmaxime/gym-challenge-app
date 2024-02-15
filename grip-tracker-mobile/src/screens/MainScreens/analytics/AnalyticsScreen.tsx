@@ -1,11 +1,11 @@
 import * as React from "react";
 import { StyleSheet, View } from "react-native";
-import DeadhangStats from "./deadhangStats/DeadhangStats";
+import DeadhangAnalytics from "./deadhangAnalytics/DeadhangAnalytics";
 import Header from "../../../components/header/Header";
 import { useState } from "react";
 import GeneralAnalytics from "./generalAnalytics/GeneralAnalytics";
 import AnalyticsNavigation, { AnalyticsNavigationOptions } from "./AnalyticsNavigation";
-import PinchAnalytics from "./pinchStats/PinchAnalytics";
+import PinchAnalytics from "./pinchAnalytics/PinchAnalytics";
 
 const AnalyticsScreen = () => {
   const [gripTypeOption, setGripTypeOption] = useState<AnalyticsNavigationOptions>(
@@ -18,9 +18,9 @@ const AnalyticsScreen = () => {
   } else if (gripTypeOption === AnalyticsNavigationOptions.Pinch) {
     content = <PinchAnalytics />;
   } else if (gripTypeOption === AnalyticsNavigationOptions.Deadhang) {
-    content = <DeadhangStats />;
+    content = <DeadhangAnalytics />;
   } else if (gripTypeOption === AnalyticsNavigationOptions.Crimp) {
-    content = <DeadhangStats />;
+    content = <DeadhangAnalytics />;
   }
 
   return (

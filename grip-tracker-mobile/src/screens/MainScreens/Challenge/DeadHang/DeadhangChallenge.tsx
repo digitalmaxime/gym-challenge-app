@@ -15,6 +15,7 @@ import { IconBtn } from "../../../../components/basics/btn/IconButton";
 import { ChallengeModel } from "../../../../models/challenge/ChallengeModel";
 import { TextButton } from "../../../../components/basics/btn/TextButton";
 import { POUNDS_KILOS_RATIO } from "../../../../components/basics/numericInputs/NumericInputWeight";
+import { Button } from "react-native-paper";
 
 type pathParam = {
   deadhangChallenge: ChallengeModel;
@@ -39,70 +40,45 @@ const DeadhangChallenge = () => {
 
       <NumericInputDuration onChange={setDurationInSeconds} />
 
-      <Text></Text>
-
-      <View
-        style={{
-          flexDirection: "row",
-          alignItems: "stretch",
-          justifyContent: "space-between",
-        }}
-      >
-        <View>
-          <IconBtn
-            iconName="weight-kilogram"
-            iconSize={50}
-            iconColor={Colors.Kilos}
-            onPress={() => {}}
-            disabled={false}
-          />
-          <Text>{deadhangChallenge.weight}</Text>
-        </View>
-        <View>
-          <IconBtn
-            iconName="weight-pound"
-            iconSize={50}
-            iconColor={Colors.Pounds}
-            onPress={() => {}}
-            disabled={false}
-          />
-          <Text>{deadhangChallenge.weight! * POUNDS_KILOS_RATIO}</Text>
-        </View>
-      </View>
-
-      <CheckBtnComponent
-        handleCheckPress={() => true}
-        saveData={() => {
-          const payload = {
-            challengeId: deadhangChallenge.id,
-            duration: durationInSeconds,
-            weight: deadhangChallenge.weight!,
-          } as ChallengeProgressModel;
-          
-          Controller.saveChallengeProgress(payload);
-          
-          try {
-            navigation.goBack();
-            setTimeout(() => {
-              navigation.navigate("ChallengeResultSummary", {
-                ...deadhangChallenge,
+      <View style ={{flexDirection: 'row-reverse', width: "100%",justifyContent: "space-around"}}>
+        <Button
+          mode="contained"
+          disabled={durationInSeconds <= 0}
+          onPress={() => {
+            try {
+              const payload = {
+                challengeId: deadhangChallenge.id,
                 duration: durationInSeconds,
-              });
-            }, 400);
-          } catch (error) {
-            console.log(":(");
-            console.log(error);
-          }
-        }}
-      />
+                weight: deadhangChallenge.weight!,
+              } as ChallengeProgressModel;
 
-      <TextButton
-        onPress={function (): void {
-          navigation.goBack();
-        }}
-        textContent={"Cancel"}
-        disabled={false}
-      />
+              Controller.saveChallengeProgress(payload);
+
+              user.SyncUserChallengeProgresses();
+
+              navigation.goBack();
+
+              setTimeout(() => {
+                navigation.navigate("ChallengeResultSummary", {
+                  ...deadhangChallenge,
+                  duration: durationInSeconds,
+                });
+              }, 300);
+            } catch (error) {
+              console.log(error);
+            }
+          }}
+        >
+          Done
+        </Button>
+        <Button
+          mode="contained-tonal"
+          onPress={() => navigation.goBack()}
+          textColor={Colors.cancel}
+        >
+          cancel
+        </Button>
+      </View>
     </View>
   );
 };

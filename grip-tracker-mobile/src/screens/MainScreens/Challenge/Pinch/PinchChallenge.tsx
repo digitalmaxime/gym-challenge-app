@@ -12,8 +12,9 @@ import { useUserContext } from "../../../../contexts/UserContext";
 import NumericInputWeight from "../../../../components/basics/numericInputs/NumericInputWeight";
 import { useToast } from "react-native-toast-notifications";
 import { ChallengeModel } from "../../../../models/challenge/ChallengeModel";
-import { TextButton } from "../../../../components/basics/btn/TextButton";
+// import { TextButton } from "../../../../components/basics/btn/TextButton";
 import Colors from "../../../../constants/styles";
+import { Button } from "react-native-paper";
 
 type pathParam = {
   pinchChallenge: ChallengeModel;
@@ -39,53 +40,56 @@ export function PinchChallenge() {
 
       <NumericInputWeight onChange={setWeightInKilos} />
 
-      <Text>try to hold {pinchChallenge.duration} seconds</Text>
+      <Text>hold {pinchChallenge.duration} seconds</Text>
 
-      <CheckBtnComponent
-        handleCheckPress={() => true}
-        saveData={async () => {
-          // TODO: check if user still connected
-          if (user.userData === undefined) {
-            toast.show("user disconnected, enable to save your results", {
-              type: "warning",
-              placement: "top",
-              duration: 8000,
-              animationType: "zoom-in",
-              swipeEnabled: true,
-            });
-          }
-          try {
-            const payload = {
-              challengeId: pinchChallenge.id,
-              duration: pinchChallenge.duration!,
-              weight: weightInKilos,
-            } as ChallengeProgressModel;
-            const id = await Controller.saveChallengeProgress(payload);
-
-            user.SyncUserChallengeProgresses();
-            // TODO: consider only updating with recent result (instead of fetching the whole userChallengeProgress..)
-
-            navigation.goBack();
-
-            setTimeout(() => {
-              navigation.navigate("ChallengeResultSummary", {
-                ...pinchChallenge,
-                weight: weightInKilos,
+      <View style ={{flexDirection: 'row-reverse', width: "100%",justifyContent: "space-around"}}>
+        <Button
+          mode="contained"
+          disabled={weightInKilos <= 0}
+          onPress={async () => {
+            if (user.userData === undefined) {
+              toast.show("user disconnected, enable to save your results", {
+                type: "warning",
+                placement: "top",
+                duration: 8000,
+                animationType: "zoom-in",
+                swipeEnabled: true,
               });
-            }, 400);
-          } catch (error) {
-            console.log(error);
-          }
-        }}
-      />
+            }
+            try {
+              const payload = {
+                challengeId: pinchChallenge.id,
+                duration: pinchChallenge.duration!,
+                weight: weightInKilos,
+              } as ChallengeProgressModel;
 
-      <TextButton
-        onPress={function (): void {
-          navigation.goBack();
-        }}
-        textContent={"Cancel"}
-        disabled={false}
-      />
+              await Controller.saveChallengeProgress(payload);
+
+              user.SyncUserChallengeProgresses();
+
+              navigation.goBack();
+
+              setTimeout(() => {
+                navigation.navigate("ChallengeResultSummary", {
+                  ...pinchChallenge,
+                  weight: weightInKilos,
+                });
+              }, 300);
+            } catch (error) {
+              console.log(error);
+            }
+          }}
+        >
+          Done
+        </Button>
+        <Button
+          mode="contained-tonal"
+          onPress={() => navigation.goBack()}
+          textColor={Colors.cancel}
+        >
+          cancel
+        </Button>
+      </View>
     </View>
   );
 }
