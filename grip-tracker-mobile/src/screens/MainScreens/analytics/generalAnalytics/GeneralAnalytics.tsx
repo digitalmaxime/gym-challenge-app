@@ -64,7 +64,7 @@ const GeneralAnalytics = (props: GeneralAnalyticsProps) => {
     >
       <View style={{ alignItems: "center" }}>
         <Text style={{ fontSize: 20, margin: 10 }}>Distribution </Text>
-        <Text>deadh : {nbCompletedDeadhangChallenges}</Text>
+
         <View
           style={{
             margin: 10,

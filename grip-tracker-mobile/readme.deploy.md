@@ -47,7 +47,6 @@ or `eas build:run -p ios --latest`
 Validate your code:
 `npx -y expo-doctor`
 
-
 ## Build it
 https://docs.expo.dev/build/introduction/
 

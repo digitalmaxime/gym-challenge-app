@@ -42,6 +42,8 @@ const getUserChallengeProgresses = onCall(async (request: CallableRequest): Prom
     },
     DeadhangProgresses: {
       [DeadhangTypeEnum.bodyWeight]: [],
+      [DeadhangTypeEnum.rightArm]: [],
+      [DeadhangTypeEnum.leftArm]: [],
       [DeadhangTypeEnum.onePlate]: [],
       [DeadhangTypeEnum.twoPlate]: [],
       [DeadhangTypeEnum.threePlate]: [],
@@ -110,7 +112,6 @@ const getUserChallengeProgresses = onCall(async (request: CallableRequest): Prom
       gripIdsArray.push(grip.data().id);
     });
     const gripId = gripIdsArray[0];
-    console.log("----> ", gripId);
 
     return gripId;
   }
@@ -129,7 +130,6 @@ const getUserChallengeProgresses = onCall(async (request: CallableRequest): Prom
     snapShot.forEach((challenge) => {
       challengeIdsArray.push(challenge.data().id);
     });
-    console.log("Challenges: ", challengeIdsArray);
 
     return challengeIdsArray;
   }
@@ -140,7 +140,7 @@ const getUserChallengeProgresses = onCall(async (request: CallableRequest): Prom
   ): ChallengeProgressModel[] {
     const filteredChallengeProgresses = userChallengeProgresses
       .filter((x) => challengeIdsArray.includes(x.challengeId))
-      // .sort((a, b) => a.timestamp - b.timestamp); // TODO: sort not working somehow..
+      .sort((a, b) => a.timestamp - b.timestamp);
 
     return filteredChallengeProgresses.sort((a, b) => a.timestamp - b.timestamp);
   }

@@ -44,7 +44,7 @@ export function GripChallengeSelectionScreen(props: PinchScreenProps) {
       {/* grip types */}
       <View style={styles.flatListContainer}>
         <FlatList
-          data={Object.entries(challengeCtx.gripDictionary)}
+          data={Object.entries(challengeCtx.gripDictionary || [])}
           keyExtractor={(item) => item[0]}
           numColumns={1}
           bounces={false}

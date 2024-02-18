@@ -23,12 +23,7 @@ const saveChallengeProgress = onCall(async (request) => {
       .collection("ChallengeProgress")
       .where("userId", "==", uid)
       .get();
-    console.log("**********************>>>");
-    // userChallengeExistingProgresses.docs.forEach((x) => {
-    //   const progress = x.data() as ChallengeProgressModel;
-    //   const time = new Date(progress.timestamp).setHours(0, 0, 0, 0);
-    //   console.log(time);
-    // });
+
     const existingProgressWithSameDate =
       userChallengeExistingProgresses.docs.find((x) => {
         const existingProgress = x.data() as ChallengeProgressModel;
@@ -37,18 +32,14 @@ const saveChallengeProgress = onCall(async (request) => {
         ).setHours(0, 0, 0, 0);
 
         const dataDate = new Date(data.timestamp).setHours(0, 0, 0, 0);
-        
+
         return (
           dataDate === existingProgressTimestamp &&
           data.challengeId === existingProgress.challengeId
         );
       });
-    console.log("<<<**********************");
 
     if (existingProgressWithSameDate) {
-      console.log("!*!*!*!*!*")
-      console.log(existingProgressWithSameDate)
-      console.log("!*!*!*!*!*")
       await db
         .collection("ChallengeProgress")
         .doc(existingProgressWithSameDate.id)

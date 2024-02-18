@@ -7,7 +7,7 @@ const PinchAnalytics = () => {
   const user = useUserContext();
 
   const populatedProgresses = Object.entries(
-    user.challengeProgresses?.PinchProgresses
+    user.challengeProgresses?.PinchProgresses || []
   )?.filter((x) => x[1].length > 0);
 
   const renderItem: ListRenderItem<[string, ChallengeProgressModel[]]> = (itemData) => {

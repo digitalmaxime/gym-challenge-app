@@ -4,7 +4,7 @@ import ChallengeModel from '../models/challenge/ChallengeModel';
 const db = firebaseAdmin.firestore()
 
 const getAllChallenges = onCall(
-  async (request: CallableRequest) => {
+  async (_request: CallableRequest) => {
     const grips = (await db.collection('Challenges').get()).docs;
     const arr: ChallengeModel[] = [];
     grips.forEach(challenge => arr.push(challenge.data() as ChallengeModel));
