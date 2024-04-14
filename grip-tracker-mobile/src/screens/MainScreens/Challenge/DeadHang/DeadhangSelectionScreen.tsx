@@ -1,6 +1,6 @@
 import * as React from "react";
 import { View, FlatList, StyleSheet } from "react-native";
-import * as Controller from "../../../../api/controller";
+import * as Controller from "controller";
 import { NavigationProp, useNavigation } from "@react-navigation/native";
 import { ChallengeModel } from "../../../../models/challenge/ChallengeModel";
 import { GripTypeEnum } from "../../../../models/grip/GripTypeEnum";

@@ -5,7 +5,7 @@ import {
   FlatList,
 } from 'react-native';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
-import * as Controller from '../../../../api/controller';
+import * as Controller from 'controller';
 import { GripModel } from '../../../../models/grip/GripModel';
 import { TextButton } from '../../../../components/basics/btn/TextButton';
 import Colors from '../../../../constants/styles';

@@ -5,7 +5,7 @@ import { NavigationProp, useNavigation } from "@react-navigation/native";
 import Colors from "../../../constants/styles";
 import { MODE } from "@env";
 import { TextButton } from "../../../components/basics/btn/TextButton";
-import * as Controller from "../../../api/controller";
+import * as Controller from "controller";
 import { GripTypeEnum } from "../../../models/grip/GripTypeEnum";
 import { useUserContext } from "../../../contexts/UserContext";
 import { ProgressDictionary } from "../../../models/challengeProgress/ProgressDictionary";

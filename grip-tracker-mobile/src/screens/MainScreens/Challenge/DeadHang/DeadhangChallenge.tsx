@@ -7,7 +7,7 @@ import {
   useRoute,
 } from "@react-navigation/native";
 import { useUserContext } from "../../../../contexts/UserContext";
-import * as Controller from "../../../../api/controller";
+import * as Controller from "controller";
 import Colors from "../../../../constants/styles";
 import CheckBtnComponent from "../../../../components/basics/btn/CheckBtnComponent";
 import NumericInputDuration from "../../../../components/basics/numericInputs/NumericInputDuration";

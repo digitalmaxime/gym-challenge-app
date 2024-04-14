@@ -3,5 +3,18 @@
   "compilerOptions": {
     "strict": true,
     "typeRoots": ["./src/types"],
+    "baseUrl": ".",
+    "paths": {
+      "components/*": [
+        "src/components/*"
+      ],
+      "buttons": [
+        "src/components/basics/btn"
+      ]
+      ,
+      "controller": [
+        "src/api/controller"
+      ]
+    }
   }
 }

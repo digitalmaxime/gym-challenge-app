@@ -1,7 +1,7 @@
 import * as React from "react";
 import { ReactNode, createContext, useContext, useMemo, useState } from "react";
 import { ChallengeModel } from "../models/challenge/ChallengeModel";
-import * as Controller from "../api/controller";
+import * as Controller from "controller";
 import { GripModel } from "../models/grip/GripModel";
 import { GripDictionary } from "../models/grip/GripDictionary";
 import { GripTypeEnum } from "../models/grip/GripTypeEnum";

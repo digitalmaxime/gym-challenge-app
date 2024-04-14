@@ -11,9 +11,7 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": false,
       "bundleIdentifier": "com.digitalmaxime.griptracker"
@@ -31,6 +29,9 @@
       "eas": {
         "projectId": "9fbd3b7b-6c60-457d-9ca0-08f4a62f51b8"
       }
-    }
+    },
+    "plugins": [
+      ["./app.plugin", { "devTeamId": "7WKVJJL868" }]
+    ]
   }
 }

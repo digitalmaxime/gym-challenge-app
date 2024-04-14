@@ -7,7 +7,7 @@ import {
   useRoute,
 } from "@react-navigation/native";
 import CheckBtnComponent from "../../../../components/basics/btn/CheckBtnComponent";
-import * as Controller from "../../../../api/controller";
+import * as Controller from "controller";
 import { useUserContext } from "../../../../contexts/UserContext";
 import NumericInputWeight from "../../../../components/basics/numericInputs/NumericInputWeight";
 import { useToast } from "react-native-toast-notifications";

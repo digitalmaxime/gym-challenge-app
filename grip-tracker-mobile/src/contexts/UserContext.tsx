@@ -6,7 +6,7 @@ import React, {
   useMemo,
   useState,
 } from "react";
-import * as Controller from "../api/controller";
+import * as Controller from "controller";
 import UserData from "../models/user/UserData";
 import { auth } from "../utils/firebase";
 import { ProgressDictionary } from "../models/challengeProgress/ProgressDictionary";
